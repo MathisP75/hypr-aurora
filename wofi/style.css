@@ -1,0 +1,51 @@
+* {
+    font-family: SFPro;
+    font-size: 17px;
+    border-radius: 20px;
+}
+
+window {
+    margin: 5px;
+    background-color: rgba(18, 21, 31, 1.0);
+    border: 3px solid rgba(18, 21, 31, 1.0);
+    border-radius: 20px;
+}
+
+#outer-box {
+    margin: 10px;
+    border-radius: 20px;
+}
+
+#input {
+    margin: 5px 0px 20px 0px;
+    background-color: #0C0E14;
+    border-radius: 14px;
+    padding: 5px;
+}
+
+#inner-box {
+    margin: 0px;
+    border-radius: 14px;
+    background-color: #181B28;
+}
+
+#scroll {
+    margin: 0px 0px;
+    border-radius: 14px;
+    border: none;
+}
+
+#text {
+    margin: 2px;
+    border: none;
+}
+
+#entry {
+    border: none;
+    border-radius: 14px;
+}
+
+
+#entry:selected {
+    color: rgba(255, 255, 255, 1);
+}
