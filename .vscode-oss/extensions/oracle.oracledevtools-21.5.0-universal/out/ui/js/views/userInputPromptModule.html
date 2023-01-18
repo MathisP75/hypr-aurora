@@ -1,0 +1,20 @@
+
+<div id="form-container">    
+  <oj-bind-if test="{{operationNameField() !== 6 && operationNameField() !== 7}}">
+    <oj-label for="userInput">
+     <oj-bind-text value="{{promptTextField}}">Fancy</oj-bind-text> 
+    </oj-label>   
+    <oj-bind-if test="{{secure()}}">
+      <oj-input-password required="{{mandatoryField}}" label-hint="{{labelHintField}}" id="userInput"  disabled="{{disableUserInputField}}" value="{{valueField}}">
+      </oj-input-password>
+    </oj-bind-if>
+    <oj-bind-if test="{{!secure()}}">
+      <oj-input-text required="{{mandatoryField}}"   label-hint="{{labelHintField}}" id="userInput" disabled="{{disableUserInputField}}" value="{{valueField}}"></oj-input-text>
+    </oj-bind-if>     
+  </oj-bind-if> 
+  <oj-bind-if test="{{operationNameField() === 6 || operationNameField() === 7}}">
+  <oj-label  >
+    <pre   ><oj-bind-text value="{{promptTextField}}">Fancy</oj-bind-text> </pre> 
+   </oj-label>   
+  </oj-bind-if> 
+</div>

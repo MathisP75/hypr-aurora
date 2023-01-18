@@ -1,0 +1,71 @@
+<div class="1abdSelectCompartmentBody">
+  <div style="padding-left: 00px;padding-top: 0px;" class='1compartmentBorder'>
+    <oj-form-layout label-edge="start" max-columns="1" direction="column" label-width="25%"
+      user-assistance-density='compact' class="oj-formlayout-full-width">
+      <label class="connDlgHeader">
+        <oj-bind-text value='[[compartmentUILabelTexts.changeCompartmentOrRegion]]'></oj-bind-text>
+      </label>
+      <hr>     
+      <oj-label style="margin-top: 0; text-align: left" for="profileNameID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.profileName]]'></oj-bind-text>
+      </oj-label>
+      <span class="ociTextForColor infoLabel" id="profileNameID" data-bind="text:profileName"
+        style="overflow-wrap: break-word;" slot="value"></span>
+      <oj-label style="margin-top: 0; text-align: left" for="currentCompartmentID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.currentCompartment]]'></oj-bind-text>
+      </oj-label>
+      <span class="ociTextForColor infoLabel" id="currentCompartmentID" data-bind="text:currentCompartmentName"
+        style="overflow-wrap: break-word;" slot="value"></span>
+
+      <oj-label style="margin-top: 0; text-align: left" for="compartmentFullPathID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.compartmentFullPath]]'></oj-bind-text>
+      </oj-label>
+      <div>
+        <span class="ociTextForColor infoLabel" id="compartmentFullPathID" data-bind="text:currentCompartmentFullName"
+          style="overflow-wrap: break-word;" slot="value"></span>
+        <oj-button id="copyButton" display="icons" on-oj-action='[[onCopyCompartmentname]]'
+          disabled="[[!currentCompartmentFullName()]]">
+          <oj-bind-text value='[[compartmentUILabelTexts.copyCompartmentname]]'>
+          </oj-bind-text>
+        </oj-button>
+      </div>
+
+
+      <oj-label style="margin-top: 0; text-align: left" for="currentRegionID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.currentRegion]]'></oj-bind-text>
+      </oj-label>
+      <span class="ociTextForColor infoLabel" id="currentRegionID" data-bind="text:currentRegion"
+        style="overflow-wrap: break-word;" slot="value"></span>
+
+      <oj-label style="margin-top: 0; text-align: left" for="selectNewCompartmentID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.selectNewCompartment]]'></oj-bind-text>
+      </oj-label>
+      <div>
+        <oj-tree-view id="treeview" data="[[data]]" selected="{{selected}}" expanded="{{expanded}}"
+          class="compartmentBorder" selection-mode="single" on-selected-changed="[[selectedChanged]]"
+          aria-label="Tree View with OCI compartment Data">
+          <template slot="itemTemplate" data-oj-as="row">
+            <span style="margin: 0px;" class="oj-treeview-item-icon"></span>
+            <span class="oj-treeview-item-text ociTreeviewItem" style="text-overflow: ellipsis">
+              <oj-bind-text style="text-overflow: ellipsis" value="[[row.data.nameForDisplay]]"></oj-bind-text>
+            </span>
+          </template>
+        </oj-tree-view>
+      </div>
+
+      <br />
+      <oj-label style="margin-top: 0; text-align: left" for="changeRegionID" slot="label">
+        <oj-bind-text value='[[compartmentUILabelTexts.selectNewRegion]]'></oj-bind-text>
+      </oj-label>
+      <oj-combobox-one options="[[regions]]" value="{{selectedRegion}}" class="infoLabel"
+        onkeydown='javascript: if((event.key != "Tab")){ return false;}' on-value-changed="[[regionChangedHandler]]"
+        onpaste="return false;" onCut="return false" oncontextmenu="return false" id='changeRegionID' slot="value">
+      </oj-combobox-one>
+      <br />
+      <oj-label></oj-label>
+      <oj-button id="applyChangesBtn" on-oj-action='[[onApplyChanges]]' class='oj-button-lg' disabled='{{applyChangesButtonDisabled}}'>
+        <oj-bind-text value='[[compartmentUILabelTexts.applyChanges]]'></oj-bind-text>
+      </oj-button>
+    </oj-form-layout>
+  </div>
+</div>

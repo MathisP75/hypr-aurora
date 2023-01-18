@@ -1,0 +1,574 @@
+<div class="connDlgBody">
+    <div>
+        <label class="connDlgHeader">
+            <oj-bind-text value='[[uiHeaderText]]'></oj-bind-text>
+    </label>
+    
+    <oj-button chroming='borderless' id='copyBtn' display='icons' on-oj-action="[[onHelp]]">
+        <span slot='startIcon'>
+            <svg width="16" height="16" viewBox="0 1 16 16" xmlns="http://www.w3.org/2000/svg" 
+            fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.568 1.031A6.8 6.8 0 0 1 12.76 3.05a7.06 7.06 0 0 1 .46 9.39 6.85 6.85 0 0 1-8.58 1.74 7 7 0 0 1-3.12-3.5 7.12 7.12 0 0 1-.23-4.71 7 7 0 0 1 2.77-3.79 6.8 6.8 0 0 1 4.508-1.149zM9.04 13.88a5.89 5.89 0 0 0 3.41-2.07 6.07 6.07 0 0 0-.4-8.06 5.82 5.82 0 0 0-7.43-.74 6.06 6.06 0 0 0 .5 10.29 5.81 5.81 0 0 0 3.92.58zM7.375 6h1.25V5h-1.25v1zm1.25 1v4h-1.25V7h1.25z"/></svg>
+        </span>
+        <oj-bind-text value="[[connectionUILabelTexts.helpLabel]]"></oj-bind-text>
+      </oj-button>
+    </div>
+                <hr class="hrstyle"/>
+                <div class="flex" style="margin-top: 10px">
+                        <div class="flex-item">
+                <oj-label for="conType" slot="label">
+                        <label class="leftalign">
+                                <p>
+                                        <oj-bind-text value='[[connectionUILabelTexts.connectionTypeLabel]]'>
+                                        </oj-bind-text>
+                                        <oj-bind-if test="[[connInfoRequred.connectionType]]">
+                                                <span class="required">
+                                                        <oj-bind-text value='[[connectionUILabelTexts.requiredText]]'>
+                                                        </oj-bind-text>
+                                                </span>
+                                        </oj-bind-if>
+                                </p>
+                        </label>
+                </oj-label>
+                        </div>
+                        <div class="flex-item">
+                <oj-combobox-one options="[[connectionTypes]]" value="{{connectionType}}"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-value-changed="[[connectionTypeChangedHandler]]" disabled='[[!creatingNewConnection()]]'
+                        onpaste="return false;" onCut="return false" oncontextmenu="return false"
+                        id='conType' slot="value">
+                </oj-combobox-one>
+                        </div><div class="flex-item"></div>
+                </div>
+                <oj-bind-if test="[[connectionType() === basicConnectionType]]">
+                        <div class="flex">
+                                <div class="flex-item">
+                        <oj-label for="dbName" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.dbHostNameLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.dbHostName && !isFailedToParseDS()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                                </div><div class="flex-item">
+                        <oj-input-text value='{{dbHostName}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                placeholder='[[connInfoPlaceHodlerTexts.dbHostName]]' disabled="[[isFailedToParseDS()]]"
+                                id='dbName' slot="value">
+                        </oj-input-text>
+                        </div>
+                        <div class="flex-item"></div>
+                        </div>
+                        <div class="flex">
+                                <div class="flex-item">
+                        <oj-label for="portNum" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.dbPortNumLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.dbPortNum && !isFailedToParseDS()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                                </div><div class="flex-item">
+                        <oj-input-text value='{{dbPortNum}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                placeholder='[[connInfoPlaceHodlerTexts.dbPortNum]]' disabled="[[isFailedToParseDS()]]"
+                                id='portNum' slot="value">
+                        </oj-input-text>
+                        </div><div class="flex-item"></div>
+                        </div>
+                        <div class="flex">
+                                <div class="flex-item">
+                        <oj-label for="serviceName" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.dbServiceNameLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.dbServiceName && !isFailedToParseDS()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                                </div><div class="flex-item">
+                        <oj-input-text value='{{dbServiceName}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                placeholder='[[connInfoPlaceHodlerTexts.dbServiceName]]'
+                                disabled="[[isFailedToParseDS()]]" id='serviceName' slot="value">
+                        </oj-input-text>
+                        </div>
+                        <div class="flex-item"></div>
+                        </div>
+                        <div class="flex">
+                                <div class="flex-item">
+                        <oj-label for="ezConnectStringTextBox" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.ezConnectStringLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.ezConnectString]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                                </div><div class="flex-item">
+                        
+                                <oj-input-text id='ezConnectStringTextBox' value='{{ezConnectString}}' readonly="true"
+                                        slot="value">
+                                </oj-input-text>
+                                </div><div class="flex-item">
+                                <oj-button display="icons" on-oj-action='[[onCopyEasyConnectString]]'
+                                        disabled="[[!ezConnectString() && !isFailedToParseDS()]]" style="padding-left: 5px;">
+                                        <!-- <span slot='startIcon' class="demo-icon-font demo-copy-icon-24"></span> -->
+                                        <oj-bind-text value='[[connectionUILabelTexts.copyConnectionString]]'>
+                                        </oj-bind-text>
+                                </oj-button>
+                        </div>
+                        </div>
+                </oj-bind-if>
+                <oj-bind-if test="[[connectionType() === tnsConnectionType]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="tnsAdminLocation" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.tnsAdminLocationLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.tnsAdminLocation]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        
+                                <oj-input-text value='{{tnsAdminLocation}}'
+                                        on-value-changed='[[tnsLocationChangeHandler]]' id='tnsAdminLocation'
+                                        placeholder='[[connInfoPlaceHodlerTexts.tnsAdminLocation]]' slot="value">
+                                </oj-input-text>
+                                </div><div class="flex-item">
+                                <oj-button display="icons" on-oj-action='[[onBrowseTNSLocation]]' style="padding-left: 5px;">
+                                        <oj-bind-text value='[[connectionUILabelTexts.browse]]'></oj-bind-text>
+                                </oj-button>
+                        </div>
+                        </div>
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="tnsAliases" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.tnsAliasLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.tnsAlias]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-combobox-one id="tnsAliasesID" aria-label="tnsAliases Combobox" options="[[tnsAliases]]"
+                                id="tnsAliases" value="{{tnsAlias}}" slot="value" onpaste="return false;" 
+                                onCut="return false" oncontextmenu="return false">                                
+                        </oj-combobox-one>
+                        </div><div class="flex-item"></div>
+                        </div>
+                        <div class="flex"><div class="flex-item"></div><div class="flex-item">
+                        <oj-checkboxset label-hint=" " value="{{enableWalletFileOptions}}" id="enableWalletOptions"
+                                slot="value">
+                                <oj-option id="enableWallet" value="yes">
+                                        <oj-bind-text value='[[connectionUILabelTexts.enableWalletFileLocationLabel]]'>
+                                        </oj-bind-text>
+                                </oj-option>
+                        </oj-checkboxset>
+                        </div><div class="flex-item"></div></div>
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="walletFileLocationText" disabled="[[!enableWalletFile()]]" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text
+                                                        value='[[connectionUILabelTexts.walletFileLocationLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.walletFileLocation && enableWalletFile]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        
+                                <oj-input-text value='{{walletFileLocation}}'
+                                        placeholder='[[connInfoPlaceHodlerTexts.walletFileLocation]]'
+                                        disabled="[[!enableWalletFile()]]" id='walletFileLocationText'
+                                        on-raw-value-changed='[[onRawValueChanged]]' slot="value">
+                                </oj-input-text>
+                                </div><div class="flex-item">
+                                <oj-button display="icons" disabled="[[!enableWalletFile()]]"
+                                        on-oj-action='[[onBrowseWalletFileLocation]]' style="padding-left: 5px;">
+                                        <oj-bind-text value='[[connectionUILabelTexts.browse]]'></oj-bind-text>
+                                </oj-button>
+                        </div></div>
+                </oj-bind-if>
+                <oj-bind-if test="[[connectionType() === odpConnectionType]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="odpConnectString" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.odpnetConnStringLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.odpnetConnString]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-text-area value='{{odpnetConnString}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                id="odpConnectString" placeholder='[[connInfoPlaceHodlerTexts.odpnetConnString]]'
+                                slot="value" rows="5">
+                        </oj-text-area>
+                        </div><div class="flex-item"></div></div>
+                </oj-bind-if>
+                <oj-bind-if test="[[connectionType() === advancedConnectionType]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="ezConnectPlusString" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text
+                                                        value='[[connectionUILabelTexts.ezConnectPlusStringLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.ezConnectPlusString]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-text-area value='{{ezConnectPlusString}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                id="ezConnectPlusString" placeholder='[[connInfoPlaceHodlerTexts.ezConnectPlusString]]'
+                                slot="value" rows="5">
+                        </oj-text-area>
+                        </div><div class="flex-item"></div></div>
+                </oj-bind-if>
+
+                <oj-bind-if test="[[connectionType() !== odpConnectionType]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="authenticationTypes" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text
+                                                        value='[[connectionUILabelTexts.authenticationTypeLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.authenticationType]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label></oj-label>
+</div><div class="flex-item">
+                        <oj-combobox-one id="authenticationTypes" options="[[authenticationTypes]]"
+                                value="{{authenticationType}}"
+                                onkeydown='javascript: if((event.key != "Tab")){ return false;}' 
+                                onpaste="return false;" onCut="return false"
+                                oncontextmenu="return false" slot="value">
+                        </oj-combobox-one>
+                        </div><div class="flex-item"></div></div>
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="userNameText" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.userIdLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.userId]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-input-text value='{{userId}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                placeholder='[[connInfoPlaceHodlerTexts.userId]]' on-blur='[[updateUserId]]'
+                                id="userNameText" slot="value">
+                        </oj-input-text>
+                </div><div class="flex-item"></div></div>
+                <div class="flex"><div class="flex-item">
+                        <oj-label for="passwordText" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.passwordLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.password && !osAuthentication() && !useProxyAuthentication()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                </div><div class="flex-item">
+                                <oj-input-password value="{{password}}" on-raw-value-changed='[[onRawValueChanged]]'
+                                        disabled="[[osAuthentication()]]" id="passwordText" slot="value">
+                                </oj-input-password>
+</div><div class="flex-item"></div></div>
+<div class="flex"><div class="flex-item"></div><div class="flex-item">
+                                        <oj-checkboxset label-hint=" " value="{{savePasswordOptions}}"
+                                                id="savePasswordOptions">
+                                                <oj-option id="savePwd" value="yes" disabled="[[osAuthentication()]]">
+                                                        <oj-bind-text
+                                                                value='[[connectionUILabelTexts.savePasswordLabel]]'>
+                                                        </oj-bind-text>
+                                                </oj-option>
+                                        </oj-checkboxset>
+</div><div class="flex-item"></div></div>
+                        
+                </oj-bind-if>
+                <div class="flex">
+                        <div class="flex-item"></div>
+                        <div class="flex-item">
+                                <oj-checkboxset label-hint=" " value="{{setasDefaultOptions}}" id="setasDefaultConn">
+                                        <oj-option id="defConn" value="yes">
+                                                <oj-bind-text value='[[connectionUILabelTexts.setasDefaultLabel]]'>
+                                                </oj-bind-text>
+                                        </oj-option>
+                                </oj-checkboxset>
+                        </div>
+                        <div class="flex-item"></div>
+                </div>
+                <oj-bind-if test="[[!showMoreProps()]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="connectionName1" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.connectionNameLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.connectionName && creatingNewConnection()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-input-text value='{{connectionNameParsed}}' id="connectionName1"
+                                placeholder='[[connInfoPlaceHodlerTexts.connectionName]]'
+                                on-raw-value-changed='[[onRawValueChanged]]' slot="value">
+                        </oj-input-text>
+                        </div><div class="flex-item"></div></div>
+                </oj-bind-if>
+                <div class="flex"><div class="flex-item"></div><div class="flex-item">
+                <oj-checkboxset label-hint=" " value="{{showMorePropsOptions}}" id="showMorePropsOptions"
+                        on-value-changed='[[onShowMorePropsValueChanged]]'>
+                        <oj-option id="showMoreProps" value="yes">
+                                <oj-bind-text value='[[connectionUILabelTexts.showMoreOptionsLabel]]'>
+                                </oj-bind-text>
+                        </oj-option>
+                </oj-checkboxset>
+</div><div class="flex-item"></div></div>
+                <oj-bind-if test="[[showMoreProps()]]">
+                        
+                        <oj-bind-if test="[[connectionType() !== odpConnectionType]]">
+                                <div class="flex"><div class="flex-item">
+                                <oj-label for="proxyUserName" slot="label">
+                                        <label class="leftalign">
+                                                <p>
+                                                        <oj-bind-text
+                                                                value='[[connectionUILabelTexts.proxyUserIdLabel]]'>
+                                                        </oj-bind-text>
+                                                        <oj-bind-if test="[[connInfoRequred.proxyUserId]]">
+                                                                <span class="required">
+                                                                        <oj-bind-text
+                                                                                value='[[connectionUILabelTexts.requiredText]]'>
+                                                                        </oj-bind-text>
+                                                                </span>
+                                                        </oj-bind-if>
+                                                </p>
+                                        </label>
+                                </oj-label>
+                                </div><div class="flex-item">
+                                <oj-input-text value='{{proxyUserId}}' on-raw-value-changed='[[onRawValueChanged]]'
+                                        placeholder='[[connInfoPlaceHodlerTexts.proxyUserId]]' id='proxyUserName'
+                                        on-blur='[[updateProxyUserId]]' slot="value">
+                                </oj-input-text>
+                                </div><div class="flex-item"></div></div>
+                                <div class="flex"><div class="flex-item">
+                                <oj-label for="proxyPassword" slot="label">
+                                        <label class="leftalign">
+                                                <p>
+                                                        <oj-bind-text
+                                                                value='[[connectionUILabelTexts.proxyPasswordLabel]]'>
+                                                        </oj-bind-text>
+                                                        <oj-bind-if
+                                                                test="[[connInfoRequred.proxyPassword && useProxyAuthentication() && !osProxyAuthentication()]]">
+                                                                <span class="required">
+                                                                        <oj-bind-text
+                                                                                value='[[connectionUILabelTexts.requiredText]]'>
+                                                                        </oj-bind-text>
+                                                                </span>
+                                                        </oj-bind-if>
+                                                </p>
+                                        </label>
+                                </oj-label>
+                                </div><div class="flex-item">
+                                <oj-input-password value="{{proxyPassword}}"
+                                        on-raw-value-changed='[[onRawValueChanged]]' id="proxyPassword"
+                                        disabled="[[osProxyAuthentication()]]" slot="value">
+                                </oj-input-password>
+                                </div><div class="flex-item"></div></div>
+                        </oj-bind-if>
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="currentSchemas" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.currentSchemaLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.currentSchema]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                </div><div class="flex-item">
+                                <oj-combobox-one id="currentSchemas" options="[[currentSchemas]]"
+                                        value="{{currentSchema}}" on-focus='[[onFetchSchemas]]'
+                                        onpaste="return false;" onCut="return false" 
+                                        oncontextmenu="return false"
+                                        on-blur='[[updateCurrentSchemaToOracleCase]]' on-mousedown='[[onFetchSchemas]]'
+                                        slot="value" on-raw-value-changed='[[onCurrentSchemaValueChanged]]'>
+                                </oj-combobox-one>
+                                </div><div class="flex-item">
+                                <oj-bind-if test="[[isFetchSchemasInProgress]]">
+                                        <oj-progress-circle size="sm" id="progressCircle" value="-1" style="padding-left: 5px;"></oj-progress-circle>
+                                </oj-bind-if>
+                       </div></div>
+                       <!--  -->
+                       <div class="flex"><div class="flex-item">
+                        <oj-label for="loginScript" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.loginScriptLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if test="[[connInfoRequred.loginScript]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                                <oj-input-text value='{{loginScript}}'
+                                        on-raw-value-changed='[[onRawValueChanged]]' id='loginScript'
+                                        placeholder='[[connInfoPlaceHodlerTexts.loginScript]]' slot="value">
+                                </oj-input-text>
+                                </div><div class="flex-item">
+                                <oj-button display="icons" on-oj-action='[[onBrowseLoginScript]]' style="padding-left: 5px;">
+                                        <oj-bind-text value='[[connectionUILabelTexts.browse]]'></oj-bind-text>
+                                </oj-button>
+                        </div>
+                        </div>
+                       <!--  -->
+                </oj-bind-if>
+
+
+                <oj-bind-if test="[[showMoreProps()]]">
+                        <div class="flex"><div class="flex-item">
+                        <oj-label for="connectionName2" slot="label">
+                                <label class="leftalign">
+                                        <p>
+                                                <oj-bind-text value='[[connectionUILabelTexts.connectionNameLabel]]'>
+                                                </oj-bind-text>
+                                                <oj-bind-if
+                                                        test="[[connInfoRequred.connectionName && creatingNewConnection()]]">
+                                                        <span class="required">
+                                                                <oj-bind-text
+                                                                        value='[[connectionUILabelTexts.requiredText]]'>
+                                                                </oj-bind-text>
+                                                        </span>
+                                                </oj-bind-if>
+                                        </p>
+                                </label>
+                        </oj-label>
+                        </div><div class="flex-item">
+                        <oj-input-text value='{{connectionNameParsed}}' id="connectionName2"
+                                placeholder='[[connInfoPlaceHodlerTexts.connectionName]]'
+                                on-raw-value-changed='[[onRawValueChanged]]' slot="value">
+                        </oj-input-text>
+                        </div><div class="flex-item"></div></div>
+                </oj-bind-if>
+                <oj-label>
+                </oj-label>
+                <div class="flex"><div class="flex-item"></div><div class="flex-item" style="padding-right: 40px;">
+                
+                        <oj-button id='createUpdateButton' class='oj-button-lg'
+                                on-oj-action='[[onCreateUpdateConnection]]' disabled='{{createUpdateButtonDisabled}}'>
+                                <oj-bind-text value='[[createUpdateButtonText]]'></oj-bind-text>
+                        </oj-button>
+                
+                                <oj-bind-if test="[[isConnectionInProgress]]">
+                                <oj-progress-circle size="md" id="progressCircle" value="-1" style="padding-left: 5px;"></oj-progress-circle>
+                                </oj-bind-if>
+                        </div> <div class="flex-item"></div></div>
+                
+</div>
+<oj-messages position="{}" messages="[[messagesDataprovider]]" display="notification"></oj-messages>

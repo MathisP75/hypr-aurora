@@ -1,0 +1,482 @@
+{
+  "Create a new Relational Table": {
+    "prefix": "oracleCreateTable",
+    "body": [
+      "-- Create a new relational table with 3 columns",
+      "",
+      "CREATE TABLE ${1:TABLE1} ",
+      "(",
+      "  ${2:Column1} ${5:VARCHAR2(255)} NOT NULL,",
+      "  ${3:Column2} ${6:VARCHAR2(1024)},",
+      "  ${4:Column3} ${7:NUMBER(3)}",
+      ");$0"
+    ],
+    "description": "Create a new Relational Table"
+  },
+  "Create a new Database Trigger": {
+    "prefix": "oracleCreateDatabaseTrigger",
+    "body": [
+      "-- Create a new trigger on LOGON",
+      "",
+      "CREATE TRIGGER ${1:DATABASETRIGGER1}",
+      "AFTER LOGON ON DATABASE",
+      "BEGIN",
+      "   NULL;",
+      "END;$0",
+      "/"
+    ],
+    "description": "Create a new Database Trigger"
+  },
+  "Create a new Function": {
+    "prefix": "oracleCreateFunction",
+    "body": [
+      "--Create a new Function",
+      "",
+      "-- Start with function signature",
+      "",
+      "CREATE FUNCTION ${1:FUNCTION1} (",
+      "${2:PARAM1} IN ${3:NUMBER}) RETURN ${4:NUMBER} IS",
+      "",
+      "-- Declare constants and variables in this section.",
+      "-- Example: <Variable Identifier> <DATATYPE>",
+      "--          <Variable Identifier> CONSTANT <DATATYPE>",
+      "--          varEname  VARCHAR2(40);",
+      "--          varComm   REAL;",
+      "--          varSalary CONSTANT NUMBER:=1000;",
+      "--          comm_missing EXCEPTION;",
+      "",
+      "-- Executable part starts here",
+      "BEGIN",
+      "",
+      "  -- Write PL/SQL and SQL statements to implement the processing logic",
+      "  -- of subprogram. Example:",
+      "  --     SELECT ENAME,",
+      "  --            COMM",
+      "  --     INTO   varEname,",
+      "  --            varComm",
+      "  --     FROM   EMP",
+      "  --     WHERE  EMPNO = 7369;",
+      "  --",
+      "  --     IF varComm IS NULL THEN",
+      "  --         RAISE comm_missing;",
+      "  --     END IF;",
+      "",
+      "  RETURN ${5:PARAM1};",
+      "",
+      "  -- EXCEPTION -- exception-handling part starts here",
+      "  -- WHEN comm_missing THEN",
+      "  --   dbms_output.put_line('Commision is NULL');",
+      "",
+      "END ${1:FUNCTION1};$0",
+      "/"
+    ],
+    "description": "Create a new Function"
+  },
+  "Create a new Materialized View": {
+    "prefix": "oracleCreateMaterializedView",
+    "body": [
+      "--Create a new Materialized View",
+      "CREATE MATERIALIZED VIEW ${1:MATERIALIZEDVIEW1} AS",
+      "  SELECT * FROM ${2:RELATIONALTABLE1};$0"
+    ],
+    "description": "Create a new Materialized View"
+  },
+  "Create a new Relational View": {
+    "prefix": "oracleCreateView ",
+    "body": [
+      "--Create a new Relational View",
+      "",
+      "CREATE VIEW ${1:VIEW1}",
+      "AS",
+      "SELECT * FROM ${2:TABLE1};$0" 
+    ],
+    "description": "Create a new Relational View"
+  },
+  "Create a new XML View": {
+    "prefix": "oracleCreateXMLView",
+    "body": [
+      "--Create a new XML View",
+      "",
+      "CREATE VIEW ${1:XMLVIEW1}",
+      "  OF XMLTYPE",
+      "  WITH OBJECT IDENTIFIER DEFAULT",
+      "  AS",
+      "  SELECT * FROM ${2:XMLTABLE1};$0"
+    ],
+    "description": "Create a new XML View"
+  },
+  "Create a new Schema Trigger": {
+    "prefix": "oracleCreateSchemaTrigger",
+    "body": [
+      "--Create a new Schema Trigger",
+      "",
+      "CREATE TRIGGER ${1:SCHEMATRIGGER1}",
+      "  AFTER CREATE ON SCHEMA",
+      "  BEGIN",
+      "    NULL;",
+      "  END;$0",
+      "/"
+    ],
+    "description": "Create a new Schema Trigger"
+  },
+  "Create a new Sequence": {
+    "prefix": "oracleCreateSequence",
+    "body": [
+      "--Create a new Sequence",
+      "",
+      "CREATE SEQUENCE ${1:SEQUENCE1}",
+      "             START WITH 1 CACHE 20;$0"
+    ],
+    "description": "Create a new Sequence"
+  },
+  "Create a new Synonym": {
+    "prefix": "oracleCreateSynonym",
+    "body": [
+      "--Create a new Synonym on a table",
+      "",
+      "CREATE SYNONYM ${1:SYNONYM1}",
+      "  FOR ${2:RELATIONALTABLE1};$0"
+    ],
+    "description": "Create a new Synonym"
+  },
+  "Create a new Table Trigger": {
+    "prefix": "oracleCreateTableTrigger",
+    "body": [
+      "--Create a new Table Trigger",
+      "",
+      "CREATE TRIGGER ${1:TABLE1TRIGGER1}",
+      "  BEFORE INSERT ON ${2:TABLE1}",
+      "  BEGIN",
+      "    NULL;",
+      "  END ${1:TABLE1TRIGGER1};$0",
+      "/"
+    ],
+    "description": "Create a new Table Trigger"
+  },
+  "Create a new View Trigger": {
+    "prefix": "oracleCreateViewTrigger",
+    "body": [
+      "--Create a new View Trigger",
+      "",
+      "CREATE TRIGGER VIEW1TRIGGER1",
+      "INSTEAD OF INSERT ON ${1:VIEW1}",
+      "BEGIN",
+      "    NULL;",
+      "END ${1:VIEW1TRIGGER1};$0",
+      "/"
+    ],
+    "description": "Create a new View Trigger"
+  },
+  "Create a new XML Table": {
+    "prefix": "oracleCreateXMLTable",
+    "body": [
+      "--Create a new XML Table",
+      "",
+      "CREATE TABLE ${1:XMLTABLE1}",
+      "  OF XMLTYPE;$0"
+    ],
+    "description": "Create a new XML Table"
+  },
+  "Create a new Procedure": {
+    "prefix": "oracleCreateStoredProcedure",
+    "body": [
+      "--Create a new Procedure",
+      "",
+      "-- Procedure definition",
+      "",
+      "CREATE PROCEDURE ${1:PROCEDURE1} (",
+      "  ${2:PARAM1} IN ${3:NUMBER}) IS",
+      "",
+      "-- Declare constants and variables in this section.",
+      "-- Example: <Variable Identifier> <DATATYPE>",
+      "--          <Variable Identifier> CONSTANT <DATATYPE>",
+      "--          varEname  VARCHAR2(40);",
+      "--          varComm   REAL;",
+      "--          varSalary CONSTANT NUMBER:=1000;",
+      "--          comm_missing EXCEPTION;",
+      "  varSum NUMBER;",
+      "",
+      "-- Executable part starts here",
+      "BEGIN",
+      "",
+      "  -- Write PL/SQL and SQL statements to implement the processing logic",
+      "  -- of subprogram. Example:",
+      "  --     SELECT ENAME,",
+      "  --            COMM",
+      "  --     INTO   varEname,",
+      "  --            varComm",
+      "  --     FROM   EMP",
+      "  --     WHERE  EMPNO = 7369;",
+      "  --",
+      "  --     IF varComm IS NULL THEN",
+      "  --         RAISE comm_missing;",
+      "  --     END IF;",
+      "",
+      "  NULL;",
+      "",
+      "  -- EXCEPTION -- exception-handling part starts here",
+      "  -- WHEN comm_missing THEN",
+      "  --   dbms_output.put_line('Commision is NULL');",
+      "",
+      "END ${1:PROCEDURE1};$0",
+      "/"
+    ],
+    "description": "Create a new Procedure"
+  },
+  "Create a new Package": {
+    "prefix": "oracleCreatePackage",
+    "body": [
+      "--Create a new Package",
+      "",
+      "CREATE PACKAGE ${1:PACKAGE1} IS",
+      "",
+      "  -- Add a procedure",
+      "  PROCEDURE ${2:PROCEDURE1} (",
+      "    ${3:PARAM1} IN ${4:NUMBER});",
+      "",
+      "  -- Add a function",
+      "  FUNCTION ${5:FUNCTION1} (",
+      "    ${6:PARAM1} IN ${7:NUMBER}) RETURN ${8:NUMBER};",
+      "",
+      "END ${1:PACKAGE1};$0",
+      "/"
+    ],
+    "description": "Create a new Package"
+  },
+  "Create a new Package Body": {
+    "prefix": "oracleCreatePackageBody",
+    "body": [
+      "--Create a new Package Body",
+      "",
+      "CREATE PACKAGE BODY ${1:PACKAGE1} IS",
+      "",
+      "  -- Add procedure body",
+      "  PROCEDURE ${2:PROCEDURE1} (",
+      "    ${3:PARAM1} IN ${4:NUMBER}) IS",
+      "    BEGIN",
+      "      NULL;",
+      "    END ${2:PROCEDURE1};",
+      "",
+      "  -- Add function body",
+      "  FUNCTION ${5:FUNCTION1} (",
+      "    ${6:PARAM1} IN ${7:NUMBER}) RETURN ${8:NUMBER} IS",
+      "    BEGIN",
+      "      RETURN NULL;",
+      "    END ${5:FUNCTION1};",
+      "",
+      "END ${1:PACKAGE1};$0",
+      "/"
+    ],
+    "description": "Create a new Package Body"
+  },
+  "Drop a Table": {
+    "prefix": "oracleDropTable",
+    "body": [
+      "-- Drop a table",
+      "",
+      "DROP TABLE ${1:TABLE1}; "
+    ],
+    "description": "Drop a Table"
+  },
+  "Alter a Table to Add a Column": {
+    "prefix": "oracleAlterTableAddColumn",
+    "body": [
+      "-- Alter a Relational table to add a column",
+      "",
+      "ALTER TABLE ${1:TABLE1} ADD",
+      "(",
+      "  ${2:Column4} ${3:VARCHAR2(40)}",
+      ");$0"
+    ],
+    "description": "Alter a Relational table to add a column"
+  },
+  "Alter a Table to Drop a Column": {
+    "prefix": "oracleAlterTableDropColumn",
+    "body": [
+      "-- Alter a Relational table to drop a column",
+      "",
+      "ALTER TABLE ${1:TABLE1} DROP ",
+      "(",
+      "  ${2:Column4}",
+      ");$0"
+    ],
+    "description": "Alter a Relational table to drop a column"
+  },
+  "Drop a Procedure": {
+    "prefix": "oracleDropStoredProcedure",
+    "body": [
+      "--Drop a Procedure",
+      "",
+      "DROP PROCEDURE ${1:PROCEDURE1};"
+    ],
+    "description": "Drop a Procedure"
+  },
+  "Drop a Function": {
+    "prefix": "oracleDropFunction",
+    "body": [
+      "--Drop a Function",
+      "",
+      "DROP FUNCTION ${1:FUNCTION1};"
+    ],
+    "description": "Drop a Function"
+  },
+  "Insert rows in a table": {
+    "prefix": "oracleInsertRows",
+    "body": [
+      "-- Insert rows in a Table",
+      "",
+      "INSERT INTO ${1:TABLE1} ",
+      "(",
+      "  ${2:Column1},",
+      "  ${3:Column2},",
+      "  ${4:Column3}",
+      ")",
+      "VALUES",
+      "(",
+      "  ${5:'TEST USER1'},",
+      "  ${6:'FirstName.LastName'},",
+      "  ${7:321}",
+      ");$0"
+    ],
+    "description": "Insert rows in a Table"
+  },
+  "Select rows from a table": {
+    "prefix": "oracleSelectRows",
+    "body": [
+      "-- Select rows from a Table",
+      "",
+      "SELECT ${2:Column1},",
+      "  ${3:Column2},",
+      "  ${4:Column3}",
+      "FROM ${1:TABLE1}",
+	    "WHERE ${2:Column1}=${5:'TEST USER1'};"
+    ],
+    "description": "Select rows from a Table"
+  },
+  "Update rows in a table": {
+    "prefix": "oracleUpdateRows",
+    "body": [
+      "-- Update rows in a Table",
+      "",
+      "Update ${1:TABLE1}",
+      "  SET ${3:Column2}=${4:'NEWUSER'},",
+      "  ${5:Column3}=${6:121}",
+      "WHERE ${2:Column1} = ${7:'TEST USER1'};"
+    ],
+    "description": "Update rows in a Table"
+  },
+  "Delete rows from a table": {
+    "prefix": "oracleDeleteRows",
+    "body": [
+      "-- Delete rows from a Table",
+      "",
+      "DELETE FROM  ${1:TABLE1}",
+      "WHERE ${2:Column1} = ${7:'TEST USER1'};"
+    ],
+    "description": "Delete rows from a Table"
+  },
+  "Create pluggable database": {
+    "prefix": "oracleCreatePDB",
+    "body": [
+      "-- Create a pluggable Database",
+      "-- Requires connection to container database as SYSDBA",
+      "",
+      "CREATE PLUGGABLE DATABASE ${1:PDB1}",
+      "  ADMIN USER ${2:PDBADMIN} IDENTIFIED BY ${3:PDBADMIN}",
+      "  FILE_NAME_CONVERT = ",
+      "  (",
+      "   ${4:'C:\\DATAFILE1'}, ${5:'C:\\PDBDATAFILE1'}",
+      "  )"
+    ],
+    "description": "Create a pluggable Database"
+  },
+  "Plug a pluggable database": {
+    "prefix": "oraclePlugPDB",
+    "body": [
+      "-- Plug a pluggable Database",
+      "-- Requires connection to container database as SYSDBA",
+      "",
+      "CREATE PLUGGABLE DATABASE ${1:PDB1} USING ${2:'C:\\PDB1FILE\\PDB1.XML'}",
+      "  FILE_NAME_CONVERT = ",
+      "  (",
+      "   ${3:'C:\\DATAFILE1'}, ${4:'C:\\PDBDATAFILE1'}",
+      "  );",
+      "ALTER PLUGGABLE DATABASE ${1:PDB1} OPEN READ WRITE;"
+    ],
+    "description": "Plug a pluggable Database"
+  },
+  "Unplug a pluggable database": {
+    "prefix": "oracleUnplugPDB",
+    "body": [
+      "-- Unplug a pluggable Database",
+      "-- Requires connection to container database as SYSDBA",
+      "",
+      "ALTER PLUGGABLE DATABASE ${1:PDB1} CLOSE;",
+      "ALTER PLUGGABLE DATABASE ${1:PDB1} UNPLUG INTO ${2:'C:\\PDB1FILE\\PDB1.XML'};"
+    ],
+    "description": "Unplug a pluggable Database"
+  },
+  "Drop a pluggable database": {
+    "prefix": "oracleDropPDB",
+    "body": [
+      "-- Drop a pluggable Database",
+      "-- Requires connection to container database as SYSDBA",
+      "",
+      "DROP PLUGGABLE DATABASE ${1:PDB1} KEEP DATAFILES;"
+    ],
+    "description": "Drop a pluggable Database"
+  },
+  "List pluggable databases": {
+    "prefix": "oracleListPDBs",
+    "body": [
+      "-- List pluggable Databases",
+      "-- Requires connection to container database or pluggable database as SYSDBA",
+      "",
+      "SELECT NAME AS ${1:Name},",
+      "  CON_ID AS ${2:ContainerID},",
+      "  OPEN_MODE AS ${3:OpenMode}",
+      "FROM    V\\$PDBS"
+    ],
+    "description": "List pluggable Databases"
+  },
+  "Clone a pluggable database": {
+    "prefix": "oracleClonePDB",
+    "body": [
+      "-- Clone a pluggable database",
+      "-- Requires connection to container database as SYSDBA",
+      "",
+      "CREATE PLUGGABLE DATABASE ${1:PDB2} FROM ${2:PDB1}",
+      "  FILE_NAME_CONVERT = ",
+      "  (",
+      "   ${4:'C:\\DATAFILE1'}, ${5:'C:\\PDBDATAFILE1'}",
+      "  )"
+    ],
+    "description": "Clone a pluggable database"
+  },
+  "Grant debug privileges": {
+    "prefix": "oracleGrantDebugPrivileges",
+    "body": [
+      "-- Connect as SYSDBA",
+      "connect sys/${1:<password>}@${2:<datasource>} as sysdba",
+      "",
+      "-- Grant debug privileges to user",
+      "GRANT DEBUG CONNECT SESSION TO ${3:<username>};",
+      "GRANT DEBUG ANY PROCEDURE TO ${4:<username>};",
+      "",
+      "-- Set up ACL to allow the database to connect back to Visual Studio Code",
+      "-- IP address and ports are those used for debugging on local VS Code machine",
+      "-- This needs to be done once for the machine.",
+      "BEGIN",
+      "  DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(",
+      "  HOST => '${5:<ip address>}',",
+      "  LOWER_PORT => ${6:<starting port number>},",
+      "  UPPER_PORT => ${7:<ending port number>},",
+      "  ACE => XS\\$ACE_TYPE(PRIVILEGE_LIST => XS\\$NAME_LIST('jdwp'),",
+      "    PRINCIPAL_NAME =>'${8:<username>}',",
+      "    PRINCIPAL_TYPE => XS_ACL.PTYPE_DB));",
+      "END;",
+      "/"
+    ],
+    "description": "Grant debug privileges to user"
+  }
+}

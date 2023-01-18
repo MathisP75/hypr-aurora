@@ -1,0 +1,38 @@
+<!-- normal database UI -->
+<div class="connDlgBody">
+        <oj-bind-if test="{{newConnectionUIToDisplay() == 2}}">
+                <div data-bind="ojModule: { name: 'connectionManagementModule' , 
+                        params : { newConnectionUIToDisplay : 2 , path:walletFileLocation(), 
+                        connectionType:connectionType() , connectionString:connectionString(),
+                        caption:createADBConnectionCaption , tnsName:tnsName
+                }}">
+                </div>
+        </oj-bind-if>
+</div>
+
+<div class="connDlgBody" style="max-width:700px;">
+
+        <oj-bind-if test="{{newConnectionUIToDisplay() == 5}}">
+                <div
+                        data-bind="ojModule: { name: 'adbConnectionStrings' , 
+                        params : { launchFromConnectionContextMenu : 'yes' , launchDBConnectionHandler : launchDBConnectionHandler,launchDownLoadCredentialFilesUIHandler : launchDownLoadCredentialFilesUIHandler }}">
+                </div>
+        </oj-bind-if>
+
+        <!-- download credential file UI launched when we invoke download credential files -->
+        <oj-bind-if test="{{newConnectionUIToDisplay() == 4}}">
+                <div data-bind="ojModule: { name: 'downloadCredentialsFilesModule' , 
+               params : { newConnectionUIToDisplay : 4 }}">
+                </div>
+        </oj-bind-if>
+
+        <!-- dialog to download wallet files, launched while making connection -->
+        <oj-bind-if test="{{newConnectionUIToDisplay() == 3}}">
+                <div data-bind="ojModule: { name: 'downloadCredentialsFilesModule' , 
+                params : { newConnectionUIToDisplay : 3 , launchDBConnectionPageHandler : launchDBConnectionPageHandler,
+                        updateWalletFilePathHandler: updateWalletFilePathHandler,
+                        tlsEnbledNMutualAuthentication:tlsEnbledNMutualAuthentication,
+                        downloadWalletWhileMakingConnectionForDedicatedDB:isDedicatedDB() }}">
+                </div>
+        </oj-bind-if>
+</div>

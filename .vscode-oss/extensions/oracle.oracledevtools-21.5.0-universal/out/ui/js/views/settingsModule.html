@@ -1,0 +1,19 @@
+<div>
+  <div class="flex" style="margin-top: 10px">
+    <div class="flex-item;" style="margin-top: 1rem">
+      <div class="settingsTabRowBody">
+        <oj-tab-bar selection="{{selectedTab}}" data="[[tabDataProvider]]" edge="top">
+          <template slot="itemTemplate" data-oj-as="item">
+            <a href="#">
+              <oj-bind-text value="[[item.data.name]]"> </oj-bind-text>
+            </a>
+          </template>
+        </oj-tab-bar>
+      </div>
+      <oj-module config='[[moduleConfig]]' on-oj-view-disconnected='[[viewDisconnectedListener]]'
+      style="background-color: transparent !important">
+      </oj-module>
+    </div>
+  </div>
+</div>
+<oj-messages position="[[msgPos]]" messages="[[messagesDataprovider]]" display="notification"></oj-messages>

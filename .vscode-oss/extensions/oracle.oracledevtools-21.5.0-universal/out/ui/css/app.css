@@ -1,0 +1,1462 @@
+/**************************************************/
+/**This section overrides oracle jet themes**/
+/**************************************************/
+:root {
+    --oj-text-field-height: 1.9rem;
+    --oj-label-font-size: var(--vscode-font-size);
+    --oj-label-font-weight: var(--vscode-font-weight);
+    --oj-radio-checkbox-row-height: 1.9rem;
+    --oj-radio-checkbox-input-size: 1.25rem;
+    --oj-button-height: 1.75rem;
+    --oj-button-lg-height: 2.25rem;
+    --oj-button-border-radius: 0;
+    --oj-button-font-weight: var(--vscode-font-weight);
+    --oj-button-font-size: var(--vscode-font-size);
+    --oj-button-lg-font-size: var(--vscode-font-size);
+    --oj-html-font-family: var(--vscode-font-family);
+    --oj-html-font-size: var(--vscode-font-size);
+    --oj-core-divider-color: var(--vscode-panel-border);
+    --oj-progress-circle-md-size: 2.2rem;
+    --odtvscode-control-width: 20rem;
+}
+
+:root {
+    --oj-button-solid-chrome-bg-color: var(--vscode-button-background);
+    --oj-button-solid-chrome-border-color: transparent;
+    --oj-button-solid-chrome-text-color: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-hover: var(--vscode-button-hoverBackground);
+    --oj-button-solid-chrome-border-color-hover: transparent;
+    --oj-button-solid-chrome-text-color-hover: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-active: var(--vscode-button-background);
+    --oj-button-solid-chrome-border-color-active: transparent;
+    --oj-button-solid-chrome-text-color-active: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-disabled: var(--vscode-button-background);
+    --oj-button-solid-chrome-border-color-disabled: transparent;
+    --oj-button-solid-chrome-text-color-disabled: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-selected: var(--vscode-button-background);
+    --oj-button-solid-chrome-border-color-selected: transparent;
+    --oj-button-solid-chrome-text-color-selected: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-selected-hover: var(--vscode-button-hoverBackground);
+    --oj-button-solid-chrome-border-color-selected-hover: transparent;
+    --oj-button-solid-chrome-text-color-selected-hover: var(--vscode-button-foreground);
+    --oj-button-solid-chrome-bg-color-selected-disabled: var(--vscode-button-background);
+    --oj-button-solid-chrome-border-color-selected-disabled: transparent;
+    --oj-button-solid-chrome-text-color-selected-disabled: var(--vscode-button-foreground);
+    --oj-button-borderless-chrome-text-color: var(--vscode-settings-textInputForeground);
+    --oj-button-borderless-chrome-bg-color-hover: transparent;
+    --oj-button-borderless-chrome-border-color-hover: transparent;
+    --oj-button-borderless-chrome-text-color-hover: var(--vscode-settings-textInputForeground);
+    --oj-button-borderless-chrome-bg-color-active: transparent;
+    --oj-button-borderless-chrome-border-color-active: transparent;
+    --oj-button-borderless-chrome-text-color-active: var(--vscode-settings-textInputForeground);
+    --oj-button-borderless-chrome-text-color-disabled: var(--vscode-button-foreground);
+    --oj-button-borderless-chrome-bg-color-selected: transparent;
+    --oj-button-borderless-chrome-border-color-selected: transparent;
+    --oj-button-borderless-chrome-text-color-selected: var(--vscode-settings-textInputForeground);
+    --oj-button-borderless-chrome-bg-color-selected-hover: transparent;
+    --oj-button-borderless-chrome-border-color-selected-hover: transparent;
+    --oj-button-borderless-chrome-text-color-selected-hover: var(--vscode-button-foreground);
+    --oj-button-borderless-chrome-bg-color-selected-disabled: var(--vscode-settings-textInputForeground);
+    --oj-button-borderless-chrome-border-color-selected-disabled: transparent;
+    --oj-button-borderless-chrome-text-color-selected-disabled: var(--vscode-settings-textInputForeground);
+    --oj-button-outlined-chrome-border-color: transparent;
+    --oj-button-outlined-chrome-text-color: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-bg-color: var(--vscode-button-background);
+    --oj-button-outlined-chrome-bg-color-hover: var(--vscode-button-hoverBackground);
+    --oj-button-outlined-chrome-border-color-hover: transparent;
+    --oj-button-outlined-chrome-text-color-hover: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-bg-color-active: var(--vscode-button-background);
+    --oj-button-outlined-chrome-border-color-active: transparent;
+    --oj-button-outlined-chrome-text-color-active: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-border-color-disabled: var(--vscode-menu-selectionBackground);
+    --oj-button-outlined-chrome-text-color-disabled: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-bg-color-disabled: var(--vscode-button-background);
+    --oj-button-outlined-chrome-bg-color-selected: var(--vscode-button-background);
+    --oj-button-outlined-chrome-border-color-selected: transparent;
+    --oj-button-outlined-chrome-text-color-selected: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-bg-color-selected-hover: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-border-color-selected-hover: transparent;
+    --oj-button-outlined-chrome-text-color-selected-hover: var(--vscode-button-foreground);
+    --oj-button-outlined-chrome-bg-color-selected-disabled: var(--vscode-button-background);
+    --oj-button-outlined-chrome-border-color-selected-disabled: transparent;
+    --oj-button-outlined-chrome-text-color-selected-disabled: var(--vscode-button-foreground);
+    --oj-button-call-to-action-chrome-bg-color: var(--vscode-button-background);
+    --oj-button-call-to-action-chrome-border-color: transparent;
+    --oj-button-call-to-action-chrome-text-color: var(--vscode-button-foreground);
+    --oj-button-call-to-action-chrome-bg-color-hover: var(--vscode-button-hoverBackground);
+    --oj-button-call-to-action-chrome-border-color-hover: transparent;
+    --oj-button-call-to-action-chrome-text-color-hover: var(--vscode-button-foreground);
+    --oj-button-call-to-action-chrome-bg-color-active: var(--vscode-button-background);
+    --oj-button-call-to-action-chrome-border-color-active: transparent;
+    --oj-button-call-to-action-chrome-text-color-active: var(--vscode-button-foreground);
+}
+
+:root {
+    --oj-dialog-bg-color: var(--vscode-editor-background);
+    --oj-dialog-border-color: var(--vscode-panel-border);
+    --oj-dialog-border-radius: var(--oj-core-border-radius-lg);
+    --oj-dialog-box-shadow: var(--oj-core-box-shadow-md);
+    --oj-dialog-header-bg-color: transparent;
+    --oj-dialog-header-border-color: transparent;
+    --oj-dialog-title-text-color: var(--vscode-settings-textInputForeground);
+}
+
+:root {
+    --oj-radio-checkbox-input-color-unselected: var(--vscode-settings-textInputBorder);
+    --oj-radio-checkbox-input-color-selected: var(--vscode-settings-textInputBorder);
+    --oj-radio-checkbox-item-divider-color: transparent;
+    --oj-radio-checkbox-item-bg-color-active: var(--vscode-settings-textInputBackground);
+
+}
+
+:root {
+    --oj-collection-bg-color: transparent;
+    --oj-collection-border-color: var(--vscode-panel-border);
+    --oj-collection-free-space-bg-color: transparent;
+    --oj-collection-list-row-height: 3rem;
+    --oj-collection-list-cell-padding-vertical: 0.75rem;
+    --oj-collection-grid-row-height: 1.5rem;
+    --oj-collection-header-font-size: var(--oj-typography-body-xs-font-size);
+    --oj-collection-header-font-weight: bold;
+    --oj-collection-header-bg-color: var(--vscode-editor-background);
+    --oj-collection-header-text-color: var(--vscode-settings-textInputForeground);
+    --oj-collection-grid-header-height: 2.25rem;
+    --oj-collection-header-bg-color-hover: var(--vscode-menu-selectionBackground);
+    --oj-collection-header-bg-color-selected: var(--vscode-menu-selectionBackground);
+    --oj-collection-cell-banded-bg-color: rgb(var(--oj-palette-neutral-rgb-10));
+    --oj-collection-grid-cell-padding: .1rem;
+    --oj-collection-editable-cell-border-color-focus: rgb(var(--oj-palette-brand-rgb-110));
+    --oj-collection-editable-cell-bg-color-read-only: var(--oj-core-bg-color-hover);
+    --oj-collection-default-sort-icon-display: block;
+}
+
+:root {
+    --oj-private-message-category-text-color: var(--vscode-notifications-foreground);
+    --oj-private-message-notification-detail-text-color: var(--vscode-notifications-foreground);
+    --oj-private-message-notification-overlay-header-bg-color: var(--vscode-notifications-background);
+    --oj-private-message-notification-overlay-body-bg-color: var(--vscode-notifications-background);
+    --oj-private-messages-notification-overlay-width: auto;
+    --oj-private-messages-notification-overlay-min-width: auto;
+    --oj-private-message-component-inline-bg-color-info: var(--vscode-notifications-background);
+}
+
+:root {
+    --oj-text-field-font-size: var(--vscode-font-size);
+    --oj-text-field-bg-color: var(--vscode-settings-textInputBackground);
+    --oj-text-field-border-color: var(--vscode-settings-textInputBorder);
+    --oj-text-field-placeholder-color: var(--vscode-settings-textInputForeground);
+    --oj-text-field-placeholder-font-style: italic;
+    --oj-text-field-text-color: var(--vscode-settings-textInputForeground);
+    --oj-text-field-bg-color-disabled: var(--vscode-settings-textInputBackground);
+    --oj-text-field-border-color-disabled: var(--vscode-settings-textInputBorder);
+    --oj-text-field-text-color-disabled: var(--vscode-settings-textInputForeground);
+    --oj-text-field-border-color-focus: var(--vscode-settings-textInputBorder);
+}
+
+:root {
+    --oj-progress-bar-value-bg-color: var(--vscode-button-background);
+    --oj-progress-bar-height: 4px;
+    --oj-progress-bar-track-bg-color: var(--vscode-editor-hoverHighlightBackground);
+    --oj-progress-bar-border-radius: 3px;
+    --oj-progress-circle-value-bg-color: var(--vscode-progressBar-background);
+}
+
+:root {
+    --oj-core-bg-color-selected: var(--vscode-menu-selectionBackground);
+    --oj-core-focus-border-color: var(--vscode-settings-dropdownListBorder);
+    --oj-text-field-placeholder-color: var(--vscode-input-placeholderForeground);
+    --oj-popup-border-color: var(--vscode-settings-dropdownBorder);
+    --oj-popup-bg-color: var(--vscode-settings-dropdownBackground);
+    --oj-list-item-line-height: 1;
+    --oj-list-margin-top: 0;
+    --oj-user-assistance-inline-text-color: var(--vscode-settings-textInputForeground);
+}
+
+:root {
+    --oj-tab-bar-item-label-color: var(--vscode-settings-textInputForeground);
+    --oj-tab-bar-item-label-color-hover: var(--vscode-editor-hoverHighlightForeground);
+    --oj-tab-bar-item-label-color-selected: var(--vscode-settings-textInputForeground);
+    --oj-tab-bar-item-border-color-selected: var(--vscode-settings-textInputForeground);
+}
+
+/* styling for oj-popup */
+.oj-popup {
+    max-width: 90%;
+    background-color: var(--vscode-editorHoverWidget-background);
+    border: 1px solid var(--vscode-editorHoverWidget-border);
+}
+
+.oj-popup-content {
+    padding: 0.4rem;
+    color: var(--vscode-editorHoverWidget-foreground);
+    overflow-wrap: break-word;
+    max-width: max-content;
+}
+
+.oj-text-field .oj-text-field-input::selection,
+.oj-text-field .oj-combobox-input::selection,
+.oj-text-field .oj-select-chosen::selection {
+    color: var(--vscode-menu-selectionForeground);
+    background-color: var(--oj-core-bg-color-selected);
+}
+
+.oj-hicontrast .oj-text-field .oj-text-field-input::selection,
+.oj-hicontrast .oj-text-field .oj-combobox-input::selection,
+.oj-hicontrast .oj-text-field .oj-select-chosen::selection {
+    color: var(--vscode-menu-selectionForeground);
+    background-color: var(--vscode-selection-background);
+}
+
+/* styling for oj-menu */
+.oj-menu-dropdown .oj-menu-item>a {
+    color: var(--vscode-editor-foreground);
+}
+
+.vscode-dark .oj-menu-dropdown .oj-menu-item.oj-focus>a,
+.vscode-light .oj-menu-dropdown .oj-menu-item.oj-focus>a {
+    color: var(--vscode-menu-selectionForeground);
+}
+
+.oj-menu {
+    padding: 0px;
+}
+
+.oj-menu-dropdown {
+    background: var(--vscode-menu-background);
+    border: none;
+}
+
+.oj-listbox-drop {
+    color: var(--vscode-settings-textInputForeground);
+    background: var(--vscode-settings-dropdownBackground);
+    border-color: var(--vscode-settings-dropdownBorder);
+}
+
+.oj-listbox-results .oj-hover,
+.oj-menu-item.oj-focus {
+    color: var(--vscode-menu-selectionForeground) !important;
+    background: var(--vscode-menu-selectionBackground) !important;
+    border-color: var(--vscode-menu-selectionBackground) !important;
+}
+
+.oj-checkbox-label {
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-settings-textInputForeground);
+    border-color: var(--vscode-editor-background);
+}
+
+.oj-label,
+.oj-label-nocomp {
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.oj-combobox-divider,
+.oj-table-vgrid-lines,
+.oj-table-horizontal-grid {
+    border-color: var(--vscode-panel-border);
+}
+
+.scrollDiv {
+    background-color: var(--vscode-editor-background);
+    /*overflow: scroll;*/
+    height: 100%;
+}
+
+.codeObjectGridLabel {
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.inputParamMessage {
+    margin-bottom: 5px;
+}
+
+.codeOutputContainer {
+    background-color: var(--vscode-editor-background);
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.messagePanel {
+    height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: vertical;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: var(--vscode-font-family);
+    font-weight: var(--vscode-font-weight);
+    font-size: var(--vscode-font-size);
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    cursor: n-resize;
+}
+
+.queryPanel {
+    /*
+    overflow-y: scroll;
+    overflow-x: hidden;
+  */
+    margin: 5px;
+    padding: 10px;
+}
+
+.queryResult {
+    /*
+    overflow: hidden;
+    text-overflow: ellipsis;
+  */
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    resize: vertical;
+    height: 210px;
+}
+
+.selectQueryResult {
+    /*
+      overflow: hidden;
+      text-overflow: ellipsis;
+    */
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-bottom: 0px;
+    padding-right: 2px;
+    resize: vertical;
+}
+
+.errorMessage {
+    color: var(--vscode-errorForeground);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: monospace;
+}
+
+.sqlQuery {
+    max-height: 300px;
+    overflow: auto;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* border-color:  var(--vscode-dropdown-border);; */
+}
+
+.toolbar {
+    display: flex;
+    /* or inline-flex */
+    justify-content: space-between;
+}
+
+.flexContainer {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.column-flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.panelHeader {
+    font-weight: 600;
+}
+
+html,
+body {
+    background-color: var(--vscode-editor-background);
+    height: 100%;
+    padding: 0px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.tool-button {
+    padding: 2px;
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
+.resetPreTag {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.messageColorTag {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: var(--vscode-settings-textInputForeground);
+
+}
+
+.descTableHeader {
+    border-bottom: 1px dashed;
+    font-weight: normal;
+    /* color : var(--vscode-settings-textInputForeground); */
+}
+
+.descTableBody {
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.descTableMargin {
+    margin: 0 0 0 7px;
+}
+
+.descColGap {
+    padding: 0 7px 0 0;
+}
+
+.descColNoGap {
+    padding: 0px;
+}
+
+.describeResult {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: monospace;
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.sqlPrompt {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: var(--vscode-editor-foreground);
+    font-weight: bolder;
+}
+
+.resizer {
+    resize: vertical;
+    cursor: ns-resize;
+}
+
+.messageLabel {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.componentContainer {
+    overflow: scroll;
+}
+
+.messageColumn1 {
+    margin: 10px;
+}
+
+.oj-web-applayout-max-width {
+    max-width: 100%;
+}
+
+.messageColumn2 {
+    margin: 10px;
+}
+
+@font-face {
+    font-family: 'odtvscode';
+    src: url('fonts/odtvscode.woff?gajo35') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'odtvscode';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: bold;
+    text-transform: none;
+    line-height: 1;
+    font-size: x-large;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* color: var(--vscode-settings-textInputForeground) !important;
+    background-color: transparent !important;
+    border-color: transparent !important; */
+}
+
+[class^="icon-"]:hover,
+[class*=" icon-"]:hover {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'odtvscode';
+    speak: none;
+    font-style: normal;
+    font-weight: bolder;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: x-large;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.oj-button .oj-button-icon .oj-button-half-chrome,
+.oj-button .oj-button-icon-only .oj-button-half-chrome,
+.oj-button-half-chrome .oj-button-icon,
+.oj-button-half-chrome .oj-button-icon-only,
+.oj-component-icon {
+    background-color: transparent !important;
+    color: var(--vscode-settings-textInputForeground) !important;
+    border-color: transparent;
+}
+
+.oj-table-column-header-cell.oj-hover .oj-component-icon {
+    color: var(--vscode-menu-selectionForeground) !important;
+}
+
+.oj-selected .oj-component-icon {
+    background-color: transparent !important;
+    color: var(--vscode-menu-selectionForeground);
+    border-color: transparent;
+}
+
+.icon-save-all:before {
+    content: "\e909";
+}
+
+.icon-not-allowed:before {
+    content: "\e900";
+}
+
+.icon-copy:before {
+    content: "\e901";
+}
+
+.icon-sql:before {
+    content: "\e902";
+}
+
+.icon-table-square:before {
+    content: "\e903";
+}
+
+.icon-save:before {
+    content: "\e904";
+}
+
+.icon-save-as:before {
+    content: "\e905";
+}
+
+.icon-cancel-filled:before {
+    content: "\e906";
+}
+
+.icon-cancel:before {
+    content: "\e907";
+}
+
+.icon-table:before {
+    content: "\e908";
+}
+
+
+hr.style1 {
+    border-top: 1px dashed #8c8b8b;
+}
+
+.spacer1 {
+    height: 10px;
+}
+
+.spacer2 {
+    height: 5px;
+}
+
+.recordRow {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1px;
+    padding: 0px;
+}
+
+/*Pagination changes*/
+.pagingControls {
+    padding: 5px 10px 2px 2px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px var(--oj-core-divider-color);
+}
+
+.hideElement {
+    display: none !important;
+}
+
+.navArrowSeparation {
+    border-left: 1px solid var(--oj-core-divider-color);
+    padding-left: 0.3rem;
+}
+
+.oj-table-scroller {
+    height: 100%;
+}
+
+.oj-table-column-header-cell {
+    font-size: inherit;
+    /*padding-right: var(--oj-table-cell-padding-horizontal) !important; */
+}
+
+.oj-text-field-input {
+    padding-left: 7px;
+    padding-right: 0px;
+}
+
+a:focus {
+    outline: 1px solid var(--vscode-button-secondaryBackground) !important;
+}
+
+.oj-hicontrast a:focus {
+    outline: 1px solid var(--vscode-settings-dropdownBorder) !important;
+}
+
+/**/
+.required {
+    color: red;
+    font-weight: bold;
+}
+
+.bottomalign {
+    position: relative;
+    top: 4px;
+}
+
+.leftalign {
+    text-align: left;
+}
+
+/* .topbar
+  {
+    position: fixed; 
+    width: 100%;
+    background-color: var(--vscode-button-foreground);
+  } */
+.topbarContainer {
+    z-index: 100;
+
+    position: sticky;
+    top: 0px;
+    padding-top: 1px;
+    background-color: var(--vscode-editor-background);
+}
+
+.ensureWidth {
+    display: block;
+}
+
+.topbar {
+    display: flex;
+    padding: 0px;
+    align-items: center;
+    align-content: stretch;
+    background-color: var(--vscode-editor-background);
+}
+
+.progress {
+    flex: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.cancel {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    margin-left: 5px;
+}
+
+.clear {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.customGridHeader {
+    font-weight: bold;
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.flex-item {
+    flex: 1;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.flex {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+
+.formatter-settings-item {
+    width: 50%;
+}
+
+.formatter-settings-combobox {
+    width: 90%;
+}
+
+.connDlgBody,
+.abdNewCreateDlgBody,
+.abdSelectCompartmentBody {
+    max-width: 700px;
+    min-width: 250px;
+    margin: auto;
+    padding: 20px;
+}
+
+.dialogBody {
+    max-width: 700px;
+    min-width: 250px;
+}
+
+.compilerSettingsBody,
+.settingsTabRowBody,
+.debuggerSettingsBody,
+.formatterSettingsBody {
+    max-width: 900px;
+    min-width: 600px;
+    margin: 5px;
+    padding: 20px;
+}
+
+.settingsTabRowBody {
+    padding: 0px;
+    padding-left: 20px;
+}
+
+.debuggerSettingsBody {
+    padding-bottom: 0px;
+}
+
+.ociTreeviewItem {
+    /* background-color: var(--vscode-editor-background); */
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.ociojTextboxNumber {
+    background-color: var(--vscode-settings-textInputBackground);
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.ociTextForColor {
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.compartmentBorder {
+    border: 0.1px solid var(--vscode-terminal-border);
+    width: var(--odtvscode-control-width);
+    height: 18rem;
+}
+
+.compartmentBorderBR {
+    border-bottom: 0.1px solid var(--vscode-terminal-border);
+}
+
+.oj-web-applayout-body {
+    overflow-y: auto;
+}
+
+.compartmentBorderB {
+    border-bottom: 1px solid var(--vscode-editorOverviewRuler-border);
+}
+
+.adbcheckbox {
+    background-color: var(--vscode-merge-commonContentBackground);
+}
+
+.inactiveBottomText {
+    color: var(--vscode-panelTitle-inactiveForeground);
+    font-size: smaller;
+}
+
+.inactiveTitleText {
+    color: var(--vscode-panelTitle-inactiveForeground);
+    font-style: italic;
+}
+
+.inputValidationError {
+    color: var(--vscode-inputValidation-errorBorder);
+    font-size: small;
+}
+
+.nocompartmentSelected {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+
+.disablePanel {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.panel {
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    color: var(--vscode-settings-textInputForeground);
+    margin-bottom: 5px;
+}
+
+.mouseOver {
+    /* border-radius: 2px; */
+    box-sizing: border-box;
+    /* color: var(--vscode-list-hoverBackground); */
+    /* background-color:darkgray; */
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-list-hoverBackground);
+    border: 1px solid var(--vscode-panelSection-border);
+    padding: 10px;
+    margin: 20px;
+}
+
+.hideWorkLoadImage {
+    visibility: hidden;
+}
+
+.showWorkLoadImage {
+    visibility: visible;
+}
+
+div.hideWorkLoadImage:focus {
+    visibility: visible;
+    background-color: yellow;
+}
+
+.mouseOut {
+    background-color: var(--vscode-merge-commonContentBackground);
+}
+
+div.adbworkload.oj-flex-item:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+.adbworkload {
+    box-sizing: border-box;
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+    border: 1px solid var(--vscode-panelSection-border);
+    padding: 5px;
+    margin: 5px 5px 0px 0px;
+}
+
+.infoBorder {
+    border: 1px solid var(--vscode-panelSection-border);
+    margin: 10px 0px 10px 0px;
+    padding: 5px;
+}
+
+.panelTypeSelected {
+    border: 1px solid var(--vscode-focusBorder);
+
+}
+
+.panelTypeUnSelected {
+
+    border-radius: 2px;
+    border: none;
+
+}
+
+.adbDlgHeader {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--vscode-settings-headerForeground);
+}
+
+.connDlgHeader,
+.compilerDlgHeader,
+.formatSettingsHeader,
+.dialogHeader {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--vscode-settings-headerForeground);
+}
+
+.compilerDlgSubHeader,
+.formatSettingsSubHeader {
+    color: var(--vscode-settings-headerForeground);
+}
+
+.relativeDivPosition {
+    position: relative;
+
+}
+
+.absoluteDivPosition {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+.createNewConnectionHeaderLabel {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--vscode-settings-headerForeground);
+}
+
+.compartmentUIItemColor {
+    color: var(--vscode-settings-headerForeground);
+}
+
+.compartmentUIHeader {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--vscode-settings-headerForeground);
+}
+
+
+/**************************************************/
+
+.sqlStatementContainer {
+    display: flex;
+}
+
+.sqlStatement {
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+/**************************************************/
+
+.rowsLimited {
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-dropdownBackground);
+    border-color: var(--vscode-settings-dropdownBorder);
+    font-weight: 500;
+    display: block;
+    height: 1.4em;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.viewBody {
+    padding: 10px;
+}
+
+/*
+  .oj-table-scroll-horizontal:not(.oj-table-sticky) .oj-table-body {
+    overflow-x: hidden !important;
+  }
+  
+  .oj-table-scroll-horizontal:not(.oj-table-sticky) .oj-table-body:hover {
+    overflow-x: auto !important;
+  }
+  
+  .oj-table-scroll-vertical:not(.oj-table-sticky) .oj-table-body {
+    overflow-y: hidden !important;
+  }
+  
+  .oj-table-scroll-vertical:not(.oj-table-sticky) .oj-table-body:hover {
+    overflow-y: auto !important;
+  }
+  */
+.saveAsCombo {
+    width: 7rem;
+}
+
+.selectAllCombo {
+    width: 11.5rem;
+    padding: 0 3px;
+}
+
+.connDlgBody .oj-form-control,
+.abdNewCreateDlgBody .oj-form-control,
+.abdSelectCompartmentBody .oj-form-control {
+    width: var(--odtvscode-control-width) !important;
+}
+
+.compilerSettingsBody .oj-form-control,
+.debuggerSettingsBody .oj-form-control {
+    max-width: var(--odtvscode-control-width) !important;
+}
+
+.oj-text-field-readonly {
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+    border-color: var(--vscode-settings-textInputBorder);
+    opacity: 0.5;
+}
+
+.hrstyle {
+    border-color: var(--vscode-settings-textInputForeground);
+    opacity: 0.5;
+}
+.vscode-high-contrast-light.oj-hicontrast .oj-table-column-header-cell .oj-hover,
+.vscode-high-contrast-light.oj-hicontrast .oj-table-column-header-cell.oj-hover {
+    background-color: var(--vscode-menu-selectionBackground);
+}
+
+.vscode-high-contrast-light.oj-hicontrast .cell-focus,
+.vscode-high-contrast-light.oj-hicontrast .oj-table-data-cell.oj-hover,
+.vscode-high-contrast-light.oj-table-data-cell.oj-hover {
+    background-color: var(--vscode-menu-selectionBackground);
+}
+
+.oj-hicontrast .oj-table-column-header-cell .oj-hover,
+.oj-hicontrast .oj-table-column-header-cell.oj-hover {
+    background-color: var(--vscode-contrastActiveBorder);
+}
+
+.oj-hicontrast .cell-focus,
+.oj-hicontrast .oj-table-data-cell .oj-hover,
+.oj-hicontrast .oj-table-data-cell.oj-hover {
+    background-color: var(--vscode-contrastActiveBorder);
+}
+
+
+/* Styling for the data cell elements in hover/selected state. */
+.cell-focus,
+.oj-table-data-cell.oj-hover {
+    background-color: var(--vscode-menu-selectionBackground);
+    color: var(--vscode-menu-selectionForeground);
+    outline-offset: -2px;
+}
+
+.oj-table-column-header-cell .oj-hover,
+.oj-table-column-header-cell.oj-hover {
+    color: var(--vscode-menu-selectionForeground);
+}
+
+.oj-table-body-message {
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.boldText {
+    font-weight: bold;
+}
+
+.oj-message-info-icon {
+    color: var(--vscode-button-background) !important;
+}
+
+/*
+  .oj-messages-notification .oj-messages-container {
+      border-width: 1px !important;
+      border-color: var(--vscode-settings-textInputForeground) !important;
+  
+   }
+  */
+.oj-message-close .oj-button {
+    background-color: var(--vscode-button-background);
+    height: auto;
+    width: auto;
+}
+
+.oj-hicontrast .oj-message-close {
+    background-color: var(--vscode-settings-textInputForeground);
+    height: auto;
+    width: auto;
+}
+
+.oj-message-category h1,
+.oj-message-summary {
+    background-color: transparent;
+}
+
+.vscode-dark .oj-text-field-container,
+.vscode-dark .oj-text-field,
+.vscode-dark .oj-text-field-middle,
+.vscode-dark .oj-textarea-input {
+    /*background-color: var(--vscode-settings-textInputBackground);
+      color: var(--vscode-settings-textInputForeground); */
+    border-color: var(--vscode-settings-textInputBackground) !important;
+}
+
+.vscode-dark .oj-textarea.oj-disabled .oj-textarea-input {
+    background-color: var(--vscode-settings-textInputBackground);
+    color: var(--vscode-settings-textInputForeground);
+    border-color: var(--vscode-settings-textInputBackground);
+}
+
+.vscode-dark .oj-text-field.oj-read-only .oj-text-field-input {
+    height: 1.75rem;
+    border: 1px solid;
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+    border-color: var(--vscode-settings-textInputBackground);
+    opacity: 0.5;
+    outline-offset: -2px;
+}
+
+.oj-hicontrast .oj-text-field-container,
+.oj-hicontrast .oj-text-field.oj-read-only {
+    border-color: var(--vscode-contrastBorder);
+    border: 1px solid;
+    border-radius: var(--oj-button-border-radius);
+}
+
+.oj-hicontrast .oj-text-field-container,
+.oj-hicontrast .oj-text-field,
+.oj-hicontrast .oj-text-field-middle,
+.oj-hicontrast .oj-textarea-input {
+    border-color: var(--vscode-contrastBorder);
+    /* outline: var(--vscode-contrastBorder) ; */
+}
+
+.oj-hicontrast .oj-textarea.oj-disabled .oj-textarea-input {
+    border-color: var(--vscode-contrastBorder);
+    /* outline: var(--vscode-contrastBorder) ; */
+}
+
+.oj-hicontrast .oj-inputtext.oj-disabled .oj-inputtext-input,
+.oj-hicontrast .oj-inputpassword.oj-disabled .oj-inputpassword-input,
+.oj-hicontrast .oj-inputtext-nocomp[disabled],
+.oj-hicontrast .oj-inputpassword-nocomp[disabled],
+.oj-hicontrast .oj-textarea-nocomp[disabled] {
+    border-color: var(--vscode-contrastBorder);
+    /* outline: var(--vscode-contrastBorder) ; */
+    opacity: 0.5;
+}
+
+.oj-hicontrast .oj-text-field.oj-read-only .oj-text-field-input {
+    border: 1px solid;
+    border-color: var(--vscode-contrastBorder);
+    /* outline: var(--vscode-contrastBorder) ; */
+}
+
+.oj-hicontrast .oj-inputtext-input::placeholder,
+.oj-hicontrast .oj-inputpassword-input::placeholder,
+.oj-hicontrast .oj-textarea-input::placeholder {
+    border-color: var(--vscode-contrastBorder);
+    /* outline: var(--vscode-contrastBorder) ; */
+    opacity: 0.7;
+}
+
+
+.oj-checkboxset .oj-disabled .oj-radiocheckbox-icon,
+.oj-checkboxset .oj-disabled.oj-selected .oj-radiocheckbox-icon {
+    color: var(--oj-text-field-text-color-disabled);
+}
+
+.oj-checkbox.oj-component.oj-component-initnode.oj-disabled {
+    opacity: 0;
+}
+
+.oj-checkbox-label.oj-disabled {
+    opacity: 1;
+}
+
+.oj-hicontrast .oj-text-field.oj-read-only {
+    border-color: transparent;
+}
+
+.oj-disabled {
+    opacity: 0.5;
+}
+
+.oj-hicontrast .oj-button:not(.oj-button-half-chrome),
+.vscode-high-contrast .oj-button:not(.oj-button-half-chrome) {
+    /*border-color: var(--vscode-contrastBorder) !important;
+     border: 1px solid;*/
+    border-radius: var(--oj-button-border-radius);
+    background-color: var(--vscode-button-background) !important;
+    color: var(--vscode-button-foreground) !important;
+    border-color: var(--vscode-button-border) !important;
+    border: 1px solid;
+}
+
+.start-module-layout {
+    padding: 0px;
+}
+
+.oj-hicontrast .oj-progress-bar-track {
+    background-color: var(--vscode-button-foreground);
+}
+
+.oj-hicontrast .oj-progress-bar-value {
+    background-color: var(--vscode-contrastBorder);
+}
+
+/* text fields 
+  */
+.vscode-dark .oj-combobox .oj-text-field-container,
+.vscode-dark .oj-combobox .oj-text-field,
+.vscode-dark .oj-combobox .oj-text-field-middle,
+.vscode-dark .oj-combobox .oj-textarea-input {
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-dropdownBackground);
+    border-color: var(--vscode-settings-dropdownBorder);
+}
+
+.oj-hicontrast .oj-combobox-choice,
+.oj-hicontrast .oj-combobox-input,
+.oj-hicontrast .oj-combobox.oj-inputtext {
+    border-color: var(--vscode-contrastActiveBorder);
+}
+
+.oj-hicontrast .oj-listbox-drop,
+.oj-hicontrast .oj-listbox-results {
+    border-color: var(--vscode-contrastBorder) !important;
+}
+
+.oj-hicontrast .oj-listbox-results .oj-hover {
+    background: transparent;
+    border-color: var(--vscode-contrastActiveBorder) !important;
+    outline-color: var(--vscode-contrastActiveBorder) !important;
+}
+
+.vscode-dark .oj-radiocheckbox-icon,
+.vscode-dark .oj-hover .oj-radiocheckbox-icon {
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.ociTabControlTextColor {
+    color: var(--vscode-settings-textInputForeground);
+}
+
+.oj-textarea-input,
+.oj-inputnumber-input,
+.oj-inputnumber.oj-disabled .oj-inputnumber-input,
+.oj-button-jqui.oj-enabled.oj-button-full-chrome {
+    color: var(--vscode-settings-textInputForeground) !important;
+    background-color: var(--vscode-settings-textInputBackground) !important;
+    border-color: var(--vscode-settings-textInputBorder);
+}
+
+.oj-buttonset .oj-inputnumber-button,
+.oj-inputnumber-button {
+    background-color: var(--vscode-settings-textInputBackground) !important;
+}
+
+.oj-inputnumber-up-icon,
+.oj-inputnumber-down-icon {
+    color: var(--vscode-settings-textInputForeground) !important;
+}
+
+.oj-disabled .oj-inputnumber-up-icon,
+.oj-disabled .oj-inputnumber-down-icon {
+    opacity: 0.5;
+}
+
+.oj-selected .oj-treeview-item-text {
+    color: var(--vscode-menu-selectionForeground) !important;
+}
+
+.vscode-high-contrast .oj-treeview-item .oj-selected {
+    background-color: var(--vscode-settings-textInputBackground);
+    border: 1px solid var(--vscode-focusBorder);
+}
+
+.oj-fwk-icon-tree-document:before,
+.oj-treeview-leaf>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/light/folder.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+.oj-fwk-icon-tree-folder-collapsed:before,
+.oj-collapsed>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/light/folder.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+.oj-fwk-icon-tree-folder-open:before,
+.oj-expanded>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/light/folder-opened.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+.oj-selected .oj-fwk-icon-tree-document:before,
+.oj-selected .oj-treeview-leaf>.oj-treeview-item-content>.oj-treeview-item-icon:before,
+.oj-selected .oj-fwk-icon-tree-document:before,
+.oj-selected .oj-treeview-leaf>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    color: var(--vscode-menu-selectionForeground);
+}
+
+.vscode-high-contrast .oj-fwk-icon-tree-document:before,
+.vscode-high-contrast .oj-treeview-leaf>.oj-treeview-item-content>.oj-treeview-item-icon:before,
+.vscode-dark .oj-fwk-icon-tree-document:before,
+.vscode-dark .oj-treeview-leaf>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/dark/folder.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+.vscode-high-contrast .oj-fwk-icon-tree-folder-collapsed:before,
+.vscode-high-contrast .oj-collapsed>.oj-treeview-item-content>.oj-treeview-item-icon:before,
+.vscode-dark .oj-fwk-icon-tree-folder-collapsed:before,
+.vscode-dark .oj-collapsed>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/dark/folder.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+.vscode-high-contrast .oj-fwk-icon-tree-folder-open:before,
+.vscode-high-contrast .oj-expanded>.oj-treeview-item-content>.oj-treeview-item-icon:before,
+.vscode-dark .oj-fwk-icon-tree-folder-open:before,
+.vscode-dark .oj-expanded>.oj-treeview-item-content>.oj-treeview-item-icon:before {
+    content: "";
+    background-image: url(./images/dark/folder-opened.svg);
+    background-size: cover;
+    background-position: 0.5px 0.5px;
+    height: 18px;
+    width: 18px;
+}
+
+/*
+  .vscode-high-contrast .oj-button-button{
+    border-color: var(--vscode-contrastBorder) !important;
+  }
+  */
+
+.infoLabel {
+    width: var(--odtvscode-control-width) !important;
+    display: inline-block !important;
+}
+
+.changeAdminPasswordLabel {
+    padding-left: 20px;
+    padding-right: 30px;
+    display: inline-block !important;
+}
+
+.vscode-dark .oj-dialog-header-close-wrapper.oj-button {
+    background-color: var(--vscode-button-background);
+}
+
+.vscode-high-contrast .oj-dialog-header-close-wrapper.oj-button {
+    background-color: var(--vscode-contrastBorder)!important;
+}
+
+.vscode-high-contrast-light .oj-dialog-header-close-wrapper.oj-button {
+    background-color: transparent !important;
+}
+
+.odtvscodeDialog .oj-dialog-title {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.manualHeaderDialog .oj-dialog-header{
+    min-height: auto;
+    padding-bottom: 0px;
+}
+.dialogTitleHeader{
+    display: block; 
+    width: 100%; 
+    margin-top: 5px;
+}
+
+.dialogHeaderSeparator{
+    margin-top: 25px;
+}
+
+.samplecode .oj-textarea-input {
+    white-space: pre;
+    overflow: scroll;
+    height: 20rem !important;
+    cursor: auto;
+}
+
+.formatPreviewCode .oj-textarea-input {
+    white-space: pre;
+    cursor: auto;
+    font-family: var(--vscode-editor-font-family);
+}
+.vscode-high-contrast-light .oj-text-field .oj-text-field-input::selection,
+.vscode-high-contrast-light .oj-text-field .oj-combobox-input::selection{
+    background-color: var(--vscode-editor-selectionBackground);
+    color:var(--vscode-editor-selectionForeground);
+}
+.formatPreviewCode .oj-text-field-middle {
+    height: 653px;
+}
+
+.formatterButtonContainer,
+.networkAccessButtonContainenr {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    flex-wrap: wrap;
+}
+
+.networkAccessButtonEnd{
+    display: flex;
+    justify-content: end;
+}
+
+.buttonGridItem{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.formatterProgressCircle {
+    padding-top: 10px;
+    padding-left: 18px;
+}
+
+.debuggerSettingsBody .samplecode {
+    max-width: 30rem !important;
+}
+
+.oj-button-text-only.oj-button.oj-focus-highlight .oj-button-button {
+    outline-offset: 2px;
+    outline-color: var(--vscode-focusBorder);
+    background-color: var(--vscode-button-hoverBackground) !important;
+}
+
+.oj-table-element:not(.oj-table-column-header-resizing) .oj-table-body-row.oj-focus-highlight:not(.oj-table-body-row-edit) {
+    background-color: var(--vscode-list-inactiveSelectionBackground);
+}
+
+.vscode-high-contrast .oj-table-element:not(.oj-table-column-header-resizing) .oj-table-body-row.oj-focus-highlight:not(.oj-table-body-row-edit) {
+    outline: solid 1px var(--vscode-focusBorder);
+}
+
+.oj-treeview-item-content.oj-focus-highlight {
+    outline-color: var(--vscode-focusBorder);
+}

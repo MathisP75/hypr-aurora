@@ -1,0 +1,91 @@
+{
+	"name": "vscode-css-modules",
+	"displayName": "CSS Modules",
+	"description": "Visual Studio Code extension for CSS Modules",
+	"version": "1.2.4",
+	"publisher": "ferrielmelarpis",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"homepage": "https://github.com/clinyong/vscode-css-modules",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/clinyong/vscode-css-modules"
+	},
+	"activationEvents": [
+		"onLanguage:typescriptreact",
+		"onLanguage:javascriptreact",
+		"onLanguage:javascript"
+	],
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "CSS Modules Configuration",
+			"properties": {
+				"cssModules.camelCase": {
+					"type": [
+						"boolean",
+						"string"
+					],
+					"default": false,
+					"description": "Transform classnames in autocomplete suggestions."
+				},
+				"cssModules.pathAlias": {
+					"type": "object",
+					"default": {},
+					"description": "Path alias for import module."
+				}
+			}
+		}
+	},
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js",
+		"prepare": "husky install"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.56.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"eslint": "^7.27.0",
+		"glob": "^7.1.7",
+		"husky": ">=6",
+		"lint-staged": ">=10",
+		"mocha": "^8.4.0",
+		"prettier": "^2.3.2",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2"
+	},
+	"dependencies": {
+		"@types/fs-extra": "^9.0.11",
+		"fs-extra": "^10.0.0",
+		"lodash": "^4.17.4"
+	},
+	"icon": "icon/css-modules.png",
+	"lint-staged": {
+		"*.ts": "eslint --cache --fix",
+		"*.{js,css,md}": "prettier --write"
+	},
+	"__metadata": {
+		"id": "c0cc092f-21cc-4bb3-9f9f-044c7b1ab25d",
+		"publisherId": "8c9d2ab9-339f-4f07-a1b2-e20a596a743f",
+		"publisherDisplayName": "ferrielmelarpis",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1669909939785,
+		"preRelease": false
+	}
+}

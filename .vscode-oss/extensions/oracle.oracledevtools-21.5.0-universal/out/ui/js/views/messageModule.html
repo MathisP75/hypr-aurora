@@ -1,0 +1,34 @@
+<!-- Show SQL always-->
+<oj-bind-if test="[[showSQL()]]">
+  <div>
+    <pre class="messageColorTag"><oj-bind-text value="[[message.displaySQL]]"></oj-bind-text></pre>
+  </div>
+</oj-bind-if>
+
+<!-- Show success message  only when there is error or some special event -->
+<!--Do not put space enter or anything inside pre tag it will ruin the layout !-->
+<oj-bind-if test=" [[showMessage()  && IsMessageStatement()]]">
+  <div>
+    <pre style="display:inline;" class="sqlPrompt"><oj-bind-text value="[[message.sqlStatement.prompt]]"></oj-bind-text></pre>
+    <pre style="display:inline;" class="messageColorTag"> <oj-bind-text value="[[message.sqlStatement.firstLine]]"></oj-bind-text></pre>
+    <pre class="messageColorTag"><oj-bind-text value="[[message.sqlStatement.remainderLines]]"></oj-bind-text></pre>
+  </div>
+</oj-bind-if>
+<oj-bind-if test="[[showMessage() && !IsMessageStatement() && !IsdescribeResult()]]">
+  <div :class="[[{'normalMessage break-word': !message.isError , 'errorMessage break-word': message.isError  }]]">
+    <oj-bind-if test="[[!message.isError]]">
+      <pre class="messageColorTag"><oj-bind-text value="[[message.message]]"></oj-bind-text></pre>
+    </oj-bind-if>
+    <oj-bind-if test="[[message.isError]]">
+      <pre class="errorMessage"><oj-bind-text value="[[message.message]]"></oj-bind-text></pre>
+    </oj-bind-if>
+
+  </div>
+</oj-bind-if>
+<oj-bind-if test="[[showMessage() && !IsMessageStatement() && IsdescribeResult()]]">
+  <div :class="[[{'normalMessage break-word': !message.isError , 'errorMessage break-word': message.isError  }]]">
+    <div id="describeResult-container" class="descTableBody">
+      <oj-bind-dom config="[[describeResult]]"></oj-bind-dom>
+    </div>
+  </div>
+</oj-bind-if>

@@ -1,0 +1,528 @@
+<oj-dialog style="display:none; height:98vh; width:75vw;" id="selectCompartmentDialogID"
+        dialog-title='[[createADBUILabelText.selectCompartmentForContainerdb]]' cancel-behavior="icon"
+        resize-behavior="resizable" class="odtvscodeDialog">
+        <div>
+                <oj-form-layout label-edge="start" max-columns="1" direction="column" label-width="35%"
+                        user-assistance-density='compact' class="oj-formlayout-full-width">
+                        <hr />
+                        <oj-label style="margin-top: 0; text-align: left" for="profileNameID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.profileName]]'></oj-bind-text>
+                        </oj-label>
+                        <span class="ociTextForColor infoLabel" id="profileNameID" data-bind="text:profileName"
+                                style="overflow-wrap: break-word;" slot="value"></span>
+                        <oj-label style="margin-top: 0; text-align: left" for="currentCompartmentID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.compartmentName]]'></oj-bind-text>
+                        </oj-label>
+                        <span class="ociTextForColor infoLabel" id="currentCompartmentID"
+                                data-bind="text:currentCompartmentName" style="overflow-wrap: break-word;"
+                                slot="value"></span>
+
+                        <oj-label style="margin-top: 0; text-align: left" for="compartmentFullPathID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.compartmentFullPath]]'></oj-bind-text>
+                        </oj-label>
+                        <div>
+                                <span class="ociTextForColor infoLabel" id="compartmentFullPathID"
+                                        data-bind="text:currentCompartmentFullName" style="overflow-wrap: break-word;"
+                                        slot="value"></span>
+                        </div>
+
+                        <oj-label style="margin-top: 0; text-align: left" for="selectNewCompartmentID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.selectNewCompartment]]'></oj-bind-text>
+                        </oj-label>
+
+                        <div>
+                                <oj-tree-view id="treeview" data="[[data]]" selected="{{selected}}"
+                                        expanded="{{expanded}}" class="compartmentBorder" selection-mode="single"
+                                        on-selected-changed="[[selectedChanged]]"
+                                        aria-label="Tree View with OCI compartment Data">
+                                        <template slot="itemTemplate" data-oj-as="row">
+                                                <span style="margin: 0px;" class="oj-treeview-item-icon"></span>
+                                                <span class="oj-treeview-item-text ociTreeviewItem"
+                                                        style="text-overflow: ellipsis">
+                                                        <oj-bind-text style="text-overflow: ellipsis"
+                                                                value="[[row.data.nameForDisplay]]"></oj-bind-text>
+                                                </span>
+                                        </template>
+                                </oj-tree-view>
+                        </div>
+
+                        <oj-label slot="label"></oj-label>
+                        <div>
+                                <oj-button id="okButton" on-oj-action='[[onOKCompartment]]' class='oj-button-lg'
+                                        disabled='{{okButtonDisabled}}' slot="value">
+                                        <oj-bind-text value='[[createADBUILabelText.OK]]'></oj-bind-text>
+                                </oj-button>
+                                <oj-button id="cancelButton" on-oj-action='[[onCancelCompartment]]' class='oj-button-lg'
+                                        slot="value">
+                                        <oj-bind-text value='[[createADBUILabelText.cancel]]'></oj-bind-text>
+                                </oj-button>
+
+                        </div>
+                </oj-form-layout>
+
+        </div>
+
+
+        <div slot="footer" style="padding-top: 0px;">
+        </div>
+</oj-dialog>
+<div class="connDlgBody">
+        <label class="connDlgHeader">
+                <oj-bind-text value='[[createADBUILabelText.createADB]]'></oj-bind-text>
+        </label>
+        <div class="flex" style="margin-top: 10px">
+                <div class="flex-item">
+                        <oj-label style="text-align: left" for="profileNameID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.profileName]]'></oj-bind-text>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <span class="ociTextForColor infoLabel" id="profileNameID" data-bind="text:profileName"
+                                style="overflow-wrap: break-word;" slot="value"></span>
+                </div>
+                <div class="flex-item"></div>
+        </div>
+
+        <div class="flex">
+                <div class="flex-item">
+                        <oj-label style="text-align: left" for="compartmentNameID" slot="label">
+                                <oj-bind-text value='[[createADBUILabelText.compartmentName]]'></oj-bind-text>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <span class="ociTextForColor infoLabel" id="compartmentNameID"
+                                data-bind="text:compartmentFullNameForDisplay" style="overflow-wrap: break-word;"
+                                slot="value"></span>
+                </div>
+                <div class="flex-item"></div>
+        </div>
+        <hr />
+        <br />
+        <br />
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="workloadTypeID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <oj-bind-text value='[[createADBUILabelText.workloadTypeText]]'>
+                                        </oj-bind-text>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                        <!-- </p> -->
+                                </label>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-combobox-one options="[[workLoadTypes]]" value="{{adbworkLoadType}}"
+                                disabled="{{isCreateInProgress}}"
+                                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                                onCut="return false" oncontextmenu="return false"
+                                on-value-changed="[[workLoadTypeChangedHandler]]" id='workloadTypeID' slot="value">
+                        </oj-combobox-one>
+                </div>
+        </div>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="databaseNameID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.databaseName"></span>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                        <!-- </p> -->
+                                </label>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-text id="databaseNameID" value='{{databaseName}}' slot="value"
+                                disabled="{{isCreateInProgress}}" on-raw-value-changed="[[onDatabaseName]]">
+                        </oj-input-text>
+                </div>
+        </div>
+
+        <oj-bind-if test="[[showdbNameError()]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%"></div>
+                        <div class="flex-item">
+                                <label role="alert" id="databaseNameErrorID" class="ociTextForColor infoLabel">
+                                        <oj-bind-text value='{{dbNameError}}'></oj-bind-text>
+                                </label>
+
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="displayNameID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.displayName"></span>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                        <!-- </p> -->
+                                </label>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-text id="displayNameID" value='{{displayName}}' disabled="{{isCreateInProgress}}"
+                                on-raw-value-changed="[[onDatabaseDisplayName]]" slot="value">
+                        </oj-input-text>
+                </div>
+        </div>
+        <oj-bind-if test="[[showdbDisplayNameError()]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%"></div>
+                        <div class="flex-item">
+                                <label role="alert" id="databaseDisplayNameErrorID" class="ociTextForColor infoLabel">
+                                        <oj-bind-text value='{{dbDisplayNameError}}'></oj-bind-text>
+                                </label>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{showAlwaysFreeOption}}">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%"></div>
+                        <div class="flex-item">
+                                <oj-checkboxset on-value-changed='[[onAlwaysFreeValueChanged]]' id="alwaysFreeId"
+                                        style="opacity: 1;" disabled="{{isCreateInProgress}}"
+                                        labelled-by="alwaysFreeLabelId" value="{{alwaysFree}}">
+                                        <oj-option id="alwaysFreeOptionId" value="yes" class="ociTextForColor">
+                                                <oj-bind-text value="{{createADBUILabelText.alwaysFree}}">
+                                                </oj-bind-text>
+                                        </oj-option>
+                                </oj-checkboxset>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="deploymentTypeID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <oj-bind-text value='[[createADBUILabelText.deploymentTypeText]]'>
+                                        </oj-bind-text>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                        <!-- </p> -->
+                                </label>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-combobox-one options="[[deploymentTypes]]" value="{{deploymentType}}"
+                                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                                onCut="return false" oncontextmenu="return false"
+                                disabled="{{disableDeploymentTypesOption() || isCreateInProgress()}}"
+                                on-value-changed="[[deploymentTypeChangedHandler]]" id='deploymentTypeID' slot="value">
+                        </oj-combobox-one>
+                </div>
+        </div>
+        <oj-bind-if test="{{sharedDeploymentType()}}">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+                                <oj-label for="databaseVersionID" slot="label">
+                                        <label class="leftalign">
+                                                <!-- <p> -->
+                                                <oj-bind-text value='[[createADBUILabelText.databaseVersionText]]'>
+                                                </oj-bind-text>
+                                                <!-- </p> -->
+                                        </label>
+                                </oj-label>
+                        </div>
+                        <div class="flex-item">
+                                <oj-combobox-one id="databaseVersionID" options="[[databaseVersions]]"
+                                        value="{{databaseVersion}}" disabled="{{isCreateInProgress()}}"
+                                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                                        onpaste="return false;" onCut="return false" oncontextmenu="return false"
+                                        on-value-changed="[[databaseVersionChangedHandler]]" id='databaseVersionID'
+                                        slot="value">
+                                </oj-combobox-one>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{showContainerDBControls()}}">
+                <div class="flex">
+                        <div class="flex-item" style="min-width:33%">
+                                <oj-label for="selectCompartmentLabelID" slot="label">
+                                        <label class="leftalign">
+                                                <!-- <p> -->
+                                                <span
+                                                        data-bind="text:createADBUILabelText.compartmentNameForContainerDB"></span>
+                                                <span class="required">
+                                                        <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                        </oj-bind-text>
+                                                </span>
+                                                <!-- </p> -->
+                                        </label>
+                                </oj-label>
+                        </div>
+                        <div class="flex-item" style="overflow: hidden;min-width:38%">
+                                <span id="selectCompartmentLabelID" data-bind="text:compartmentNameForDedicatedInfra"
+                                        style="overflow-wrap: break-word" slot="value"></span>
+                        </div>
+                        <div class="flex-item">
+                                <oj-button disabled="{{isCreateInProgress}}"
+                                        on-oj-action='[[launchSelectCompartmentsDialog]]' id="changeCompartmentID">
+                                        <oj-bind-text value='[[createADBUILabelText.updateCompartment]]'></oj-bind-text>
+                                </oj-button>
+                        </div>
+                </div>
+
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+                                <oj-label for="containerDBID" slot="label">
+                                        <label class="leftalign">
+                                                <!-- <p> -->
+                                                <span data-bind="text:createADBUILabelText.containerDB"></span>
+                                                <span class="required">
+                                                        <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                        </oj-bind-text>
+                                                </span>
+                                                <!-- </p> -->
+                                        </label>
+
+                                </oj-label>
+                        </div>
+                        <div class="flex-item">
+                                <oj-combobox-one id="containerDBID" options="[[containerDatabases]]"
+                                        value="{{selectedContainerDatabase}}"
+                                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                                        disabled="{{isCreateInProgress}}" onpaste="return false;" onCut="return false"
+                                        oncontextmenu="return false" on-value-changed="[[containerDBChangedHandler]]"
+                                        slot="value">
+                                </oj-combobox-one>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="cpuCoreCountID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.cpuCoreCount"></span>
+
+
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'
+                                                        disabled="{{isCreateInProgress}}">
+                                                </oj-bind-text>
+                                        </span>
+                                </label>
+                                <!-- </p> -->
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-number id="cpuCoreCountID" on-raw-value-changed="[[onOCPUCount]]" min="1" max="128"
+                                step="1" value="{{cpuCoreCount}}" onpaste="return false;" onCut="return false"
+                                oncontextmenu="return false" display-options.validator-hint='none'
+                                display-options.messages='none'
+                                disabled="{{disableConfigureDBControls()  || isCreateInProgress()}}" slot="value">
+                        </oj-input-number>
+                </div>
+        </div>
+        <oj-bind-if test="[[showOCPUError()]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+
+                        </div>
+                        <div class="flex-item">
+                                <label role="alert" id="CPUErrorID" class="ociTextForColor infoLabel">
+                                        <oj-bind-text value='{{ocpuError}}'></oj-bind-text>
+                                </label>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="storageID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.storage"></span>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                </label>
+                                <!-- </p> -->
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-number id="storageID" on-raw-value-changed="[[onStorage]]" min="1" max="128" step="1"
+                                value="{{storage}}" display-options.validator-hint='none'
+                                display-options.messages='none'
+                                disabled="{{disableConfigureDBControls()  || isCreateInProgress()}}"
+                                onpaste="return false;" onCut="return false" oncontextmenu="return false" slot="value">
+                        </oj-input-number>
+                </div>
+        </div>
+        <oj-bind-if test="[[showStorageError()]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+
+                        </div>
+                        <div class="flex-item">
+                                <label role="alert" id="storageErrorID" class="ociTextForColor infoLabel">
+                                        <oj-bind-text value='{{storageError}}'></oj-bind-text>
+                                </label>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{showAutoScaling()}}">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+
+                        </div>
+                        <div class="flex-item">
+                                <oj-checkboxset id="autoScalingId" labelled-by="autoScalingLabelId" style="opacity: 1;"
+                                        value="{{autoScaling}}"
+                                        disabled="{{disableAutoScaling() || isCreateInProgress()}}">
+                                        <oj-option id="autoScalingOptionId" value="yes" class="ociTextForColor">
+                                                <oj-bind-text value="{{createADBUILabelText.autoScaling}}">
+                                                </oj-bind-text>
+                                        </oj-option>
+                                </oj-checkboxset>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{sharedDeploymentType()}}">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+                                <oj-label for="licenseTypeID" slot="label">
+                                        <label class="leftalign">
+                                                <!-- <p> -->
+                                                <oj-bind-text value='[[createADBUILabelText.licenseTypeText]]'>
+                                                </oj-bind-text>
+                                                <span class="required">
+                                                        <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                        </oj-bind-text>
+                                                </span>
+                                                <!-- </p> -->
+                                        </label>
+                                </oj-label>
+                        </div>
+                        <div class="flex-item">
+                                <oj-combobox-one options="[[licenseTypes]]" value="{{licenseType}}"
+                                        disabled={{disableLicenseTypesOption()||isCreateInProgress()}}
+                                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                                        onpaste="return false;" onCut="return false" oncontextmenu="return false"
+                                        on-value-changed="[[licenseTypeChangedHandler]]" id='licenseTypeID'
+                                        slot="value">
+                                </oj-combobox-one>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="userNameID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.userName"></span>
+                                        <!-- </p> -->
+                                </label>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-text id="userNameID" value='{{userName}}' disabled="true" slot="value">
+                        </oj-input-text>
+                </div>
+        </div>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="passwordID" slot="label">
+                                <label class="leftalign">
+                                        <!-- <p> -->
+                                        <span data-bind="text:createADBUILabelText.password"></span>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                                        <!-- </p> -->
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-password id="passwordID" value='{{password}}' slot="value"
+                                disabled="{{isCreateInProgress}}" on-raw-value-changed='[[onPswdProvided]]'>
+                        </oj-input-password>
+                </div>
+
+        </div>
+        <oj-bind-if test="[[showInvalidPasswordError()]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+
+                        </div>
+                        <div class="flex-item">
+                                <label role="alert" id="passwordformatErrorID"
+                                        class="ociTextForColor 1inputValidationError infoLabel">
+                                        <oj-bind-text value='{{pswderror}}'></oj-bind-text>
+                                </label>
+                        </div>
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%">
+                        <oj-label for="confirmpasswordID" slot="label">
+                                <label class="leftalign">
+                                        <span data-bind="text:createADBUILabelText.confirmpassword"></span>
+                                        <span class="required">
+                                                <oj-bind-text value='[[createADBUILabelText.requiredText]]'>
+                                                </oj-bind-text>
+                                        </span>
+                        </oj-label>
+                </div>
+                <div class="flex-item">
+                        <oj-input-password id="confirmpasswordID" value='{{confirmpassword}}' slot="value"
+                                disabled="{{isCreateInProgress}}" on-raw-value-changed='[[onConfirmPswdProvided]]'>
+                        </oj-input-password>
+                </div>
+        </div>
+        <oj-bind-if test="[[showPasswordMismatchError() == true]]">
+                <div class="flex">
+                        <div class="flex-item" style="max-width:33%">
+                        </div>
+                        <div class="flex-item">
+                                <label role="alert" id="confirmPasswordErrorID"
+                                        class="ociTextForColor 1inputValidationError infoLabel">
+                                        <oj-bind-text value='[[pswdMismatchError]]'></oj-bind-text>
+                                </label>
+                        </div>
+                </div>
+        </oj-bind-if>
+
+        <oj-bind-if test="{{sharedDeploymentType()}}">
+                <div data-bind="ojModule: { name: 'adbConfigureWalletlessConnectivityAndNetworkAccessModule' , 
+                        params : {networkAccessLaunchSource : 3 , deploymentType :deploymentType,
+                        updateNetworkAccessControlsHandler : updateNetworkAccessControls,
+                        aclModuleDataHandler : aclModuleDataHandler,
+                        createADBPageHandler : createADBPageHandler}}">
+                </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{!sharedDeploymentType()}}">
+                <div data-bind="ojModule: { name: 'adbConfigureWalletlessConnectivityAndNetworkAccessModule' , 
+                        params : {networkAccessLaunchSource : 2 , deploymentType :deploymentType,
+                        updateNetworkAccessControlsHandler : updateNetworkAccessControls,
+                        aclModuleDataHandler : aclModuleDataHandler,
+                        createADBPageHandler:createADBPageHandler,
+                        enableDBLevelAccessControlHandler:enableDBLevelAccessControlHandler}}">                        
+                </div>
+        </oj-bind-if>
+        <div class="flex">
+                <div class="flex-item" style="max-width:33%"></div>
+                <div class="flex-item" style="padding-right: 40px;">
+                        <oj-button on-oj-action='[[onCreateNewAutonomousDatabase]]'
+                                disabled='{{!enableCreatebutton() || isCreateInProgress}}' class='oj-button-lg'
+                                id="createADBID">
+                                <oj-bind-text value='[[createADBUILabelText.createADB]]'></oj-bind-text>
+                        </oj-button>
+                </div>
+        </div>
+</div>
+
+<oj-messages position="[[msgPos]]" messages="[[messagesDataprovider]]" display="notification"></oj-messages>

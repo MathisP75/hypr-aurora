@@ -1,0 +1,198 @@
+<oj-bind-if test="[[noData() === false]]">
+<div>
+  <oj-bind-if test="{{showSQLField() == true}}">
+    <div class="codeObjectGridLabel">
+      <oj-bind-text value="{{originalQueryText}}"></oj-bind-text>
+    </div>
+  </oj-bind-if> 
+  <div class="recordRow" oncontextmenu="return false"> 
+    <!-- Show Data -->
+    <oj-buttonset-many chroming='borderless' id='dataBtn' display='icons' value="{{dataVisible}}">
+      <oj-option value="true"> <span slot='startIcon' class="icon-table"></span>
+        <oj-bind-text value="[[ShowDataLabel]]"></oj-bind-text>
+      </oj-option>
+    </oj-buttonset-many>
+    <!-- Row Selection -->
+    <oj-bind-if test="[[pagingNeeded]]">
+      <oj-combobox-one id="allRowSelection" options="[[selectAllMenuItems]]" value="{{selectAllValue}}" on-keydown="[[disableInput]]"
+        class="selectAllCombo" on-oj-value-updated="[[updateMasterSelectValue]]" onpaste="return false" onCut="return false">
+      </oj-combobox-one>
+    </oj-bind-if>
+    <!-- Show Copy -->
+    <oj-button chroming='borderless' id='copyBtn' display='icons' on-oj-action="[[copyAllToClipBoard]]">
+      <span slot='startIcon' class="icon-copy"></span>
+      <oj-bind-text value="[[CopyLabel]]"></oj-bind-text>
+    </oj-button>
+    <!-- Save Format -->
+    <oj-label for="select" style="padding-top: 5px;padding-left: 5px;padding-right: 10px;">Save as:</oj-label>
+    <oj-combobox-one id="select" options="[[formats]]" value="{{selectedSaveFormat}}" on-keydown="[[disableInput]]" 
+      class="saveAsCombo" onpaste="return false" onCut="return false">
+    </oj-combobox-one>
+    <oj-bind-if test="[[isSaving() === false]]">
+      <oj-button chroming='borderless' id="saveBtn" display='icons' class="colorCorrection" on-oj-action="[[handleSave]]">
+        <span slot='startIcon' class="icon-save"></span>
+        <oj-bind-text value="[[SaveLabel]]"> </oj-bind-text>
+      </oj-button>
+      <oj-button chroming='borderless' id="saveAllBtn" display='icons' class="colorCorrection" on-oj-action="[[handleSaveAll]]">
+        <span slot='startIcon' class="icon-save-all"></span>
+        <oj-bind-text value="[[SaveAllLabel]]"></oj-bind-text>
+      </oj-button>
+    </oj-bind-if>
+    <oj-bind-if test="[[isSaving() === true]]">
+      <oj-button chroming='borderless' class="colorCorrection" on-oj-action="[[cancelSaveHandler]]">
+        <span slot='startIcon' class="icon-cancel"></span>
+        <span class="boldText">
+        <oj-bind-text value="[[cancelLabel]]">Cancel</oj-bind-text>
+        </span>
+      </oj-button>
+      <oj-progress-circle size="sm" id="progressCircle" value="-1"></oj-progress-circle>
+    </oj-bind-if>
+    <oj-bind-if test="[[isCopying() === true]]">
+      <oj-progress-circle size="sm" id="progressCircle" value="-1" style="padding-left: 5px;"></oj-progress-circle>
+    </oj-bind-if>
+    <oj-bind-if test="[[ShowRowsLimited()]]">
+      <label class="rowsLimited">
+          <oj-bind-text value='[[RowsLimitedText()]]'>
+          </oj-bind-text>
+      </label>
+    </oj-bind-if>
+  </div>  
+  
+    <div :id="[[tableContainerId]]" on-mouseup="[[mouseUpListener]]" class="selectQueryResult" :style="[[divStyle]]" oncontextmenu="return false">
+      <oj-table :id="[[tableId]]" display='grid' class='oj-table-data-cell-no-padding'  aria-label="Query Results Table" data="[[matDataSource]]"
+        columns='{{dataSource.displayColumns}}' columns-default="[[columnsDefault]]" :style="[[gridStyle]]"
+        on-oj-animate-start="[[preventTableAnimation]]" 
+        on-click="[[closeContextMenuIfOpen]]">
+        <template data-oj-as="cell" slot="cellTemplate" style="white-space:nowrap">
+          <div :id="[[`cellContainer_`+tableId+`_${cell.key}_${cell.columnIndex}`]]" 
+          on-mouseover ="[[() => tooltipOpen(tableId+`_${cell.key}_${cell.columnIndex}`,event,cell.data)]]"
+          on-mouseout="[[() => tooltipClose(tableId+`_${cell.key}_${cell.columnIndex}`)]]"
+          on-mousemove="[[() => updatePosition(tableId+`_${cell.key}_${cell.columnIndex}`,event)]]">
+            <span :id="[[`cell_`+tableId+`_${cell.key}_${cell.columnIndex}`]]" class="user">
+              <oj-bind-if test="[[pagingNeeded]]">
+              <oj-bind-text value="[[cell.row()[cell.columnKey]]]" aria-readonly="true"> </oj-bind-text>
+              </oj-bind-if>
+              <oj-bind-if test="[[pagingNeeded === false]]">
+                <oj-bind-text value="[[cell.data]]" aria-readonly="true"> </oj-bind-text>               
+              </oj-bind-if>
+            </span>
+            <oj-popup :id="[[`tooltip_`+tableId+`_${cell.key}_${cell.columnIndex}`]]" auto-dismiss="focusLoss" 
+            modality="modeless"  on-oj-animate-start="[[startAnimationListener]]"
+            position.my.horizontal="start" position.my.vertical="top"
+            position.at.horizontal="end" position.at.vertical="bottom"
+            position.collision="flipfit" position.offset.x="11" position.offset.y="15">
+            <oj-bind-if test="[[pagingNeeded]]">
+              <oj-bind-text value="[[cell.row()[cell.columnKey]]]"></oj-bind-text>
+            </oj-bind-if>
+            <oj-bind-if test="[[pagingNeeded ===false]]">
+              <oj-bind-text value="[[cell.data]]"></oj-bind-text>
+            </oj-bind-if> 
+            </oj-popup>
+          </div>
+        </template>
+        <oj-menu :id="[[`copyMenu_`+tableId]]" slot="contextMenu" class="copyMenu" on-oj-action="[[copyCellData]]" 
+          on-oj-before-open="[[checkCellContext]]"
+          on-oj-animate-start="[[startAnimationListener]]" 
+          on-oj-close="[[removeCellHighlight]]"
+          on-oj-open="[[addCellHighlight]]">
+          <oj-option value ="">Copy</oj-option>
+        </oj-menu>
+        <template slot="checkHeaderTemplate" data-oj-as="header">
+          <oj-bind-if test="[[pagingNeeded == false]]">
+            <input type="checkbox" on-click="[[updateMasterSelectValue]]" :id="{{masterToggleCheckboxId}}"
+              :checked="{{masterToggleValue}}" />
+          </oj-bind-if>
+          <oj-bind-if test="[[pagingNeeded && pageModel.isSinglePage == false]]">
+            <oj-menu-button chroming="borderless"  display="all">
+              <oj-menu  slot="menu" on-oj-menu-action="[[onRowSelectionAction]]" :id="[[`pageRowSelection_`+tableId]]"
+                on-oj-animate-start="[[startAnimationListener]]">
+                <oj-bind-for-each data="[[selectPageMenuItems]]">
+                  <template>
+                    <oj-option value="[[$current.data.value]]" :id="[[`opt_`+$current.index]]">
+                      <span>
+                        <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                      </span>
+                    </oj-option>
+                  </template>
+                </oj-bind-for-each>
+              </oj-menu>
+            </oj-menu-button>
+          </oj-bind-if>
+        </template> 
+        <template data-oj-as="cell" slot="checkTemplate">
+          <oj-bind-if test="[[pagingNeeded]]">
+          <input :id="[[`cb_`+cell.index]]" type="checkbox" data-bind="checked:  cell.row().selected" />
+          </oj-bind-if>
+          <oj-bind-if test="[[pagingNeeded === false]]">
+          <input :id="[[`cb_`+cell.index]]"  type="checkbox" data-bind="checked:  cell.row.selected" />
+          </oj-bind-if>
+        </template>
+        <template slot="describeTemplate" data-oj-as="cell" >
+          <pre> <oj-bind-text value="[[cell.data]]"></oj-bind-text></pre>
+        </template>
+      </oj-table>
+        <!--PAGINATION START-->
+      <oj-bind-if test="[[pagingNeeded]]">
+          <div class="pagingControls"><!-- :class="[[{'hideElement': pageModel.isSinglePage}]]"> -->
+              <span style="padding:inherit">
+                <oj-bind-text value="[[page]]"></oj-bind-text>
+              </span>
+              <oj-input-number value='{{pageModel.inputPageNo}}' on-focusout="[[preventPageChange]]" style="padding: 2px 0 2px;"
+                :style.width="[[pageModel.pageInputWidth]]" :id="[[`pageInput_`+tableId]]" disabled="[[pageModel.isSinglePage]]"
+                on-keydown="[[pageInputValidation]]" on-paste="[[onPaste]]">
+              </oj-input-number>
+              <span style="padding:inherit; padding-left:5px;">
+                <oj-bind-text value="[[TotalPagesText]]"></oj-bind-text>
+              </span>
+              <div class="navArrowSeparation">
+                <a href="#/" :id="[[`navFirst_`+tableId]]" style="margin-top: 4px;" role="button" tabindex="0" title="First"
+                  class="oj-pagingcontrol-nav-first-icon oj-component-icon"
+                  on-click='[[() => onNavArrowClick("First")]]' :class="[[{'oj-disabled': pageModel.isFirstPage}]]">
+                </a>
+                <a href="#/" :id="[[`navPrev_`+tableId]]" style="margin-top: 4px;" role="button" tabindex="0"  title="Previous"
+                  class="oj-pagingcontrol-nav-previous-icon oj-component-icon"
+                  on-click='[[() => onNavArrowClick("Prev")]]' :class="[[{'oj-disabled': pageModel.isFirstPage}]]">
+                </a>
+                <a href="#/" :id="[[`navNext_`+tableId]]" style="margin-top: 4px;" role="button" tabindex="0" title="Next"
+                  class="oj-pagingcontrol-nav-next-icon oj-component-icon"
+                  on-click='[[() => onNavArrowClick("Next")]]':class="[[{'oj-disabled': pageModel.isLastPage}]]">
+                </a>
+                <a href="#/" :id="[[`navLast_`+tableId]]" style="margin-top: 4px;" role="button" tabindex="0" title="Last"
+                  class="oj-pagingcontrol-nav-last-icon oj-component-icon"
+                  on-click='[[() => onNavArrowClick("Last")]]' :class="[[{'oj-disabled': pageModel.isLastPage}]]">
+                </a>
+              </div>
+              <span style="padding:inherit">
+                <oj-bind-text value="[[pageModel.pagingRangeText]]"></oj-bind-text>
+              </span>
+          
+          </div>
+      </oj-bind-if>
+        <!--PAGINATION END-->
+    </div>
+</div> 
+</oj-bind-if>
+<oj-bind-if test="[[noData() === true]]">
+  <div class="resetPreTag">
+  <oj-bind-text value="[[noDataLabel]]"></oj-bind-text>
+  </div>
+</oj-bind-if>
+<!--Table column header renderer-->
+<script type="text/html" id="headerColumn">
+  <th title="">
+    <div :id="[[$context.componentElement.id+`_hdr`+$context.columnIndex]]" 
+      on-mouseover ="[[() => $parent.tooltipOpen($context.componentElement.id+`_hdr`+$context.columnIndex,event, $context.data)]]"
+      on-mouseout="[[() => $parent.tooltipClose($context.componentElement.id+`_hdr`+$context.columnIndex)]]"
+      on-mousemove="[[() => $parent.updatePosition($context.componentElement.id+`_hdr`+$context.columnIndex,event)]]"> 
+      <oj-bind-text value="[[$context.data]]"></oj-bind-text>
+      
+      <oj-popup :id="[[`tooltip_`+$context.componentElement.id+`_hdr`+$context.columnIndex]]" 
+        auto-dismiss="focusLoss" modality="modeless"
+        on-oj-animate-start="[[$parent.startAnimationListener]]" position.my.horizontal="start" position.my.vertical="top"
+        position.at.horizontal="end" position.at.vertical="bottom" position.collision="flipfit" position.offset.x="11"
+        position.offset.y="15">
+          <oj-bind-text value="[[$context.data]]"></oj-bind-text>
+      </oj-popup>
+    </div>
+  </th>
+</script>

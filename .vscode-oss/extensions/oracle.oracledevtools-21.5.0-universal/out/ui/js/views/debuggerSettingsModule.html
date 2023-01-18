@@ -1,0 +1,73 @@
+<div class="debuggerSettingsBody">
+  <oj-form-layout id="debuggerConfigurationForm" label-edge="start" max-columns="1" direction="column" label-width="25%"
+    user-assistance-density='compact' class="oj-formlayout-full-width">
+    <label class="compilerDlgHeader">
+      <oj-bind-text value='[[labelTexts.debuggerSettingsTitle]]'></oj-bind-text>
+    </label>
+    <label class="compilerDlgSubHeader">
+      <oj-bind-text value='[[labelTexts.debuggerSettingsSubTitle]]'></oj-bind-text>
+    </label>
+    <hr class="hrstyle" />
+    <oj-label for="ipAddress" slot="label">
+      <label class="leftalign">
+        <p>
+          <oj-bind-text value="[[labelTexts.hostIPAddress]]">
+          </oj-bind-text>
+        </p>
+      </label>
+    </oj-label>
+    <oj-combobox-one id='ipAddress' options="[[ipAddresses]]" value="{{ipAddress}}"
+      slot="value" oncontextmenu="return false">
+    </oj-combobox-one>
+
+    <oj-label for="startPort" slot="label">
+      <label class="leftalign">
+        <p>
+          <oj-bind-text value="[[labelTexts.startPortNumber]]">
+          </oj-bind-text>
+        </p>
+      </label>
+    </oj-label>
+    <oj-input-text id="startPort" slot="value" value={{startPort}} on-raw-value-changed='[[onRawValueChanged]]'
+      length.max=5 onpaste="return false;" onCut="return false" on-keypress='[[validatePortNumInput]]'
+      oncontextmenu="return false">
+    </oj-input-text>
+
+    <oj-label for="endPort" slot="label">
+      <label class="leftalign">
+        <p>
+          <oj-bind-text value="[[labelTexts.endPortNumber]]">
+          </oj-bind-text>
+        </p>
+      </label>
+    </oj-label>
+    <oj-input-text id="endPort" slot="value" value={{endPort}} on-raw-value-changed='[[onRawValueChanged]]' length.max=5
+      onpaste="return false;" onCut="return false" on-keypress='[[validatePortNumInput]]' oncontextmenu="return false">
+    </oj-input-text>
+    <oj-label></oj-label>
+    <div>
+      <oj-button id='saveButton' class='oj-button-lg' on-oj-action='[[onSaveSettings]]' style="margin-right:5px;"
+        disabled='[[saveButtonDisabled]]'>
+        <oj-bind-text value="[[labelTexts.save]]"></oj-bind-text>
+      </oj-button>
+      <oj-bind-if test="[[isSaving]]">
+        <oj-progress-circle size="md" id="progressCircle" value="-1"></oj-progress-circle>
+      </oj-bind-if>
+    </div>
+    <br/><br/>
+    <hr class="hrstyle" />
+    <div style="width:400px;">
+      <label class="compilerDlgSubHeader">
+        <oj-bind-text value='[[labelTexts.sampleCodeDescription]]'></oj-bind-text>
+      </label>
+    </div>
+    <oj-label></oj-label>
+    <oj-text-area id="plsqlblock" class="samplecode" rows="15" readonly="true" value='[[labelTexts.sampleCode]]'
+      oncontextmenu="return false">
+    </oj-text-area>
+    <oj-label></oj-label>
+    <oj-button id='copyButton' class='oj-button-lg' on-oj-action='[[onCopySampleCode]]' style="margin-right:5px;">
+      <oj-bind-text value="[[labelTexts.copy]]"></oj-bind-text>
+    </oj-button>
+  </oj-form-layout>
+</div>

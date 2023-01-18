@@ -1,0 +1,63 @@
+<oj-table id="table" display='grid' aria-label="Input Parameters" data='[[dataSource]]' edit-mode='[[gridMode]]'
+  style='width: 100%; height: 100%;' columns='{{displayColumns}}' layout='fixed' edit-row='{{editRow}}'
+  on-focus="[[handleFocus]]">
+  <template slot="headerTemplate" data-oj-as="header" >
+    <oj-bind-text value="[[header.data]]"></oj-bind-text>
+  </template>
+  <template slot="nameTemplate">
+    <div on-click="[[handleEditRow]]">
+    <oj-bind-text value="[[$current.row.name]]"></oj-bind-text>
+    </div>
+  </template>
+  <template slot="directionTemplate">
+    <oj-bind-if test='[[$current.mode=="navigation"]]'>
+      <div on-click="[[handleEditRow]]">
+        <oj-bind-text value="[[$current.row.direction]]"></oj-bind-text>
+      </div>
+    </oj-bind-if>
+    <oj-bind-if test='[[$current.mode=="edit"]]'>
+        <oj-bind-text value="[[$current.row.direction]]"></oj-bind-text> 
+    </oj-bind-if>
+  </template>
+  <template slot="typeTemplate">
+    <oj-bind-if test='[[$current.mode=="navigation"]]'>
+      <div on-click="[[handleEditRow]]">
+        <oj-bind-text value="[[$current.row.dataType]]"></oj-bind-text>
+        </div>
+    </oj-bind-if>
+    <oj-bind-if test='[[$current.mode=="edit"]]'>
+        <oj-bind-text value="[[$current.row.dataType]]"></oj-bind-text> 
+    </oj-bind-if>
+  </template>
+  <template slot="valueTemplate">
+    <oj-bind-if test='[[$current.mode=="navigation"]]'>
+      <div on-click="[[handleEditRow]]">
+        <oj-bind-text value="[[convertValue($current.row)]]"></oj-bind-text>
+      </div>
+    </oj-bind-if>
+    <oj-bind-if test='[[$current.mode=="edit"]]'>
+      <oj-bind-if test='[[$current.row.hasDefault==true]]'>
+        <oj-combobox-one id="values1" options="[[moreValues]]" value="{{$current.row.value}}" aria-label="select Combobox"
+          on-value-changed="[[valueChangeHandler]]" data-oj-context on-focus="[[selectText]]">
+        </oj-combobox-one>
+      </oj-bind-if>
+      <oj-bind-if test='[[$current.row.hasDefault==false]]'>
+        <oj-combobox-one id="values2" options="[[predefinedValues]]" value="{{$current.row.value}}" aria-label="select1 Combobox"
+          on-value-changed="[[valueChangeHandler]]" data-oj-context on-focus="[[selectText]]">
+        </oj-combobox-one>
+      </oj-bind-if>
+
+    </oj-bind-if>
+  </template>
+  <template slot="cursorTemplate">
+    <oj-bind-if test='[[$current.mode=="navigation"]]'>
+    <oj-bind-if test='[[$current.row.queryResultId != undefined && $current.row.queryResultId.length>0]]'>
+      <oj-button id='button1' on-oj-action='[[onFetchData]]'>Fetch 
+      </oj-button>
+    </oj-bind-if>
+    <oj-bind-if test='[[$current.row.dataType!="REF CURSOR"]]'>
+      <oj-bind-text value="[[convertValue($current.row)]]"></oj-bind-text> 
+    </oj-bind-if>
+    </oj-bind-if>
+  </template>
+</oj-table>

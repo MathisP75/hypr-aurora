@@ -1,0 +1,52 @@
+
+ <template id="dataTemplate" data-oj-as='ds'>   
+      <div class="templateRoot">
+           <!--Please take care of enclosing div elements inside this template while merging or changing otherwise things will stop working. -->
+       
+        <oj-bind-if test="{{ds.data.dataSourceType === 2}}">
+          <div :id="[['module'+ ds.observableIndex()]]">
+            <!--If data source is grid type show UI as as per datagrid -->
+
+
+            <div :id="[['module'+ ds.data.queryId]]"
+              data-bind="ojModule: { name: 'queryResultsModule' , params : { gridData : ds.data , moduleRenderingCompleted :ds. moduleRenderingCompleted,  index : ds.observableIndex ,  uiMode : uiDisplayMode }}">
+            </div> 
+            <div class="spacer2"></div>
+          </div>
+        </oj-bind-if>
+        <oj-bind-if test="{{ds.data.dataSourceType === 3}}">
+          <div :id="[['module'+ ds.observableIndex()]]">
+            <!--If data source is code object output type show UI as as per code object -->
+            <div :id="[['module'+ ds.data.queryId]]"
+              data-bind="ojModule: { name: 'codeObjectResultModule' , params : { codeObjectResults : ds.data , moduleRenderingCompleted : ds.moduleRenderingCompleted, index : ds.observableIndex }}">
+            </div>
+          </div>
+        </oj-bind-if>
+ 
+      </div>
+    </template>
+<div  :class="topbarContainer"
+data-bind="ojModule: { name: 'messagesModule' , params : {  executing : executing , cancelHandler: cancelHandler}}"> 
+</div> 
+<div id = "customResultContainer">
+
+</div>
+
+ 
+<div id="bottom"></div>
+<oj-messages position="[[msgPos]]" messages="[[messagesDataprovider]]" display="notification"></oj-messages>
+<oj-dialog id="inputParamDialog" style="display:none;width: 75vw; height: 75vh;" on-oj-close="[[onDialogClose]]"
+  resize-behavior="resizable" cancel-behavior="escape" dialog-title="[[inputDialogLabel]]">
+  <div slot="body">
+  
+    <div data-bind="ojModule: { name: currentDialogName , params : runInputArgDialogParameters }"  style="overflow:hidden;">
+    </div>
+  </div>
+  <div slot="footer">
+    <oj-button id="okButton" on-oj-action="[[onOkButtonClick]]">  <span> <oj-bind-text value="{{okButtonLabelField}}"> </oj-bind-text>  </span>
+    </oj-button>
+    <oj-button id="cancelButton" on-oj-action="[[onCancelButtonClick]]"> <span> <oj-bind-text value="{{cancelButtonField}}"> </oj-bind-text>   </span>
+    </oj-button>
+  </div>
+</oj-dialog>
+

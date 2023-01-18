@@ -1,0 +1,2331 @@
+{
+	"name": "oracledevtools",
+	"displayName": "Oracle Developer Tools for VS Code (SQL and PLSQL)",
+	"description": "Develop SQL and PL/SQL with Oracle Database and Oracle Autonomous Database",
+	"version": "21.5.0",
+	"publisher": "Oracle",
+	"icon": "images/oracle-logo.png",
+	"license": "SEE LICENSE IN license.txt",
+	"engines": {
+		"vscode": "^1.51.1"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"Oracle",
+		"SQL",
+		"PL/SQL",
+		"plsql"
+	],
+	"activationEvents": [
+		"*",
+		"onView:oracleDBObjectExplorer",
+		"onView:oracleQueryHistoryExplorer",
+		"onView:oracleBookmarkExplorer",
+		"onView:oracleCloudExplorer",
+		"onLanguage:oraclesql",
+		"onCommand:extension.executeSQLCommand",
+		"onCommand:extension.executeAllCommand",
+		"onCommand:extension.oracleconnect",
+		"onCommand:extension.oracledisconnect",
+		"onCommand:extension.enabledisableoraclelangservices",
+		"onCommand:extension.cancelScriptExecution",
+		"onCommand:extension.rebuildIntelliSenseMetaData",
+		"onCommand:extension.oracleNewQuery",
+		"onCommand:extension.oracleGettingStartedGuide",
+		"onCommand:extension.testwebview",
+		"onCommand:extension.setwebview",
+		"onCommand:extension.testwebviewhtml",
+		"onCommand:extension.setdatagrid",
+		"onCommand:oracledevtools.getDBExplorerConnections"
+	],
+	"main": "./out/extension",
+	"devDependencies": {
+		"@types/node": "14.14.22",
+		"@types/vscode": "1.51.0"
+	},
+	"repository": {},
+	"contributes": {
+		"configurationDefaults": {},
+		"keybindings": [
+			{
+				"command": "extension.executeSQLCommand",
+				"key": "ctrl+e",
+				"when": "editorTextFocus && editorLangId == oraclesql"
+			},
+			{
+				"command": "extension.executeAllCommand",
+				"key": "ctrl+r",
+				"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme != oracle"
+			},
+			{
+				"command": "oracleDBObjectExplorer.runCodeObjectFromFile",
+				"key": "ctrl+e",
+				"when": "editorTextFocus && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/"
+			},
+			{
+				"command": "oracleDBObjectExplorer.runDebugFromFile",
+				"when": "editorTextFocus && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/"
+			},
+			{
+				"command": "oracleDBObjectExplorer.stepIntoFromFile",
+				"when": "editorTextFocus && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/"
+			},
+			{
+				"command": "oracleBookmarkExplorer.addBookmarkItem",
+				"key": "ctrl+alt+b",
+				"when": "editorLangId == oraclesql && editorTextFocus"
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.oracleToolbarCancelCommand",
+				"title": "%executeCancelLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/stop.svg",
+					"dark": "out/explorer/images/dark/stop.svg"
+				}
+			},
+			{
+				"command": "extension.oracleToolbarClearCommand",
+				"title": "%executeClearLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/eraser.svg",
+					"dark": "out/explorer/images/dark/eraser.svg"
+				}
+			},
+			{
+				"command": "extension.oracleToolbarDisabledCancelCommand",
+				"title": "%executeDisabledCancelLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/stopDisabled.svg",
+					"dark": "out/explorer/images/dark/stopDisabled.svg"
+				}
+			},
+			{
+				"command": "extension.oracleToolbarDisabledClearCommand",
+				"title": "%executeDisabledClearLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/eraserDisabled.svg",
+					"dark": "out/explorer/images/dark/eraserDisabled.svg"
+				}
+			},
+			{
+				"command": "extension.rebuildIntelliSenseMetaData",
+				"title": "%rebuildIntellisenseMetaData%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/rebuildintellisense.svg",
+					"dark": "out/explorer/images/dark/rebuildintellisense.svg"
+				}
+			},
+			{
+				"command": "extension.openFormatterSettingsFromToolbar",
+				"title": "%formatterSettingsTitle%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/formatsettings.svg",
+					"dark": "out/explorer/images/dark/formatsettings.svg"
+				}
+			},
+			{
+				"command": "extension.formatText",
+				"title": "%formatText%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/format.svg",
+					"dark": "out/explorer/images/dark/format.svg"
+				}
+			},
+			{
+				"command": "extension.executeSQLCommand",
+				"title": "%executeSQLCommandLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/run.svg",
+					"dark": "out/explorer/images/dark/run.svg"
+				}
+			},
+			{
+				"command": "extension.executeAllCommand",
+				"title": "%executeAllCommandLabel%",
+				"category": "Oracle Toolbar",
+				"icon": {
+					"light": "out/explorer/images/light/runscript.svg",
+					"dark": "out/explorer/images/dark/runscript.svg"
+				}
+			},
+			{
+				"command": "extension.oracleconnect",
+				"title": "%connect%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.oracledisconnect",
+				"title": "%disconnect%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.testwebview",
+				"title": "Get WebView Info",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.setwebview",
+				"title": "Set WebView Items",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.testwebviewhtml",
+				"title": "Get WebView html",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.setdatagrid",
+				"title": "Set Data Grid",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.enabledisableoraclelangservices",
+				"title": "%enabledisableoraclelangservices%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.cancelScriptExecution",
+				"title": "%cancelScriptExecution%",
+				"category": "Oracle"
+			},
+			{
+				"command": "oracledevtools.getDBExplorerConnections",
+				"title": "Get Database Explorer Connections",
+				"category": "Oracle"
+			},
+			{
+				"command": "oracleDBObjectExplorer.refreshAll",
+				"title": "%refresh%",
+				"icon": {
+					"light": "out/explorer/images/light/refresh.svg",
+					"dark": "out/explorer/images/dark/refresh.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.installXeDatabase",
+				"title": "%installXeDatabase%",
+				"icon": {
+					"light": "out/explorer/images/light/gear.svg",
+					"dark": "out/explorer/images/dark/gear.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.refresh",
+				"title": "%refresh%",
+				"icon": {
+					"light": "out/explorer/images/light/refresh.svg",
+					"dark": "out/explorer/images/dark/refresh.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "extension.oracleNewQuery",
+				"title": "%runNewQuery%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.oracleGettingStartedGuide",
+				"title": "%gettingStartedGuide%",
+				"category": "Oracle"
+			},
+			{
+				"command": "oracleDBObjectExplorer.runCodeObjectFromFile",
+				"title": "%runProc%",
+				"category": "%oracleExplorer%",
+				"icon": {
+					"light": "out/explorer/images/light/run.svg",
+					"dark": "out/explorer/images/dark/run.svg"
+				}
+			},
+			{
+				"command": "oracleDBObjectExplorer.runCodeObject",
+				"title": "%run%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.connectMenu",
+				"title": "%connect%",
+				"icon": {
+					"light": "out/explorer/images/light/connect.svg",
+					"dark": "out/explorer/images/dark/connect.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.disconnectMenu",
+				"title": "%disconnect%",
+				"icon": {
+					"light": "out/explorer/images/light/disconnect.svg",
+					"dark": "out/explorer/images/dark/disconnect.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.openNewSQLFile",
+				"title": "%openNewSQLFile%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.openExistingSQLFile",
+				"title": "%openExistingSQLFile%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.deleteConnection",
+				"title": "%deleteConnection%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.editHistoryItem",
+				"title": "%copyToEditor%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.openHistoryItem",
+				"title": "%editBookmarkItem%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.runHistoryItem",
+				"title": "%runProc%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.bookmarkHistoryItem",
+				"title": "%bookmarkQuery%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.deleteHistoryItem",
+				"title": "%deleteItem%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "oracleQueryHistoryExplorer.clearAll",
+				"title": "%clearAll%",
+				"category": "%oracleQueryHistoryExplorer%"
+			},
+			{
+				"command": "extension.modifyConnection",
+				"title": "%cmdPaletteUpdateConnection%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.newConnection",
+				"title": "%cmdPaletteNewConnection%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.deleteConnection",
+				"title": "%cmdPaletteDeleteConnection%",
+				"category": "Oracle"
+			},
+			{
+				"command": "extension.clearRecentConnections",
+				"title": "%clearRecentConnections%",
+				"category": "Oracle"
+			},
+			{
+				"command": "oracleDBObjectExplorer.modifyConnection",
+				"title": "%modifyConnection%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.rename",
+				"title": "%rename%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.newConnection",
+				"title": "%newConnection%",
+				"icon": {
+					"light": "out/explorer/images/light/database-plus.svg",
+					"dark": "out/explorer/images/dark/database-plus.svg"
+				},
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.editPackageBody",
+				"title": "%editPackageBody%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.editPackageSpec",
+				"title": "%editPackageSpec%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.editPackageMethod",
+				"title": "%editPackageMethod%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.showData",
+				"title": "%showData%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleBookmarkExplorer.moveUpBookmarkGroup",
+				"title": "%moveUp%",
+				"icon": {
+					"light": "out/explorer/images/light/arrowup.svg",
+					"dark": "out/explorer/images/dark/arrowup.svg"
+				},
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.moveDownBookmarkGroup",
+				"title": "%moveDown%",
+				"icon": {
+					"light": "out/explorer/images/light/arrowdown.svg",
+					"dark": "out/explorer/images/dark/arrowdown.svg"
+				},
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.moveUpBookmarkItem",
+				"title": "%moveUp%",
+				"icon": {
+					"light": "out/explorer/images/light/arrowup.svg",
+					"dark": "out/explorer/images/dark/arrowup.svg"
+				},
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.moveDownBookmarkItem",
+				"title": "%moveDown%",
+				"icon": {
+					"light": "out/explorer/images/light/arrowdown.svg",
+					"dark": "out/explorer/images/dark/arrowdown.svg"
+				},
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.addBookmarkItem",
+				"title": "%bookmarkQuery%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.editBookmarkItem",
+				"title": "%editBookmarkItem%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.deleteBookmarkItem",
+				"title": "%deleteItem%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.runBookmarkItem",
+				"title": "%runProc%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.addFolder",
+				"title": "%addFolder%",
+				"icon": {
+					"light": "out/explorer/images/light/database-plus.svg",
+					"dark": "out/explorer/images/dark/database-plus.svg"
+				},
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.clearAll",
+				"title": "%clearAll%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.copyToEditor",
+				"title": "%copyToEditor%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleBookmarkExplorer.rename",
+				"title": "%rename%",
+				"category": "Bookmarks"
+			},
+			{
+				"command": "oracleCloudExplorer.refreshAll",
+				"title": "%refresh%",
+				"icon": {
+					"light": "out/explorer/images/light/refresh.svg",
+					"dark": "out/explorer/images/dark/refresh.svg"
+				},
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.ociUpdateProfile",
+				"title": "%ociUpdateProfile%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.ociRefreshNode",
+				"title": "%ociRefreshNode%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.ociCreateNewDatabase",
+				"title": "%ociCreateNewDatabase%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbStartInstance",
+				"title": "%ociStartDatabase%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbStopInstance",
+				"title": "%ociStopDatabase%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbTerminateInstance",
+				"title": "%ociTerminateDatabase%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbChangePassword",
+				"title": "%ociChangeADBPassword%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbCreateDataConnection",
+				"title": "%ociCreateDataConnection%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbDownloadCredentialsFile",
+				"title": "%adbDownloadCredentialsFile%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbConnectionStrings",
+				"title": "%adbConnectionStrings%",
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbConfigureWalletlessConnectivityandNetworkAccess",
+				"title": "%adbConfigureWalletlessConnectivityandNetworkAccess%",
+				"group": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.adbConfigureDatabaseAccessControl",
+				"title": "%adbConfigureDatabaseAccessControl%",
+				"group": "CloudExplorer"
+			},
+			{
+				"command": "oracleCloudExplorer.signupOracleCloud",
+				"title": "%signupOracleCloud%",
+				"icon": {
+					"light": "out/explorer/images/light/gear.svg",
+					"dark": "out/explorer/images/dark/gear.svg"
+				},
+				"category": "CloudExplorer"
+			},
+			{
+				"command": "oracleDBObjectExplorer.describeObject",
+				"title": "%describeObject%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.compileObject",
+				"title": "%compileObject%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.compileDebugObject",
+				"title": "%compileDebugObject%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.compileObjectFromFile",
+				"title": "%compileObject%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.compileDebugObjectFromFile",
+				"title": "%compileDebugObject%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.generateSelect",
+				"title": "%generateSelect%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.generateInsert",
+				"title": "%generateInsert%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.generateDelete",
+				"title": "%generateDelete%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.generateCreate",
+				"title": "%generateCreate%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.editScript",
+				"title": "%editScript%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.downloadScript",
+				"title": "%downloadScript%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.downloadPackageSpec",
+				"title": "%downloadPackageSpec%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.downloadPackageBody",
+				"title": "%downloadPackageBody%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.openCompilerSettings",
+				"title": "%compilerSettingsTitle%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.openFormatterSettings",
+				"title": "%formatterSettingsTitle%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.startExternalApplicationdebugger",
+				"title": "%startExtAppDebugger%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.runDebug",
+				"title": "%runDebug%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.stepInto",
+				"title": "%stepInto%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.runDebugFromFile",
+				"title": "%runDebug%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.stepIntoFromFile",
+				"title": "%stepInto%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.setDefaultConnection",
+				"title": "%setDefaultConnection%",
+				"category": "%oracleExplorer%"
+			},
+			{
+				"command": "oracleDBObjectExplorer.unsetDefaultConnection",
+				"title": "%unsetDefaultConnection%",
+				"category": "%oracleExplorer%"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "extension.oracleconnect",
+					"when": "resourceScheme != oracle"
+				},
+				{
+					"command": "extension.oracledisconnect",
+					"when": "resourceScheme != oracle"
+				},
+				{
+					"command": "oracleDBObjectExplorer.refreshAll",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.refresh",
+					"when": "false"
+				},
+				{
+					"command": "extension.testwebview",
+					"when": "testEnvironment"
+				},
+				{
+					"command": "extension.setwebview",
+					"when": "testEnvironment"
+				},
+				{
+					"command": "extension.testwebviewhtml",
+					"when": "testEnvironment"
+				},
+				{
+					"command": "extension.setdatagrid",
+					"when": "testEnvironment"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObjectFromFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObject",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.connectMenu",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.disconnectMenu",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.openNewSQLFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.openExistingSQLFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.deleteConnection",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.modifyConnection",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.newConnection",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageBody",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageSpec",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageMethod",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.showData",
+					"when": "false"
+				},
+				{
+					"command": "extension.oracleToolbarClearCommand",
+					"when": "false"
+				},
+				{
+					"command": "extension.oracleToolbarCancelCommand",
+					"when": "false"
+				},
+				{
+					"command": "extension.oracleToolbarDisabledClearCommand",
+					"when": "false"
+				},
+				{
+					"command": "extension.oracleToolbarDisabledCancelCommand",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.refreshAll",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.signupOracleCloud",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.ociUpdateProfile",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.ociRefreshNode",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.ociCreateNewDatabase",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbCreateDataConnection",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbStartInstance",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbStopInstance",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbTerminateInstance",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbChangePassword",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbDownloadCredentialsFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConnectionStrings",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConfigureWalletlessConnectivityandNetworkAccess",
+					"when": "false"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConfigureDatabaseAccessControl",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.describeObject",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateSelect",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileObject",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileDebugObject",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileObjectFromFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileDebugObjectFromFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateInsert",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateDelete",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateCreate",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editScript",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadScript",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadPackageSpec",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadPackageBody",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runDebug",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.stepInto",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runDebugFromFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.stepIntoFromFile",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.startExternalApplicationdebugger",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.setDefaultConnection",
+					"when": "false"
+				},
+				{
+					"command": "oracleDBObjectExplorer.unsetDefaultConnection",
+					"when": "false"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "extension.executeSQLCommand",
+					"when": "editorLangId == oraclesql && resourceScheme != oracle || editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .sql",
+					"group": "OracleSQL@1"
+				},
+				{
+					"command": "extension.executeAllCommand",
+					"when": "editorLangId == oraclesql && resourceScheme != oracle || editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .sql",
+					"group": "OracleSQL@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObjectFromFile",
+					"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/",
+					"group": "OracleEXP@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runDebugFromFile",
+					"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/",
+					"group": "OracleEXP@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.stepIntoFromFile",
+					"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme == oracle && resource =~ /(objectType%3D13|objectType%3D15)/",
+					"group": "OracleEXP@1"
+				},
+				{
+					"command": "oracleBookmarkExplorer.addBookmarkItem",
+					"when": "editorLangId == oraclesql && resourceScheme != oracle",
+					"group": "OracleBookMark"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileObjectFromFile",
+					"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .plsql",
+					"group": "OracleEXP@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileDebugObjectFromFile",
+					"when": "editorTextFocus && editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .plsql",
+					"group": "OracleEXP@3"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "extension.oracleToolbarCancelCommand",
+					"group": "navigation",
+					"when": "oracleToolbar.cancelVisibility"
+				},
+				{
+					"command": "extension.oracleToolbarClearCommand",
+					"group": "navigation",
+					"when": "oracleToolbar.clearVisibility"
+				},
+				{
+					"command": "extension.oracleToolbarDisabledCancelCommand",
+					"group": "navigation",
+					"when": "oracleToolbar.cancelDisabledVisibility"
+				},
+				{
+					"command": "extension.oracleToolbarDisabledClearCommand",
+					"group": "navigation",
+					"when": "oracleToolbar.clearDisabledVisibility"
+				},
+				{
+					"command": "extension.openFormatterSettingsFromToolbar",
+					"group": "navigation@5",
+					"when": "editorLangId == oraclesql"
+				},
+				{
+					"command": "extension.executeSQLCommand",
+					"group": "navigation@1",
+					"when": "editorLangId == oraclesql && resourceScheme != oracle || editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .sql"
+				},
+				{
+					"command": "extension.executeAllCommand",
+					"group": "navigation@2",
+					"when": "editorLangId == oraclesql && resourceScheme != oracle || editorLangId == oraclesql && resourceScheme == oracle && resourceExtname == .sql"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObjectFromFile",
+					"when": "editorLangId == oraclesql && resourceScheme == oracle && resourceDirname =~ /^\\\\[^\\\\]+\\\\(Procedure|Function)\\\\/",
+					"group": "navigation@1"
+				},
+				{
+					"command": "extension.rebuildIntelliSenseMetaData",
+					"group": "navigation@4",
+					"when": "editorLangId == oraclesql"
+				},
+				{
+					"command": "extension.formatText",
+					"group": "navigation@3",
+					"when": "editorLangId == oraclesql && editorHasDocumentFormattingProvider && !editorReadonly && !inCompositeEditor"
+				}
+			],
+			"view/title": [
+				{
+					"command": "oracleDBObjectExplorer.installXeDatabase",
+					"when": "view == oracleDBObjectExplorer",
+					"group": "navigation@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.refreshAll",
+					"when": "view == oracleDBObjectExplorer",
+					"group": "navigation@3"
+				},
+				{
+					"command": "oracleDBObjectExplorer.newConnection",
+					"when": "view == oracleDBObjectExplorer",
+					"group": "navigation@1"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.clearAll",
+					"when": "view == oracleQueryHistoryExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "oracleBookmarkExplorer.addFolder",
+					"when": "view == oracleBookmarkExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "oracleBookmarkExplorer.clearAll",
+					"when": "view == oracleBookmarkExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "oracleCloudExplorer.signupOracleCloud",
+					"when": "view == oracleCloudExplorer",
+					"group": "navigation@1"
+				},
+				{
+					"command": "oracleCloudExplorer.refreshAll",
+					"when": "view == oracleCloudExplorer",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "oracleDBObjectExplorer.openNewSQLFile",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "connection_1_openSQLFile@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.openExistingSQLFile",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "connection_1_openSQLFile@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.connectMenu",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /(DisconnectedConnection|ErroredConnection)/",
+					"group": "connection_2_state@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.disconnectMenu",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /ConnectedConnection/",
+					"group": "connection_2_state@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.rename",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "connection_2_state@3"
+				},
+				{
+					"command": "oracleDBObjectExplorer.modifyConnection",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "connection_2_state@4"
+				},
+				{
+					"command": "oracleDBObjectExplorer.deleteConnection",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "connection_2_state@5"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObject",
+					"when": "view == oracleDBObjectExplorer && viewItem == Procedure",
+					"group": "oemenu1@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editScript",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|Trigger)$/",
+					"group": "oemenu2@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObject",
+					"when": "view == oracleDBObjectExplorer && viewItem == Function",
+					"group": "oemenu1@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadScript",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|Trigger)$/",
+					"group": "oemenu2@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageSpec",
+					"when": "view == oracleDBObjectExplorer && viewItem == Package",
+					"group": "oemenu2@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageBody",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Package|PackageBody)$/",
+					"group": "oemenu2@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadPackageSpec",
+					"when": "view == oracleDBObjectExplorer && viewItem == Package",
+					"group": "oemenu2@3"
+				},
+				{
+					"command": "oracleDBObjectExplorer.downloadPackageBody",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Package|PackageBody)$/",
+					"group": "oemenu2@4"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runCodeObject",
+					"when": "view == oracleDBObjectExplorer && viewItem == PackageMethod",
+					"group": "oemenu1@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageMethod",
+					"when": "view == oracleDBObjectExplorer && viewItem == PackageMethod",
+					"group": "oemenu2@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.editPackageMethod",
+					"when": "view == oracleDBObjectExplorer && viewItem == PackageBodyPrivateMethod",
+					"group": "oemenu2@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.runDebug",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|PackageMethod)$/",
+					"group": "oemenu1@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.stepInto",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|PackageMethod)$/",
+					"group": "oemenu1@3"
+				},
+				{
+					"command": "oracleDBObjectExplorer.showData",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table|Object Table|XML Table|Relational View|Object View|XML View|Materialized View)$/",
+					"group": "oemenu1@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.openCompilerSettings",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "oemenu3@1"
+				},
+				{
+					"command": "oracleDBObjectExplorer.openFormatterSettings",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "oemenu3@2"
+				},
+				{
+					"command": "oracleDBObjectExplorer.startExternalApplicationdebugger",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /Connection/",
+					"group": "oemenu3@3"
+				},
+				{
+					"command": "oracleDBObjectExplorer.refresh",
+					"when": "view == oracleDBObjectExplorer",
+					"group": "oemenu4@1"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.runHistoryItem",
+					"when": "view == oracleQueryHistoryExplorer && viewItem == HistoryItem",
+					"group": "history1@1"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.openHistoryItem",
+					"when": "view == oracleQueryHistoryExplorer && viewItem == HistoryItem",
+					"group": "history1@2"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.editHistoryItem",
+					"when": "view == oracleQueryHistoryExplorer && viewItem == HistoryItem",
+					"group": "history1@3"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.bookmarkHistoryItem",
+					"when": "view == oracleQueryHistoryExplorer && viewItem == HistoryItem",
+					"group": "history1@4"
+				},
+				{
+					"command": "oracleQueryHistoryExplorer.deleteHistoryItem",
+					"when": "view == oracleQueryHistoryExplorer",
+					"group": "history2@1"
+				},
+				{
+					"command": "oracleBookmarkExplorer.runBookmarkItem",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(bookmarkItemOne|firstBookmarkItem|middleBookmarkItem|lastBookmarkItem)/",
+					"group": "bookmarks1@1"
+				},
+				{
+					"command": "oracleBookmarkExplorer.editBookmarkItem",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(bookmarkItemOne|firstBookmarkItem|middleBookmarkItem|lastBookmarkItem)/",
+					"group": "bookmarks1@2"
+				},
+				{
+					"command": "oracleBookmarkExplorer.copyToEditor",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(bookmarkItemOne|firstBookmarkItem|middleBookmarkItem|lastBookmarkItem)/",
+					"group": "bookmarks1@3"
+				},
+				{
+					"command": "oracleBookmarkExplorer.rename",
+					"when": "view == oracleBookmarkExplorer",
+					"group": "bookmarks2@1"
+				},
+				{
+					"command": "oracleBookmarkExplorer.deleteBookmarkItem",
+					"when": "view == oracleBookmarkExplorer",
+					"group": "bookmarks2@2"
+				},
+				{
+					"command": "oracleBookmarkExplorer.moveUpBookmarkGroup",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(middleBookMarkGroup|lastBookmarkGroup)/",
+					"group": "inline"
+				},
+				{
+					"command": "oracleBookmarkExplorer.moveDownBookmarkGroup",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(middleBookMarkGroup|firstBookmarkGroup)/",
+					"group": "inline"
+				},
+				{
+					"command": "oracleBookmarkExplorer.moveUpBookmarkItem",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(middleBookmarkItem|lastBookmarkItem)/",
+					"group": "inline"
+				},
+				{
+					"command": "oracleBookmarkExplorer.moveDownBookmarkItem",
+					"when": "view == oracleBookmarkExplorer && viewItem =~ /(middleBookmarkItem|firstBookmarkItem)/",
+					"group": "inline"
+				},
+				{
+					"command": "oracleCloudExplorer.ociUpdateProfile",
+					"when": "view == oracleCloudExplorer && viewItem == ociRootNodeItem",
+					"group": "CloudExplorer1@1"
+				},
+				{
+					"command": "oracleCloudExplorer.ociCreateNewDatabase",
+					"when": "view == oracleCloudExplorer  && viewItem == ociWorkloadItem",
+					"group": "CloudExplorer3@1"
+				},
+				{
+					"command": "oracleCloudExplorer.ociRefreshNode",
+					"when": "view == oracleCloudExplorer",
+					"group": "CloudExplorer5@1"
+				},
+				{
+					"command": "oracleCloudExplorer.adbCreateDataConnection",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer1@1"
+				},
+				{
+					"command": "oracleCloudExplorer.adbDownloadCredentialsFile",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer1@2"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConnectionStrings",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer1@4"
+				},
+				{
+					"command": "oracleCloudExplorer.adbStartInstance",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer2@1"
+				},
+				{
+					"command": "oracleCloudExplorer.adbStopInstance",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer2@2"
+				},
+				{
+					"command": "oracleCloudExplorer.adbTerminateInstance",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer2@3"
+				},
+				{
+					"command": "oracleCloudExplorer.adbChangePassword",
+					"when": "view == oracleCloudExplorer && viewItem =~ /(ociNonDedicatedDatabaseItem|ociDedicatedDatabaseItem)/",
+					"group": "CloudExplorer2@4"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConfigureWalletlessConnectivityandNetworkAccess",
+					"when": "view == oracleCloudExplorer && viewItem == ociNonDedicatedDatabaseItem",
+					"group": "CloudExplorer2@5"
+				},
+				{
+					"command": "oracleCloudExplorer.adbConfigureDatabaseAccessControl",
+					"when": "view == oracleCloudExplorer && viewItem == ociDedicatedDatabaseItem",
+					"group": "CloudExplorer2@5"
+				},
+				{
+					"command": "oracleDBObjectExplorer.describeObject",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table|Object Table|XML Table|Relational View|Object View|XML View|Materialized View|Procedure|Function|Package|Synonym)$/",
+					"group": "oemenu1@4"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileObject",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|Package|PackageBody|Trigger)$/",
+					"group": "oemenu1@5"
+				},
+				{
+					"command": "oracleDBObjectExplorer.compileDebugObject",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Procedure|Function|Package|PackageBody|Trigger)$/",
+					"group": "oemenu1@6"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateSelect",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table)$/",
+					"group": "oemenu1@7"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateInsert",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table)$/",
+					"group": "oemenu1@8"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateDelete",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table)$/",
+					"group": "oemenu1@9"
+				},
+				{
+					"command": "oracleDBObjectExplorer.generateCreate",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(Relational Table|Object Table|XML Table|Relational View|Object View|XML View|Materialized View|Synonym)$/",
+					"group": "oemenu1@10"
+				},
+				{
+					"command": "oracleDBObjectExplorer.setDefaultConnection",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(ConnectedConnection|DisconnectedConnection|ErroredConnection)/",
+					"group": "connection_2_state@6"
+				},
+				{
+					"command": "oracleDBObjectExplorer.unsetDefaultConnection",
+					"when": "view == oracleDBObjectExplorer && viewItem =~ /^(DefaultConnectedConnection|DefaultDisconnectedConnection|DefaultErroredConnection)/",
+					"group": "connection_2_state@6"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "oracle-db-explorer",
+					"title": "%viewContainerTitle%",
+					"icon": "out/explorer/images/database.svg"
+				}
+			]
+		},
+		"views": {
+			"oracle-db-explorer": [
+				{
+					"id": "oracleDBObjectExplorer",
+					"name": "%oracleExplorerViewName%"
+				},
+				{
+					"id": "oracleCloudExplorer",
+					"name": "%oracleCloudExplorerViewName%"
+				},
+				{
+					"id": "oracleBookmarkExplorer",
+					"name": "%oracleQueryBookmarkViewName%"
+				},
+				{
+					"id": "oracleQueryHistoryExplorer",
+					"name": "%oracleQueryHistoryExplorerViewName%"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "oraclesql",
+				"aliases": [
+					"Oracle-SQL and PLSQL"
+				],
+				"extensions": [
+					".sql",
+					".plsql",
+					".pls"
+				],
+				"configuration": "./syntaxes/language-configuration.json"
+			}
+		],
+		"breakpoints": [
+			{
+				"language": "oraclesql"
+			}
+		],
+		"grammars": [
+			{
+				"language": "oraclesql",
+				"scopeName": "source.oraclesql",
+				"path": "./syntaxes/oraclesql.tmLanguage.plist"
+			}
+		],
+		"snippets": [
+			{
+				"language": "oraclesql",
+				"path": "./snippets/oracle-sql.json"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Oracle Developer Tools for VS Code Configuration",
+			"properties": {
+				"oracledevtools.bookmarkFileFolder": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%bookmarkFileFolder%"
+				},
+				"oracledevtools.connectionConfiguration.configFilesFolder": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%connectionConfiguration.configFileFolder%"
+				},
+				"oracledevtools.connectionConfiguration.loginScript": {
+					"type": "string",
+					"default": "",
+					"description": "%connectionConfiguration.loginScript%"
+				},
+				"oracledevtools.connectionConfiguration.walletFileFolder": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%connectionConfiguration.walletFileFolder%"
+				},
+				"oracledevtools.OracleCloudInfrastructure.profiles": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"profileName": {
+								"type": "string",
+								"default": "",
+								"description": "%profileName%"
+							},
+							"compartmentName": {
+								"type": "string",
+								"default": "",
+								"description": "%recentCompartmentName%"
+							},
+							"region": {
+								"type": "string",
+								"default": "",
+								"description": "%region%"
+							},
+							"tenancyID": {
+								"type": "string",
+								"default": "",
+								"description": "%tenancyID%"
+							},
+							"tenancyName": {
+								"type": "string",
+								"default": "",
+								"description": "%tenancyName%"
+							}
+						}
+					},
+					"scope": "resource"
+				},
+				"oracledevtools.connections": {
+					"type": "array",
+					"default": [
+						{
+							"dataSource": "{{specify the data source}}",
+							"userID": "{{specify the database user ID}}",
+							"password": "{{specify the database password}}"
+						}
+					],
+					"description": "%connectionsDesc%",
+					"items": {
+						"type": "object",
+						"properties": {
+							"dataSource": {
+								"type": "string",
+								"default": "{{specify the data source}}",
+								"description": "%datasourceDesc%"
+							},
+							"userID": {
+								"type": "string",
+								"default": "{{specify the database user ID}}",
+								"description": "%userIDDesc%"
+							},
+							"dBAPrivilege": {
+								"type": "string",
+								"default": "{{speficy DBA privelege}}",
+								"description": "%dbaPrivilegeDesc%"
+							},
+							"password": {
+								"type": "string",
+								"default": "{{specify password}}",
+								"description": "%passwordDesc%"
+							},
+							"authenticationType": {
+								"type": "number",
+								"default": 2,
+								"enum": [
+									1,
+									2
+								],
+								"description": "%authenticationTypeDesc%"
+							},
+							"enlist": {
+								"type": "boolean",
+								"default": true,
+								"description": "%enlistDesc%"
+							},
+							"connectionLifeTime": {
+								"type": "number",
+								"default": 0,
+								"description": "%connectionLifeTimeDesc%"
+							},
+							"incrPoolSize": {
+								"type": "number",
+								"default": 5,
+								"description": "%incrPoolSizeDesc%"
+							},
+							"decrPoolSize": {
+								"type": "number",
+								"default": 1,
+								"description": "%decrPoolSizeDesc%"
+							},
+							"maxPoolSize": {
+								"type": "number",
+								"default": 100,
+								"description": "%maxPoolSizeDesc%"
+							},
+							"minPoolSize": {
+								"type": "number",
+								"default": 1,
+								"description": "%minPoolSizeDesc%"
+							},
+							"persistSecurityInfo": {
+								"type": "boolean",
+								"default": false,
+								"description": "%persistSecurityInfoDesc%"
+							},
+							"pooling": {
+								"type": "boolean",
+								"default": false,
+								"description": "%poolingDesc%"
+							},
+							"connectionTimeout": {
+								"type": "number",
+								"default": 30,
+								"description": "%connectionTimeoutDesc%"
+							},
+							"proxyUserID": {
+								"type": "string",
+								"default": "",
+								"description": "%proxyUserIDDesc%"
+							},
+							"proxyPassword": {
+								"type": "string",
+								"default": "",
+								"description": "%proxyPasswordDesc%"
+							},
+							"validateConnection": {
+								"type": "boolean",
+								"default": false,
+								"description": "%validateConnectionDesc%"
+							},
+							"statementCacheSize": {
+								"type": "number",
+								"default": 0,
+								"description": "%statementCacheSizeDesc%"
+							},
+							"statementCachePurge": {
+								"type": "boolean",
+								"default": false,
+								"description": "%statementCachePurgeDesc%"
+							},
+							"hAEvents": {
+								"type": "boolean",
+								"default": true,
+								"description": "%hAEventsDesc%"
+							},
+							"loadBalancing": {
+								"type": "boolean",
+								"default": true,
+								"description": "%loadBalancingDesc%"
+							},
+							"metadataPooling": {
+								"type": "boolean",
+								"default": false,
+								"description": "%metadataPoolingDesc%"
+							},
+							"contextConnection": {
+								"type": "boolean",
+								"default": false,
+								"description": "%contextConnectionDesc%"
+							},
+							"promotableTransaction": {
+								"type": "string",
+								"default": "promotable",
+								"description": "%promotableTransactionDesc%"
+							},
+							"selfTunning": {
+								"type": "boolean",
+								"default": false,
+								"description": "%selfTunningDesc%"
+							},
+							"providerDataSourceType": {
+								"type": "string",
+								"enum": [
+									"EZConnect",
+									"Direct",
+									"TNS"
+								],
+								"description": "%providerDataSourceTypeDesc%"
+							},
+							"connectionString": {
+								"type": "string",
+								"default": "",
+								"description": "%connectionStringDesc%"
+							},
+							"name": {
+								"type": "string",
+								"description": "%oracleProfileNameDesc%"
+							},
+							"passwordSaved": {
+								"type": "boolean",
+								"default": false,
+								"description": "%passwordSavedDesc%"
+							},
+							"passwordEmptyByUser": {
+								"type": "boolean",
+								"default": false,
+								"description": "%passwordEmptyByUserDesc%"
+							},
+							"loginScript": {
+								"type": "string",
+								"default": "",
+								"description": "%loginScriptDesc%"
+							}
+						}
+					},
+					"scope": "resource"
+				},
+				"oracledevtools.history.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "%history.enable%"
+				},
+				"oracledevtools.intellisense.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "%intellisense.enable%"
+				},
+				"oracledevtools.intellisense.suggestions.keywordCasing": {
+					"type": "string",
+					"default": "Uppercase",
+					"enum": [
+						"Uppercase",
+						"Lowercase"
+					],
+					"description": "%intellisense.keywordCasing%"
+				},
+				"oracledevtools.intellisense.suggestions.objectNameCasing": {
+					"type": "string",
+					"default": "Uppercase",
+					"enum": [
+						"Uppercase",
+						"Lowercase"
+					],
+					"description": "%intellisense.objectNameCasing%"
+				},
+				"oracledevtools.intellisense.synonymDepthLevel": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1,
+					"description": "%synonymDepthLevelDesc%"
+				},
+				"oracledevtools.PL/SQLCompilerSettings": {
+					"type": "object",
+					"properties": {
+						"compile.enableFlags": {
+							"type": "boolean",
+							"description": "%enableCompileFlags%"
+						},
+						"compile.optimizeLevel": {
+							"type": "integer",
+							"minimum": 2,
+							"maximum": 3,
+							"description": "%optimizeLevel%"
+						},
+						"compile.plscopeIdentifiers": {
+							"type": "string",
+							"enum": [
+								"ALL",
+								"NONE",
+								"PUBLIC",
+								"SQL",
+								"PLSQL",
+								""
+							],
+							"description": "%plscopeIdentifiers%"
+						},
+						"compile.plscopeStatements": {
+							"type": "string",
+							"enum": [
+								"ALL",
+								"NONE",
+								""
+							],
+							"description": "%plscopeStatements%"
+						},
+						"compile.allWarnings": {
+							"type": "string",
+							"description": "%warnings.all%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compile.informationalWarnings": {
+							"type": "string",
+							"description": "%warnings.informational%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compile.performanceWarnings": {
+							"type": "string",
+							"description": "%warnings.performance%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compile.severeWarnings": {
+							"type": "string",
+							"description": "%warnings.severe%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compileDebug.enableFlags": {
+							"type": "boolean",
+							"description": "%enableCompileFlags%"
+						},
+						"compileDebug.optimizeLevel": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 1,
+							"description": "%optimizeLevel%"
+						},
+						"compileDebug.plscopeIdentifiers": {
+							"type": "string",
+							"enum": [
+								"ALL",
+								"NONE",
+								"PUBLIC",
+								"SQL",
+								"PLSQL",
+								""
+							],
+							"description": "%plscopeIdentifiers%"
+						},
+						"compileDebug.plscopeStatements": {
+							"type": "string",
+							"enum": [
+								"ALL",
+								"NONE",
+								""
+							],
+							"description": "%plscopeStatements%"
+						},
+						"compileDebug.allWarnings": {
+							"type": "string",
+							"description": "%warnings.all%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compileDebug.informationalWarnings": {
+							"type": "string",
+							"description": "%warnings.informational%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compileDebug.performanceWarnings": {
+							"type": "string",
+							"description": "%warnings.performance%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						},
+						"compileDebug.severeWarnings": {
+							"type": "string",
+							"description": "%warnings.severe%",
+							"enum": [
+								"ENABLE",
+								"DISABLE",
+								"ERROR",
+								""
+							]
+						}
+					},
+					"default": {
+						"compile.enableFlags": false,
+						"compile.optimizeLevel": 2,
+						"compile.plscopeIdentifiers": "NONE",
+						"compile.plscopeStatements": "",
+						"compile.allWarnings": "DISABLE",
+						"compile.informationalWarnings": "",
+						"compile.performanceWarnings": "",
+						"compile.severeWarnings": "",
+						"compileDebug.enableFlags": false,
+						"compileDebug.optimizeLevel": 1,
+						"compileDebug.plscopeIdentifiers": "NONE",
+						"compileDebug.plscopeStatements": "",
+						"compileDebug.allWarnings": "DISABLE",
+						"compileDebug.informationalWarnings": "",
+						"compileDebug.performanceWarnings": "",
+						"compileDebug.severeWarnings": ""
+					},
+					"required": [
+						"compile.enableFlags",
+						"compile.optimizeLevel",
+						"compile.plscopeIdentifiers",
+						"compileDebug.enableFlags",
+						"compileDebug.optimizeLevel",
+						"compileDebug.plscopeIdentifiers"
+					],
+					"description": "%compilerSettingsDesc%"
+				},
+				"oracledevtools.PL/SQLDebuggerSettings": {
+					"type": "object",
+					"properties": {
+						"debugger.hostIPAddress": {
+							"type": "string",
+							"description": "%debugging.hostIpAddress%"
+						},
+						"debugger.startingPortNumber": {
+							"type": "integer",
+							"default": 65000,
+							"minimum": 1,
+							"maximum": 65535,
+							"description": "%debugging.startingPortNumber%"
+						},
+						"debugger.endingPortNumber": {
+							"type": "integer",
+							"default": 65535,
+							"minimum": 1,
+							"maximum": 65535,
+							"description": "%debugging.endingPortNumber%"
+						}
+					},
+					"description": "%debuggerSettingsDesc%"
+				},
+				"oracledevtools.logging.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "%logging.enable%"
+				},
+				"oracledevtools.logging.level": {
+					"type": "string",
+					"default": "Error",
+					"enum": [
+						"Information",
+						"Warning",
+						"Error"
+					],
+					"description": "%logging.logLevel%"
+				},
+				"oracledevtools.maxRecentConnections": {
+					"type": "number",
+					"default": 5,
+					"description": "%maxRecentConnections%",
+					"scope": "window"
+				},
+				"oracledevtools.download.folderType": {
+					"type": "string",
+					"default": "Open Workspace or Folder",
+					"enum": [
+						"Open Workspace or Folder",
+						"Other Folder"
+					],
+					"description": "%download.currentWorkspaceOrFolder%"
+				},
+				"oracledevtools.download.otherFolder": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%download.specifyFolder%"
+				},
+				"oracledevtools.formatterSettings": {
+					"type": "object",
+					"properties": {
+						"keywordCasing": {
+							"type": "string",
+							"default": "Same as Intellisense",
+							"enum": [
+								"Same as Intellisense",
+								"Uppercase",
+								"Lowercase",
+								"No change"
+							]
+						},
+						"identifierCasing": {
+							"type": "string",
+							"default": "Same as Intellisense",
+							"enum": [
+								"Same as Intellisense",
+								"Uppercase",
+								"Lowercase",
+								"No change"
+							]
+						},
+						"1-LineLongComments": {
+							"type": "string",
+							"default": "Don't format",
+							"enum": [
+								"Don't format",
+								"Wrap multiline",
+								"Wrap single line"
+							]
+						},
+						"lineBreaksBetweenStatements": {
+							"type": "string",
+							"default": "Double break",
+							"enum": [
+								"Double break",
+								"Single break"
+							]
+						},
+						"lineBreakOnComma": {
+							"type": "string",
+							"default": "After",
+							"enum": [
+								"After",
+								"Before",
+								"No break"
+							]
+						},
+						"lineBreakOnConcatenation": {
+							"type": "string",
+							"default": "After",
+							"enum": [
+								"After",
+								"Before",
+								"No break"
+							]
+						},
+						"lineBreakOnBooleanConnectors": {
+							"type": "string",
+							"default": "After",
+							"enum": [
+								"After",
+								"Before",
+								"No break"
+							]
+						},
+						"lineBreakOnANSI-joins": {
+							"type": "boolean",
+							"default": true
+						},
+						"lineBreakBeforeLineComments": {
+							"type": "boolean",
+							"default": false
+						},
+						"lineBreakAfterSelect/From/Where": {
+							"type": "boolean",
+							"default": true
+						},
+						"lineBreaksOnIf/Case/While": {
+							"type": "string",
+							"default": "Indented actions, inlined conditions",
+							"enum": [
+								"Indented actions, inlined conditions",
+								"Terse (Line breaks only after actions)",
+								"Line breaks after conditions and actions",
+								"Indented conditions and actions"
+							]
+						},
+						"whiteSpaceAroundOperators": {
+							"type": "string",
+							"default": "Don't format",
+							"enum": [
+								"Don't format",
+								"Add space",
+								"No space"
+							]
+						},
+						"whiteSpaceAfterCommas": {
+							"type": "boolean",
+							"default": true
+						},
+						"whiteSpaceAroundParenthesis": {
+							"type": "string",
+							"default": "Don't format",
+							"enum": [
+								"Don't format",
+								"Inside",
+								"Outside",
+								"No space"
+							]
+						}
+					},
+					"description": "%formatterSettingsDesc%"
+				},
+				"oracledevtools.query.autoCommit": {
+					"type": "boolean",
+					"default": true,
+					"description": "%query.autoCommit%"
+				},
+				"oracledevtools.query.clearResultsWindow": {
+					"type": "boolean",
+					"default": false,
+					"description": "%query.clearResultsWindow%"
+				},
+				"oracledevtools.query.echo": {
+					"type": "boolean",
+					"default": true,
+					"description": "%query.echo%"
+				},
+				"oracledevtools.query.resultSet.maxRows": {
+					"type": "integer",
+					"default": 500,
+					"minimum": -1,
+					"description": "%query.resultSetMaxRows%"
+				},
+				"oracledevtools.query.resultSet.pageSize": {
+					"type": "integer",
+					"default": 10,
+					"minimum": 1,
+					"maximum": 25,
+					"description": "%query.resultSetPageSize%"
+				},
+				"oracledevtools.query.resultSet.cSV.delimiter": {
+					"type": "string",
+					"default": ",",
+					"pattern": "(^\\\\n$)|(^\\\\r$)|(^\\\\t$)|(^\\\\f$)|(^.$)",
+					"patternErrorMessage": "%query.resultSetDelimiterValidation%",
+					"description": "%query.resultSetColumnDelimiter%"
+				},
+				"oracledevtools.query.resultSet.cSV.textQualifier": {
+					"type": "string",
+					"default": "None",
+					"description": "%query.resultSetTextQualifier%",
+					"enum": [
+						"None",
+						" ' ' Single quotes",
+						" \" \" Double quotes"
+					]
+				},
+				"oracledevtools.query.unsupportedSqlplusCommands.showWarning": {
+					"type": "boolean",
+					"default": true,
+					"description": "%query.unsupportedCommandShowWarning%"
+				},
+				"oracleDeveloperTools.intellisense.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "%intellisense.enable.deprecated%",
+					"deprecationMessage": "%intellisense.enable.deprecationMessage%",
+					"markdownDeprecationMessage": "%intellisense.enable.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.logging.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "%logging.enableLogging.deprecated%",
+					"deprecationMessage": "%logging.enableLogging.deprecationMessage%",
+					"markdownDeprecationMessage": "%logging.enableLogging.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.logging.level": {
+					"type": "string",
+					"default": "Error",
+					"enum": [
+						"Information",
+						"Warning",
+						"Error"
+					],
+					"description": "%logging.logLevel.deprecated%",
+					"deprecationMessage": "%logging.logLevel.deprecationMessage%",
+					"markdownDeprecationMessage": "%logging.logLevel.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.maxRecentConnections": {
+					"type": "integer",
+					"default": 5,
+					"description": "%oracleDeveloperTools.maxRecentConnections.deprecated%",
+					"scope": "window",
+					"deprecationMessage": "%oracleDeveloperTools.maxRecentConnections.deprecationMessage%",
+					"markdownDeprecationMessage": "%oracleDeveloperTools.maxRecentConnections.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.networkConfiguration.configFilesLocation": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%networkConfiguration.configfileLocation.deprecated%",
+					"deprecationMessage": "%networkConfiguration.configfileLocation.deprecationMessage%",
+					"markdownDeprecationMessage": "%networkConfiguration.configfileLocation.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.networkConfiguration.walletFileLocation": {
+					"type": "string",
+					"default": "%Default%",
+					"description": "%networkConfiguration.walletFileLocation.deprecated%",
+					"deprecationMessage": "%networkConfiguration.walletFileLocation.deprecationMessage%",
+					"markdownDeprecationMessage": "%networkConfiguration.walletFileLocation.deprecationMarkdownMessage%"
+				},
+				"oracleDeveloperTools.oracleConnections": {
+					"type": "array",
+					"default": [
+						{
+							"dataSource": "{{specify the data source}}",
+							"userID": "{{specify the database user ID}}",
+							"password": "{{specify the database password}}"
+						}
+					],
+					"description": "%oracleConnectionsDesc.deprecated%",
+					"deprecationMessage": "%oracleConnectionsDesc.deprecationMessage%",
+					"markdownDeprecationMessage": "%oracleConnectionsDesc.deprecationMarkdownMessage%",
+					"items": {
+						"type": "object",
+						"properties": {
+							"dataSource": {
+								"type": "string",
+								"default": "{{specify the data source}}",
+								"description": "%datasourceDesc%"
+							},
+							"userID": {
+								"type": "string",
+								"default": "{{specify the database user ID}}",
+								"description": "%userIDDesc%"
+							},
+							"dBAPrivilege": {
+								"type": "string",
+								"default": "{{speficy DBA privelege}}",
+								"description": "%dbaPrivilegeDesc%"
+							},
+							"password": {
+								"type": "string",
+								"default": "{{specify password}}",
+								"description": "%passwordDesc%"
+							},
+							"authenticationType": {
+								"type": "number",
+								"default": 2,
+								"enum": [
+									1,
+									2
+								],
+								"description": "%authenticationTypeDesc%"
+							},
+							"enlist": {
+								"type": "boolean",
+								"default": true,
+								"description": "%enlistDesc%"
+							},
+							"connectionLifeTime": {
+								"type": "number",
+								"default": 0,
+								"description": "%connectionLifeTimeDesc%"
+							},
+							"incrPoolSize": {
+								"type": "number",
+								"default": 5,
+								"description": "%incrPoolSizeDesc%"
+							},
+							"decrPoolSize": {
+								"type": "number",
+								"default": 1,
+								"description": "%decrPoolSizeDesc%"
+							},
+							"maxPoolSize": {
+								"type": "number",
+								"default": 100,
+								"description": "%maxPoolSizeDesc%"
+							},
+							"minPoolSize": {
+								"type": "number",
+								"default": 1,
+								"description": "%minPoolSizeDesc%"
+							},
+							"persistSecurityInfo": {
+								"type": "boolean",
+								"default": false,
+								"description": "%persistSecurityInfoDesc%"
+							},
+							"pooling": {
+								"type": "boolean",
+								"default": false,
+								"description": "%poolingDesc%"
+							},
+							"connectionTimeout": {
+								"type": "number",
+								"default": 15,
+								"description": "%connectionTimeoutDesc%"
+							},
+							"proxyUserID": {
+								"type": "string",
+								"default": "",
+								"description": "%proxyUserIDDesc%"
+							},
+							"proxyPassword": {
+								"type": "string",
+								"default": "",
+								"description": "%proxyPasswordDesc%"
+							},
+							"validateConnection": {
+								"type": "boolean",
+								"default": false,
+								"description": "%validateConnectionDesc%"
+							},
+							"statementCacheSize": {
+								"type": "number",
+								"default": 0,
+								"description": "%statementCacheSizeDesc%"
+							},
+							"statementCachePurge": {
+								"type": "boolean",
+								"default": false,
+								"description": "%statementCachePurgeDesc%"
+							},
+							"hAEvents": {
+								"type": "boolean",
+								"default": true,
+								"description": "%hAEventsDesc%"
+							},
+							"loadBalancing": {
+								"type": "boolean",
+								"default": true,
+								"description": "%loadBalancingDesc%"
+							},
+							"metadataPooling": {
+								"type": "boolean",
+								"default": false,
+								"description": "%metadataPoolingDesc%"
+							},
+							"contextConnection": {
+								"type": "boolean",
+								"default": false,
+								"description": "%contextConnectionDesc%"
+							},
+							"promotableTransaction": {
+								"type": "string",
+								"default": "promotable",
+								"description": "%promotableTransactionDesc%"
+							},
+							"selfTunning": {
+								"type": "boolean",
+								"default": false,
+								"description": "%selfTunningDesc%"
+							},
+							"providerDataSourceType": {
+								"type": "string",
+								"enum": [
+									"EZConnect",
+									"Direct",
+									"TNS"
+								],
+								"description": "%providerDataSourceTypeDesc%"
+							},
+							"connectionString": {
+								"type": "string",
+								"default": "",
+								"description": "%connectionStringDesc%"
+							},
+							"name": {
+								"type": "string",
+								"description": "%oracleProfileNameDesc%"
+							},
+							"passwordSaved": {
+								"type": "boolean",
+								"default": false,
+								"description": "%passwordSavedDesc%"
+							},
+							"passwordEmptyByUser": {
+								"type": "boolean",
+								"default": false,
+								"description": "%passwordEmptyByUserDesc%"
+							}
+						}
+					},
+					"scope": "resource"
+				},
+				"oracleDeveloperTools.query.dataBatchsize": {
+					"type": "integer",
+					"default": 25,
+					"description": "%dataBatchsize.deprecated%",
+					"deprecationMessage": "%dataBatchsize.deprecationMessage%",
+					"markdownDeprecationMessage": "%dataBatchsize.deprecationMarkdownMessage%"
+				},
+				"oracledevtools.defaultConnection": {
+					"type": "string",
+					"description": "%oracledevtools.defaultConnection%",
+					"scope": "resource"
+				}
+			}
+		},
+		"debuggers": [
+			{
+				"type": "oracleplsql",
+				"label": "%oraclePlsqlDebugger%",
+				"configurationAttributes": {
+					"launch": {}
+				}
+			}
+		]
+	},
+	"dependencies": {
+		"oci-database": "2.28.0",
+		"oci-identity": "2.28.0",
+		"oci-core": "2.28.0",
+		"unzipper": "0.10.11",
+		"vscode-languageclient": "6.1.4",
+		"vscode-languageserver-textdocument": "1.0.1",
+		"vscode-languageserver-types": "3.15.1",
+		"vscode-nls": "5.0.1",
+		"@vscode/debugprotocol": "1.51.0"
+	},
+	"extensionDependencies": [
+		"ms-dotnettools.vscode-dotnet-runtime"
+	],
+	"__metadata": {
+		"id": "c5c6e24d-14be-49d2-9251-af57491b74bf",
+		"publisherId": "387b4c2f-44a8-4cb0-9a04-6fa0832e5c5e",
+		"publisherDisplayName": "Oracle",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1673016268458,
+		"preRelease": false
+	}
+}

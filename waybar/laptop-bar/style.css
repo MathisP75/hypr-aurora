@@ -1,18 +1,19 @@
+@import "../colors/aurora.css";
+
 * {
   font-family: SFPro;
   font-size: 17px;
 }
 
 window#waybar {
-  background-color: #12151F;
+  background-color: rgba(18, 21, 31, 0.6);
   /* border-bottom: 3px solid #000000; */
-  color: #ffffff;
+  color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0px;
   transition-duration: .5s;
   margin: 16px 16px;
-  /*padding: 50px 50px;*/
 }
 
 window#waybar.hidden {
@@ -22,9 +23,7 @@ window#waybar.hidden {
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
-  /* Use box-shadow instead of border so the text isn't offset */
   box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each workspace name */
   border: none;
   border-radius: 0;
   margin: 7px;
@@ -33,35 +32,22 @@ window#waybar.hidden {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
   background: rgba(0, 0, 0, 0.2);
-  color: #ffffff;
-}
-
-#workspaces button.focused {
-  color: #bf616a;
+  color: @text;
 }
 
 #workspaces button {
-  color: #ffffff;
-  background: #0C0E14;
+  color: @text;
+  background: @background3;
   border-radius: 8px;
   padding: 0px 10px 0px 10px;
   margin: 7px 10px 10px 0px;
-   border: 1px solid #3B3C3E; 
+  border: 1px solid @border;
 }
 
 #workspaces button.active {
-  color: #12151F;
-  background: #6a92d7;
+  color: @background2;
+  background: @accent1;
   border: none; 
-}
-
-#workspaces button.urgent {
-  background-color: #eb4d4b;
-}
-
-
-#window {
-  color: #64727d;
 }
 
 #custom-launcher,
@@ -91,49 +77,49 @@ window#waybar.hidden {
   padding: 0px 25px 0px 20px;
   margin: 7px 0px 10px 20px;
   color: #0C0E14;
-  background-color: #0FDBBE;
+  background-color: @gradient1;
 }
 
 #cpu {
   color: #0C0E14;
-  background-color: #1AC4BB;
+  background-color: @gradient2;
 }
 
 #memory{
   color: #0C0E14;
-  background-color: #25ADB8;
+  background-color: @gradient3;
 }
 
 #backlight {
   color: #0C0E14;
-  background-color: #3096B5;
+  background-color: @gradient4;
 }
 
 #pulseaudio {
   color: #0C0E14;
-  background-color: #3B7FB3;
+  background-color: @gradient5;
 }
 
 #network {
   color: #0C0E14;
-  background-color: #4568B0;
+  background-color: @gradient6;
 }
 
 #battery {
   color: #0C0E14;
-  background-color: #5051AD;
+  background-color: @gradient7;
 }
 
 #clock {
   color: #0C0E14;
-  background-color: #5B3AAA;
+  background-color: @gradient8;
 }
 
 #custom-powermenu {
   color: #0C0E14;
   padding: 0px 25px 0px 20px;
   margin: 7px 20px 10px 0px;
-  background-color: #6623A7;
+  background-color: @gradient9;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

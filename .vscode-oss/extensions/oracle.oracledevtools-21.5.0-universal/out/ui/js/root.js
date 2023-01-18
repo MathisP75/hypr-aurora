@@ -1,0 +1,1 @@
+define(["require","exports","knockout","./rootViewModel","ojs/ojknockout"],(function(require,e,t,o){"use strict";return class{static init(){function e(){t.applyBindings(o.default,document.getElementById("globalBody"))}document.body.classList.contains("oj-hybrid")?document.addEventListener("deviceready",e):e()}}}));

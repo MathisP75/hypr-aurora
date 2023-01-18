@@ -1,0 +1,7 @@
+# sqlnet.ora Network Configuration File
+
+# Every line that begins with # is a comment line
+# You can modify the entry below for your own database.
+
+#On Windows, replace "NONE" in the line below with "NTS" if Windows Native Authentication is required.
+SQLNET.AUTHENTICATION_SERVICES=(NONE)

@@ -1,0 +1,60 @@
+<div>
+        <oj-form-layout label-edge="start" max-columns="1" direction="column" label-width="35%"
+                user-assistance-density='compact' class="oj-formlayout-full-width">
+                <hr />
+                <oj-label style="margin-top: 0; text-align: left" for="profileNameID" slot="label">
+                        <oj-bind-text value='[[changeCompartmentUILabelText.profileName]]'></oj-bind-text>
+                </oj-label>
+                <span class="ociTextForColor infoLabel" id="profileNameID" data-bind="text:profileName"
+                        style="overflow-wrap: break-word;" slot="value"></span>
+                <oj-label style="margin-top: 0; text-align: left" for="currentCompartmentID" slot="label">
+                        <oj-bind-text value='[[changeCompartmentUILabelText.compartmentName]]'></oj-bind-text>
+                </oj-label>
+                <span class="ociTextForColor infoLabel" id="currentCompartmentID"
+                        data-bind="text:currentCompartmentName" style="overflow-wrap: break-word;"
+                        slot="value"></span>
+
+                <oj-label style="margin-top: 0; text-align: left" for="compartmentFullPathID" slot="label">
+                        <oj-bind-text value='[[changeCompartmentUILabelText.compartmentFullPath]]'></oj-bind-text>
+                </oj-label>
+                <div>
+                        <span class="ociTextForColor infoLabel" id="compartmentFullPathID"
+                                data-bind="text:currentCompartmentFullName" style="overflow-wrap: break-word;"
+                                slot="value"></span>
+                </div>
+
+                <oj-label style="margin-top: 0; text-align: left" for="selectNewCompartmentID" slot="label">
+                        <oj-bind-text value='[[changeCompartmentUILabelText.selectNewCompartment]]'></oj-bind-text>
+                </oj-label>
+
+                <div>
+                        <oj-tree-view id="treeview" data="[[data]]" selected="{{selected}}"
+                                expanded="{{expanded}}" class="compartmentBorder" selection-mode="single"
+                                on-selected-changed="[[selectedChanged]]"
+                                aria-label="Tree View with OCI compartment Data">
+                                <template slot="itemTemplate" data-oj-as="row">
+                                        <span style="margin: 0px;" class="oj-treeview-item-icon"></span>
+                                        <span class="oj-treeview-item-text ociTreeviewItem"
+                                                style="text-overflow: ellipsis">
+                                                <oj-bind-text style="text-overflow: ellipsis"
+                                                        value="[[row.data.nameForDisplay]]"></oj-bind-text>
+                                        </span>
+                                </template>
+                        </oj-tree-view>
+                </div>
+
+                <oj-label slot="label"></oj-label>
+                <div>
+                        <oj-button id="okButton" on-oj-action='[[onOKCompartment]]' class='oj-button-lg'
+                                disabled='{{okButtonDisabled}}' slot="value">
+                                <oj-bind-text value='[[changeCompartmentUILabelText.OK]]'></oj-bind-text>
+                        </oj-button>
+                        <oj-button id="cancelButton" on-oj-action='[[onCancelCompartment]]' class='oj-button-lg'
+                                slot="value">
+                                <oj-bind-text value='[[changeCompartmentUILabelText.cancel]]'></oj-bind-text>
+                        </oj-button>
+
+                </div>
+        </oj-form-layout>
+
+</div>

@@ -5,11 +5,17 @@ cd ~
 export _JAVA_AWT_WM_NONREPARENTING=1
 export XCURSOR_SIZE=24
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export GBM_BACKEND=nvidia-drm
+#export GBM_BACKEND=nvidia-drm
 export WLR_NO_HARDWARE_CURSORS=1
 export LIBVA_DRIVER_NAME=nvidia
 export XDG_SESSION_TYPE=wayland
-export GTK_THEME=Sweet-Dark
+export GTK_THEME=Jasper-Dark
+#export GTK_THEME=WhiteSur-Dark
+#export GTKTHEME=WhiteSur-Dark
+export GTKTHEME=Jasper-Dark
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
 
 m=$(cat /sys/class/drm/card1-DP-1/status)
 n=$(cat /sys/class/drm/card1-DP-2/status)

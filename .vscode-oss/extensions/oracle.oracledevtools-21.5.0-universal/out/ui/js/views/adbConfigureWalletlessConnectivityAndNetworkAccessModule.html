@@ -1,0 +1,219 @@
+<oj-dialog style="display:none; height:98vh; width:75vw;" id='changeCompartmentACLDialogID'
+    dialog-title='[[adbUpdateNetworkAccessUILabels.selectCompartmentForVCN]]' cancel-behavior="icon"
+    resize-behavior="resizable" class="odtvscodeDialog">
+
+    <div id="changeCompartmentModuleID" data-bind="ojModule: { name: 'changeCompartmentModule' , 
+                params : {
+                        currentCompartmentFullName:currentCompartmentFullName,
+                        profileName:profileName,
+                        currentCompartmentName:currentCompartmentName,
+                        changeCompartmentUIHandler:changeCompartmentUIHandler,
+                        launchSourceConfigureACL:true
+                }}">
+    </div>
+</oj-dialog>
+
+<oj-dialog style="display:none; height:90vh; width:65vw;min-height:400px" id="changeACLRuleDialogID"
+    dialog-title='[[adbUpdateNetworkAccessUILabels.updateACLRules]]' cancel-behavior="icon" resize-behavior="resizable"
+    class="odtvscodeDialog manualHeaderDialog" on-oj-before-close="[[onCloseUpdateACLDialog]]"
+    on-oj-before-Open="[[onOpen]]" on-oj-Focus="[[onFocus]]">
+    <div slot="header" class="dialogTitleHeader">
+        <h1 class="oj-dialog-title">
+            <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.updateACLRules]]'></oj-bind-text>
+        </h1>
+        <div class="dialogHeaderSeparator">
+            <hr class="hrstyle" />
+        </div>
+        <div class="flex" style="margin-right: 62px;">
+            <div class="flex-item" style="margin-bottom:0px">
+                <h1 id="ipTypeHeader" class="dialogHeader" slot="header">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.ipNotationType]]'></oj-bind-text>
+                </h1>
+            </div>
+            <div class="flex-item" style="margin-bottom:0px">
+                <h1 id="valuesHeader" class="dialogHeader" slot="header">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.values]]'></oj-bind-text>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div id="aclRuleOuterContainer">
+        <div id="aclRuleContainerID">
+        </div>
+    </div>
+
+    <template id="addACLRuleModuleTemplate" data-oj-as='data'>
+        <oj-bind-if test="{{data.addModule}}">
+            <div :id="[['module'+ data.index]]" data-bind="ojModule: { name: 'accessControlRuleModule' ,  params :
+                 {moduleID: data.moduleID , 
+                    index: data.index, 
+                    ipNotationType:data.ipNotationType,
+                    ipAddressListOrCIDRList:data.ipAddressListOrCIDRList,
+                    vcnOCIDInfo:data.vcnOCIDInfo,
+                    vcnDisplayNameInfo:data.vcnDisplayNameInfo,               
+                    updateACLRuleHandler: data.updateACLRuleHandler,
+                    IPNotationChangeHandler : data.IPNotationChangeHandler,
+                    removeACLRuleHandler:data.removeACLRuleHandler,                    
+                    selectCompartmentListHandler:data.selectCompartmentListHandler,
+                    updatePublicIPAddressHandler:data.updatePublicIPAddressHandler,
+                    networkAccessLaunchSource:data.networkAccessLaunchSource,
+                    displayPublicIPAddressButtonHandler:data.displayPublicIPAddressButtonHandler,
+                    clickedAddAccessControlButton:data.clickedAddAccessControlButton,
+                    isIPAddressUnique:data.isIPAddressUnique,
+                    uniqueIpAddressErrorValueHandler:data.uniqueIpAddressErrorValueHandler   
+                 }}">
+            </div>
+        </oj-bind-if>
+    </template>
+    <div slot="footer" style="display: block;">
+        <div class="flex-item">
+            <hr>
+        </div>
+        <div class="flex-item networkAccessButtonContainenr">
+            <oj-button on-oj-action='[[onADDAccessControlRuleClick]]' class='oj-button-lg buttonGridItem'
+                id="addAccessControlRuleID" disabled="{{disableAddRuleButton()}}">
+                <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.addACLRule]]'></oj-bind-text>
+            </oj-button>
+            <oj-button id="okButton" on-oj-action='[[onOKUpdateACLDialog]]' class='oj-button-lg buttonGridItem'
+                disabled='{{disableOkButton() }}' slot="value">
+                <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.ok]]'></oj-bind-text>
+            </oj-button>
+            <oj-button id="cancelButton" on-oj-action='[[onCancelUpdateACLDialog]]' class='oj-button-lg buttonGridItem'
+                slot="value">
+                <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.cancel]]'></oj-bind-text>
+            </oj-button>
+        </div>
+    </div>
+</oj-dialog>
+
+<div id="updateNetworkAccessUIID" class="connDlgBody">
+    <oj-bind-if test="[[networkAccessLaunchSource() == 2 || networkAccessLaunchSource() == 4]]">
+        <oj-bind-if test="[[networkAccessLaunchSource() == 4]]">
+            <label class="connDlgHeader">
+                <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.adbConfigureDatabaseAccessControl]]'>
+                </oj-bind-text>
+            </label>
+            <div class="flex">
+                <div class="flex-item" style="margin-top: 10px;">
+                    <label class="ociTextForColor" for="ocidownloadHeaderDescriptionLabel" style="text-align: left"
+                        slot="label">
+                        <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.configureWalletLessDescription]]'>
+                        </oj-bind-text>
+                        <label>
+                </div>
+            </div>
+            <hr class="hrstyle" />
+        </oj-bind-if>
+        <div class="flex">
+            <div class="flex-item" style="max-width:33%">
+                <oj-label for="enableDatabaseLevelID" slot="label">
+                    <label class="leftalign">
+                        <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.enableDBLevelAccess]]'>
+                        </oj-bind-text>
+                    </label>
+
+                </oj-label>
+            </div>
+            <div class="flex-item">
+                <oj-combobox-one options="[[YesNoOptions]]" value="{{enableDBLevelAccessOption}}"
+                    disabled="{{isUpdateInProgress() || isCreateADBInProgress()}}"
+                    onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                    onCut="return false" oncontextmenu="return false" on-value-changed="[[enableDBAccessChangeHandler]]"
+                    id='enableDatabaseLevelID' slot="value">
+                </oj-combobox-one>
+                <oj-button on-oj-action='[[onUpdateACL]]' style="padding-left: 2px;"
+                    disabled="{{enableDBLevelAccess() == false || isCreateADBInProgress() || isUpdateInProgress }}"
+                    id="updateACL_dedicatedDB_ID">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.update]]'></oj-bind-text>
+                </oj-button>
+            </div>
+        </div>
+
+    </oj-bind-if>
+
+    <oj-bind-if test="[[networkAccessLaunchSource() == 1]]">
+        <label class="connDlgHeader">
+            <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.adbConfigureWalletlessConnectivityandNetworkAccess]]'>
+            </oj-bind-text>
+        </label>
+        <div class="flex">
+            <div class="flex-item" style="margin-top: 10px;">
+                <label class="ociTextForColor" for="ocidownloadHeaderDescriptionLabel" style="text-align: left"
+                    slot="label">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.configureWalletLessDescription]]'>
+                    </oj-bind-text>
+                    <label>
+            </div>
+        </div>
+        <hr class="hrstyle" />
+    </oj-bind-if>
+    <oj-bind-if test="[[networkAccessLaunchSource() == 1 || networkAccessLaunchSource() == 3 ]]">
+        <div class="flex" style="margin-top: 10px;">
+            <div class="flex-item" style="max-width:33%">
+                <oj-label for="networkAccessTypeID" slot="label">
+                    <label class="leftalign">
+                        <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.networkAccessTypeText]]'>
+                        </oj-bind-text>
+                    </label>
+                </oj-label>
+            </div>
+            <div class="flex-item">
+                <oj-combobox-one options="[[networkAccessTypes]]" value="{{networkAccessType}}"
+                    disabled="{{isUpdateInProgress() || isCreateADBInProgress()}}"
+                    onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                    onCut="return false" oncontextmenu="return false"
+                    on-value-changed="[[networkAccessTypeChangedHandler]]" id='networkAccessTypeID' slot="value">
+                </oj-combobox-one>
+                <oj-button display="icons" style="padding-left: 2px;" on-oj-action='[[onUpdateACL]]'
+                    disabled="{{disableUpdateButton() || isCreateADBInProgress() || isUpdateInProgress }}"
+                    id="updateACL_ID">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.update]]'></oj-bind-text>
+                </oj-button>
+            </div>
+        </div>
+    </oj-bind-if>
+    <oj-bind-if test="[[networkAccessLaunchSource() == 1 || networkAccessLaunchSource() == 3 ]]">
+        <div class="flex">
+            <div class="flex-item" style="max-width:33%"></div>
+            <div class="flex-item" style='margin-bottom: 0px;'>
+                <oj-checkboxset id="editMutualAuthenticationID" labelled-by="editMutualAuthenticationLabel"
+                    style="opacity: 1;min-width: 100%" value="{{enableWalletlessConnectivityChkboxValue}}"
+                    disabled="{{isUpdateInProgress() || disableWalletlessConnectivityChkbox() || isCreateADBInProgress()}}"
+                    on-value-changed="[[requireMTLSTypeChangedHandler]]">
+                    <oj-option id="editMutualAuthenticationOptionId" value="yes" class="ociTextForColor">
+                        <oj-bind-text value="{{adbUpdateNetworkAccessUILabels.requireMutualTLS}}">
+                        </oj-bind-text>
+                    </oj-option>
+                </oj-checkboxset>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex-item" style="max-width:33%">
+            </div>
+            <div class="flex-item">
+                <oj-label class="ociTextForColor" for="editMutualAuthenticationDescriptionLabel"
+                    style="margin-bottom: 10px;" slot="label">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.requireMutualTLSDescription]]'>
+                    </oj-bind-text>
+                </oj-label>
+                <oj-label class="ociTextForColor" for="editMutualAuthenticationDescriptionLabel2"
+                    style="margin-bottom: 10px;" slot="label">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.requireMutualTLSDescription2]]'>
+                    </oj-bind-text>
+                </oj-label>
+            </div>
+        </div>
+    </oj-bind-if>
+    <oj-bind-if test="[[networkAccessLaunchSource() == 1 || networkAccessLaunchSource() == 4]]">
+        <div class="flex">
+            <div class="flex-item" style="max-width:33%">
+            </div>
+            <div class="flex-item">
+                <oj-button on-oj-action='[[onApplyNetworkAccessChanges]]' disabled="{{isUpdateInProgress() || !isPageChanged() 
+                    || isNoACLAndWalletLessConnectivityEnabled()}}" class='oj-button-lg' id="applyChangesID">
+                    <oj-bind-text value='[[adbUpdateNetworkAccessUILabels.applyChanges]]'></oj-bind-text>
+                </oj-button>
+            </div>
+        </div>
+    </oj-bind-if>
+</div>

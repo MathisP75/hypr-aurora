@@ -1,0 +1,182 @@
+<div :id="[['innerUpdateACLCotrolList'+ index]]" class1="dialogBody" style="padding-top: 0px;padding-bottom: 0px;">
+    <div class="flex">
+        <div class="flex-item">
+            <div class="flex" style="margin-right: 30px;flex-direction: column">              
+                <oj-bind-if test="[[showVCNSpecificControls()]]">
+                    <div class="flex-item" style="margin-bottom: 0px; visibility: hidden;">
+                        <label>.</label>
+                    </div>
+                </oj-bind-if>
+                <div class="flex-item" slot1="label" style="margin-right: 30px; margin-bottom: 0px;">
+                    <oj-combobox-one options="[[ipNotationTypes]]" value="{{ipNotationType}}" slot1="label"
+                        disabled={{disableNetworkAccessControls()}}
+                        onkeydown='javascript: if((event.key != "Tab" && event.key != "Escape")){ return false;}' onpaste="return false;"
+                        onCut="return false" oncontextmenu="return false"
+                        on-value-changed="[[ipNotationTypeChangedHandler]]" :id="[['ipNotationTypeID' + index]]"
+                        slot1="value">
+                    </oj-combobox-one>
+                </div>
+            </div>
+        </div>
+        <oj-bind-if test="[[showIPaddressSpecificControls]]">
+            <div class="flex-item">
+                <div class="flex" style="margin-right: 30px;flex-direction: column">
+                    <div class="flex-item" style="margin-bottom: 0px;">
+                        <oj-input-text :id="[['ipAddressID' + index]]" value='{{ipAddress}}' slot1="value"
+                            placeholder="[[accessControlRuleUILabels.ipAddressHint]]"
+                            on-raw-value-changed="[[onIPAddressRawValueChanged]]">
+                        </oj-input-text>
+                    </div>
+                    <oj-bind-if test="[[showIPaddressError()]]">
+                        <div class="flex-item" style="margin-bottom: 0px;">
+                            <label role="alert" :id="[['inValidIPValueErrorID'+ index]]"
+                                class="ociTextForColor infoLabel">
+                                <oj-bind-text value='{{inValidIPAddressValueErrorInDialog}}'></oj-bind-text>
+                            </label>
+                        </div>
+                    </oj-bind-if>
+                    <oj-bind-if test="[[showPublicIPaddressError()]]">
+                        <div class="flex-item" style="margin-bottom: 0px;">
+                            <label role="alert" :id="[['inValidIPValueErrorID'+ index]]" class="ociTextForColor">
+                                <oj-bind-text value='{{accessControlRuleUILabels.publicIPaddressError}}'></oj-bind-text>
+                            </label>
+                        </div>
+                    </oj-bind-if>
+                    <oj-bind-if
+                        test="[[(networkAccessLaunchSource() == 1 || networkAccessLaunchSource() == 3) && isLastModule()]]">
+                        <div class="flex-item networkAccessButtonEnd" style="margin-top:10px">
+                            <oj-button on-oj-action='[[onAddMyIPAddress]]' :id="[['addMyIPAddressID'+ index]]"
+                                disabled='{{disableAddMyIpAddress}}'>
+                                <oj-bind-text value='[[accessControlRuleUILabels.addMyIPAddress]]'></oj-bind-text>
+                            </oj-button>
+                        </div>
+                    </oj-bind-if>
+                </div>
+            </div>
+
+        </oj-bind-if>
+
+        <oj-bind-if test="[[showCIDRIPaddressSpecificControls]]">
+            <div class="flex-item">
+                <div class="flex" style="margin-right: 30px;flex-direction: column">
+                    <div class="flex-item" style="margin-bottom: 0px;">
+                        <oj-input-text :id="[['cidripAddressID'+ index]]" value='{{cidrInputipAddress}}' slot1="value"
+                            placeholder="[[accessControlRuleUILabels.cidrHint]]"
+                            on-raw-value-changed="[[oncidrInputipAddressRawValueChange]]">
+                        </oj-input-text>
+                    </div>
+                    <oj-bind-if test="[[showCIDRaddressError()]]">
+                        <div class="flex-item">
+                            <label role="alert" :id="[['inValidCIDRValueErrorID'+ index]]"
+                                class="ociTextForColor infoLabel">
+                                <oj-bind-text value='{{inValidCIDRAddressValueErrorInDialog}}'></oj-bind-text>
+                            </label>
+                        </div>
+                    </oj-bind-if>
+                </div>
+            </div>
+        </oj-bind-if>
+
+        <oj-bind-if test="[[showVCNSpecificControls]]">
+            <div class="flex-item">
+                <div class="flex" style="margin-right: 30px;flex-direction: column">
+                    <div class="flex" style="flex-direction: column">
+
+                        <div class="flex-item" style="margin-bottom: 0px;">
+                            <label>
+                                <oj-bind-text value='[[accessControlRuleUILabels.compartmentName]]'></oj-bind-text>
+                            </label>
+                        </div>
+                        <div class="flex-item" style="margin-bottom: 0px;">
+                            <oj-input-text :id="[['vcnCompartmentID'+ index]]" value='{{vcnCompartmentName}}'
+                                slot1="value" disabled="true" on-raw-value-changed="[[onVCNCompartmentNameChange]]">
+                            </oj-input-text>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-item networkAccessButtonEnd" style="margin-top:10px">
+                            <oj-button :id="[['changeCompartmentID'+ index]]"
+                                on-oj-action="[[launchChangeCompartment]]">
+                                <oj-bind-text value='[[accessControlRuleUILabels.changeCompartment]]'></oj-bind-text>
+                            </oj-button>
+                        </div>
+                    </div>
+                    <div class="flex" style="flex-direction: column">
+                        <div class="flex-item" style="margin-bottom: 0px;">
+                            <oj-label :for="[['vcnoptionValueID' + index]]" slot="label">
+                                <label>
+                                    <oj-bind-text value='[[vcnLabel]]'></oj-bind-text>
+                                </label>
+                            </oj-label>
+                        </div>
+                        <div class="flex-item">
+                            <oj-combobox-one :id="[['vcnoptionValueID' + index]]" options="[[vcnOptionValues]]"
+                                value="{{vcnOptionValue}}" slot1="value" 
+                                onkeydown='javascript: if((event.key != "Tab" && event.key != "Escape")){ return false;}' onpaste="return false;"
+                                on-value-changed="[[vcnOptionsChangedHandler]]" onCut="return false"
+                                oncontextmenu="return false">
+                            </oj-combobox-one>
+
+                        </div>
+                    </div>
+
+                    <div class="flex-item" style="margin-bottom: 0px;">
+                        <oj-label :for="[['vcnInputipAddressOrCIDRValueID' + index]]" slot="label">
+                            <label>
+                                <oj-bind-text value='[[accessControlRuleUILabels.ipAddressOrCIDRs]]'></oj-bind-text>
+                            </label>
+                        </oj-label>
+                    </div>
+                    <div class="flex-item" style1="margin-top: 10px;" style="margin-bottom:0px">
+                        <oj-input-text :id="[['vcnInputipAddressOrCIDRValueID'+ index]]"
+                            value='{{vcnInputipAddressOrCIDRValue}}' slot1="value"
+                            on-raw-value-changed="[[onVCNInputipAddressOrCIDRRawValueChange]]"
+                            on-value-changed="[[onVCNInputipAddressOrCIDRValueChange]]">
+                        </oj-input-text>
+                    </div>
+                </div>
+            </div>
+        </oj-bind-if>
+
+        <oj-bind-if test="[[showVCNOCIDSpecificControls]]">
+            <div class="flex-item">
+                <div class="flex" style="margin-right: 30px;flex-direction: column">
+                    <div class="flex" style="flex-direction: column">                       
+                        <div class="flex-item">
+                            <oj-combobox-one :id="[['vcnOCIDoptionValueID' + index]]" options="[[vcnOCIDOptionValues]]"
+                                value="{{vcnOCIDOptionValue}}" slot1="value" onpaste="return false;"
+                                on-value-changed="[[vcnOCIDOptionsChangedHandler]]" onCut="return false"
+                                onkeydown='javascript: if((event.key != "Tab" && event.key != "Escape")){ return false;}'
+                                oncontextmenu="return false">
+                            </oj-combobox-one>
+
+                        </div>
+                    </div>
+
+                    <div class="flex-item" style="margin-bottom: 0px;">
+                        <oj-label :for="[['vcnOCIDInputipAddressOrCIDRValueID' + index]]" slot="label">
+                            <label>
+                                <oj-bind-text value='[[accessControlRuleUILabels.ipAddressOrCIDRs]]'></oj-bind-text>
+                            </label>
+                        </oj-label>
+                    </div>
+                    <div class="flex-item" style="margin-bottom:0px" style1="margin-top: 20px;">
+                        <oj-input-text :id="[['vcnOCIDInputipAddressOrCIDRValueID'+ index]]"
+                            value='{{vcnOCIDInputipAddressOrCIDRValue}}' slot1="value"
+                            on-raw-value-changed="[[onvcnOCIDInputipAddressOrCIDRRawValueChange]]"
+                            on-value-changed="[[onvcnOCIDInputipAddressOrCIDRValueChange]]">
+                        </oj-input-text>
+                    </div>
+                </div>
+            </div>
+
+        </oj-bind-if>
+
+        <div class="flex" style="margin-right: 30px;flex-direction: column">
+            <oj-button display="icons" :id="[['removeIPAddressButton'+ index]]" chroming="borderless"
+                class1="oj-button-lg" on-oj-action="[[onRemoveACLModule]]" :style="[[removeButtonStyle]]">
+                <oj-bind-text value='[[accessControlRuleUILabels.removeACL]]'></oj-bind-text>
+            </oj-button>
+        </div>
+    </div>
+</div>

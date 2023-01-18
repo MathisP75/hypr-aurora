@@ -1,0 +1,394 @@
+<div class="formatterSettingsBody">
+    <div id="formatConfigurationHeader">
+        <label class="formatSettingsHeader">
+            <oj-bind-text value='[[formatterSettingsTitle]]'></oj-bind-text>
+        </label>
+        <div style="padding: 10px 0px;">
+            <label class="formatSettingsSubHeader">
+                <oj-bind-text value='[[formatterSettingsSubTitle]]'></oj-bind-text>
+            </label>
+            <div style="float: right;">
+                <oj-bind-if test="{{isImporting()}}">
+                    <oj-progress-circle size="md" id="importProgressCircle" value="-1" style="padding-right: 5px;"></oj-progress-circle>
+                </oj-bind-if>
+                <oj-button id="importButton" class='oj-button-lg' on-oj-action='[[onImport]]' disabled='[[isImporting]]'>
+                    <oj-bind-text value="[[importSettings]]"></oj-bind-text>
+                </oj-button>
+            </div>
+        </div>
+        <div style="padding-top: 5px;">
+            <hr class="hrstyle" />
+        </div>
+    </div>
+    <div class="oj-flex">
+        <div class="oj-flex-item" style="width: 25%;">
+            <!--General settings-->
+            <h1 id="generalHeader" class="formatSettingsHeader" slot="header">General</h1>
+            <!--Keyword case-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="keywordSetting" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[keywordCaseLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='keywordSetting' options="[[casingTypes]]" value="{{selectedKeywordCasing}}"
+                        class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+            </div>
+            <!--Identifier case-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="identifierSetting" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[identifierCaseLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='identifierSetting' options="[[casingTypes]]"
+                        value="{{selectedIdentifierCasing}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Single line comments-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="singleLineComments" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[singleLingeCommentLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='singleLineComments' options="[[singleLineCommentOptions]]"
+                        value="{{selectedLineCommentType}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break settings-->
+            <h1 id="lineBreaksHeader" class="formatSettingsHeader" slot="header">Line Breaks</h1>
+            <!--Line break between statements-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkBtwnStmts" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkBtwnStmtsLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkBtwnStmts' options="[[lineBrkBtwnStmtsOptions]]"
+                        value="{{selectedLineBrkBtwnStmts}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break on comma-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkonComma" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkonCommaLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkonComma' options="[[lineBreakOptions]]"
+                        value="{{selectedLineBrkOnComma}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break on concatenation-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+
+                    <oj-label for="lineBrkonConcat" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkonConcatLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkonConcat' options="[[lineBreakOptions]]"
+                        value="{{selectedLineBrkOnConcat}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break on boolean connectors-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkonBoolConn" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkonBoolConnLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkonBoolConn' options="[[lineBreakOptions]]"
+                        value="{{selectedLineBrkOnBoolConn}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break on ANSI Joins-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkonANSIJoins" slot="label" style="width: 90%;">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkonANSIJoinsLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkonANSIJoins' options="[[yesNoOptions]]"
+                        value="{{enableANSIJoinLineBrk}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break before line comments-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkBeforeLineComment" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkBeforeLineCommentLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkBeforeLineComment' options="[[yesNoOptions]]"
+                        value="{{enableLineBrkBeforeComment}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break after SELECT/ FROM/ WHERE -->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkAfterSelectFromWhere" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkAfterSelectFromWhereLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkAfterSelectFromWhere' options="[[yesNoOptions]]"
+                        value="{{enableLineBrkAfterSelect}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Line break on IF/CASE/WHILE-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="lineBrkonIfCaseWhile" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[lineBrkonIfCaseWhileLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='lineBrkonIfCaseWhile' options="[[IfCaseWhilekOptions]]"
+                        value="{{selectedLineBrkOnIfCaseWhile}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--White space settings-->
+            <h1 id="lineBreaksHeader" class="formatSettingsHeader" slot="header">White Space</h1>
+            <!--Whitespace around operators-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="wsAroundOper" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[wsAroundOperLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='wsAroundOper' options="[[wsAroundOperOptions]]"
+                        value="{{selectedwsAroundOper}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Whitespace after commas -->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="wsAfterCommas" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[wsAfterCommasLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='wsAfterCommas' options="[[yesNoOptions]]" value="{{enableWsAfterCommas}}"
+                        class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+            <!--Whitespace around parenthesis-->
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-label for="wsAroundParen" slot="label">
+                        <label class="leftalign">
+                            <p>
+                                <oj-bind-text value="[[wsAroundParenLabel]]">
+                                </oj-bind-text>
+                            </p>
+                        </label>
+                    </oj-label>
+                </div>
+
+                <div class="oj-flex-item oj-sm-padding-2x-vertical formatter-settings-item">
+                    <oj-combobox-one id='wsAroundParen' options="[[wsAroundParenOptions]]"
+                        value="{{selectedWsAroundParen}}" class="formatter-settings-combobox"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}'
+                        on-oj-value-updated="[[onValueChanged]]" onpaste="return false;" onCut="return false"
+                        slot="value">
+                    </oj-combobox-one>
+                </div>
+
+            </div>
+        </div>
+        <div class="oj-flex-item " style="padding-left: 30px">
+            <!--Preview text box-->
+            <h1 id="textboxHeader" class="formatSettingsHeader" slot="header">Preview Formatted Text</h1>
+            <div class="oj-sm-padding-2x-vertical ">
+                <oj-text-area id="plsqlblock" rows="39" class="formatPreviewCode" value="{{textareaValue}}"
+                    oncontextmenu="return false">
+                </oj-text-area>
+            </div>
+        </div>
+    </div>
+    <div class="formatterButtonContainer">
+        <oj-button id='previewButton' class='oj-button-lg' on-oj-action='[[onPreview]]' style="margin-right:5px;"
+            disabled='[[isFormatting]]'>
+            <oj-bind-text value="[[previewLabel]]"></oj-bind-text>
+        </oj-button>
+        <oj-button id='saveButton' class='oj-button-lg' on-oj-action='[[onSaveSettings]]' style="margin-right:5px;"
+        disabled='[[saveButtonDisable]]'>
+        <oj-bind-text value="[[saveLabel]]"></oj-bind-text>
+    </oj-button>
+        <div style="display: grid;">
+
+            <oj-button id="resetButton" class='oj-button-lg' on-oj-action='[[onReset]]' style="margin-right:5px;">
+                <oj-bind-text value="[[resetToDefaults]]"></oj-bind-text>
+            </oj-button>
+            <div class="formatterProgressCircle">
+                <oj-bind-if test="{{isFormatting() || isSaving() || isExporting()}}">
+                    <oj-progress-circle size="md" id="previewProgressCircle" value="-1"></oj-progress-circle>
+                </oj-bind-if>
+            </div>
+        </div>
+
+        <oj-button id="exportButton" class='oj-button-lg' on-oj-action='[[onExport]]' 
+        disabled='[[isExporting]]' >
+            <oj-bind-text value="[[exportSettings]]"></oj-bind-text>
+        </oj-button>
+    </div>
+    <div class="formatterButtonContainer">
+
+    </div>
+</div>
+<oj-messages position="[[msgPos]]" messages="[[messagesDataprovider]]" display="notification"></oj-messages>

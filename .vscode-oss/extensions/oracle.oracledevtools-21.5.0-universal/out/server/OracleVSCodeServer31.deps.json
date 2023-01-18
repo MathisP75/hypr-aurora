@@ -1,0 +1,191 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "OracleVSCodeServer31/21.5.0": {
+        "dependencies": {
+          "OracleVSCodeResources": "21.5.0",
+          "OracleVSCommonTools": "21.5.0",
+          "OracleVSToolsSharedContracts": "21.5.0",
+          "OracleVSSqlParser": "21.5.0",
+          "System.DirectoryServices": "5.0.0",
+          "System.DirectoryServices.Protocols": "5.0.1",
+          "System.Security.Cryptography.Pkcs": "4.7.0",
+          "Newtonsoft.Json": "13.0.1.0"
+        },
+        "runtime": {
+          "OracleVSCodeServer31.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/5.0.4": {},
+      "System.DirectoryServices/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.4",
+          "System.IO.FileSystem.AccessControl": "5.0.0",
+          "System.Security.AccessControl": "5.0.0",
+          "System.Security.Permissions": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "runtime": {
+          "System.DirectoryServices.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.DirectoryServices.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "System.DirectoryServices.Protocols/5.0.1": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.4",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "runtime": {
+          "System.DirectoryServices.Protocols.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.1121.47308"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux/lib/netcoreapp2.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "linux",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.1121.47308"
+          },
+          "runtimes/osx/lib/netcoreapp2.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "osx",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.1121.47308"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.DirectoryServices.Protocols.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "5.0.1121.47308"
+          }
+        }
+      },
+      "System.Security.Cryptography.Pkcs/4.7.0": {
+        "dependencies": {
+          "System.Security.Cryptography.Cng": "4.7.0"
+        },
+        "runtime": {
+          "System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "OracleVSCodeResources/21.5.0": {
+        "runtime": {
+          "OracleVSCodeResources.dll": {}
+        }
+      },
+      "OracleVSCommonTools/21.5.0": {
+        "dependencies": {
+          "OracleVSCodeResources": "21.5.0",
+          "OracleVSToolsSharedContracts": "21.5.0"
+        },
+        "runtime": {
+          "OracleVSCommonTools.dll": {}
+        }
+      },
+      "OracleVSToolsSharedContracts/21.5.0": {
+        "dependencies": {
+          "OracleVSCodeResources": "21.5.0"
+        },
+        "runtime": {
+          "OracleVSToolsSharedContracts.dll": {}
+        }
+      },
+      "OracleVSSqlParser/21.5.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1.0"
+        },
+        "runtime": {
+          "OracleVSSqlParser.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.1.0",
+            "fileVersion": "13.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OracleVSCodeServer31/21.5.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S/AHu+d3Fk/yoWHIXNAs8N030bCf22GlXoMqLC/zK24i+VfhG0kWYtFeEv6s07b05qchNEGabwOcq49zzR8MPA==",
+      "path": "microsoft.netcore.platforms/5.0.4",
+      "hashPath": "microsoft.netcore.platforms.5.0.4.nupkg.sha512"
+    },
+    "System.DirectoryServices/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lAS54Y3KO1XV68akGa0/GJeddkkuuiv2CtcSkMiTmLHQ6o6kFbKpw4DmJZADF7a6KjPwYxmZnH4D3eGicrJdcg==",
+      "path": "system.directoryservices/5.0.0",
+      "hashPath": "system.directoryservices.5.0.0.nupkg.sha512"
+    },
+    "System.DirectoryServices.Protocols/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rqSmdHgoYL8RghMsYcwtzNWKbXdT9wHwYDIDcd9TQkRLO/ptF1Op/BTiBc/AbducFCS/PMcqpttXuzw2hp4Iyg==",
+      "path": "system.directoryservices.protocols/5.0.1",
+      "hashPath": "system.directoryservices.protocols.5.0.1.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0Srzh6YlhjuMxaqMyeCCdZs22cucaUAG6SKDd3gNHBJmre0VZ71ekzWu9rvLD4YXPetyNdPvV6Qst+8C++9v3Q==",
+      "path": "system.security.cryptography.pkcs/4.7.0",
+      "hashPath": "system.security.cryptography.pkcs.4.7.0.nupkg.sha512"
+    },
+    "OracleVSCodeResources/21.5.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OracleVSCommonTools/21.5.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OracleVSToolsSharedContracts/21.5.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OracleVSSqlParser/21.5.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

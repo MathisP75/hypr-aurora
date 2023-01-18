@@ -44,7 +44,7 @@
     "custom/launcher": {
         "interval": "once",
         "format": "",
-        "on-click": "wofi --show drun -I -s --columns 2 ~/.config/wofi/style.css"
+        "on-click": "wofi --show drun --columns 2 -I -s ~/.config/wofi/style.css"
       },
 
     "cpu": {
@@ -65,8 +65,8 @@
         "format": "{icon}  {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-click": "",
-        "on-scroll-up": "brightnessctl set 50-",
-        "on-scroll-down": "brightnessctl set +50"
+        "on-scroll-up": "brightnessctl set 40-",
+        "on-scroll-down": "brightnessctl set +40"
     },
 
     "network": {

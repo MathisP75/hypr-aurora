@@ -1,0 +1,2249 @@
+[	
+{
+"name": "ACCESS",
+"type": "keyword"
+},
+{
+	"name": "ADMINISTER",
+	"type": "keyword"
+},
+{
+	"name": "AUDIT",
+	"type": "keyword"
+},
+{
+	"name": "COLUMN",
+	"type": "keyword"
+},
+{
+	"name": "CROSS JOIN",
+	"type": "keyword"
+},
+{
+	"name": "DATABASE",
+	"type": "keyword"
+},
+{
+	"name": "DECIMAL",
+	"type": "keyword"
+},
+{
+	"name": "DESC",
+	"type": "keyword"
+},
+{
+	"name": "DESCRIBE",
+	"type": "command"
+},
+{
+	"name": "DISTINCT",
+	"type": "keyword"
+},
+{
+	"name": "FILE",
+	"type": "keyword"
+},
+{
+	"name": "FULL JOIN",
+	"type": "keyword"
+},
+{
+	"name": "FULL OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "GLOBAL",
+	"type": "keyword"
+},
+{
+	"name": "INCREMENT",
+	"type": "keyword"
+},
+{
+	"name": "INITIAL",
+	"type": "keyword"
+},
+{
+	"name": "INNER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "JOIN",
+	"type": "keyword"
+},
+{
+	"name": "KEEP",
+	"type": "keyword"
+},
+{
+	"name": "LEFT JOIN",
+	"type": "keyword"
+},
+{
+	"name": "LEFT OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "LS",
+	"type": "keyword"
+},
+{
+	"name": "MAXEXTENTS",
+	"type": "keyword"
+},
+{
+	"name": "MSLABEL",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL FULL JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL FULL OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL INNER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL LEFT JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL LEFT OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL RIGHT JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL RIGHT OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "NOAUDIT",
+	"type": "keyword"
+},
+{
+	"name": "NOKEEP",
+	"type": "keyword"
+},
+{
+	"name": "OFFLINE",
+	"type": "keyword"
+},
+{
+	"name": "ON",
+	"type": "keyword"
+},
+{
+	"name": "ONLINE",
+	"type": "keyword"
+},
+{
+	"name": "ORDER",
+	"type": "keyword"
+},
+{
+	"name": "PRIVILEGES",
+	"type": "keyword"
+},
+{
+	"name": "RIGHT JOIN",
+	"type": "keyword"
+},
+{
+	"name": "RIGHT OUTER JOIN",
+	"type": "keyword"
+},
+{
+	"name": "ROLE",
+	"type": "keyword"
+},
+{
+	"name": "ROWS",
+	"type": "keyword"
+},
+{
+	"name": "SCHEMA",
+	"type": "keyword"
+},
+{
+	"name": "SESSION",
+	"type": "keyword"
+},
+{
+	"name": "SYSDATE",
+	"type": "keyword"
+},
+{
+	"name": "TABLESPACE",
+	"type": "keyword"
+},
+{
+	"name": "TRUNCATE",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP WITH TIME ZONE",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP_LTZ_UNCONSTRAINED",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP_UNCONSTRAINED",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP_TZ_UNCONSTRAINED",
+	"type": "keyword"
+},
+{
+	"name": "YMINTERVAL_UNCONSTRAINED",
+	"type": "keyword"
+},
+{
+	"name": "DSINTERVAL_UNCONSTRAINED",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP_WITH_TIME_ZONE",
+	"type": "keyword"
+},
+{
+	"name": "TO",
+	"type": "keyword"
+},
+{
+	"name": "MATERIALIZED",
+	"type": "keyword"
+},
+{
+	"name": "USER",
+	"type": "keyword"
+},
+{
+	"name": "VARCHAR",
+	"type": "keyword"
+},
+{
+	"name": "VARCHAR2",
+	"type": "keyword"
+},
+{
+	"name": "REFERENCING",
+	"type": "keyword"
+},
+{
+	"name": "INSTEAD",
+	"type": "keyword"
+},
+{
+	"name": "OF",
+	"type": "keyword"
+},
+{
+	"name": "A",
+	"type": "keyword"
+},
+{
+	"name": "AFTER",
+	"type": "keyword"
+},
+{
+	"name": "ADD",
+	"type": "keyword"
+},
+{
+	"name": "AGENT",
+	"type": "keyword"
+},
+{
+	"name": "AGGREGATE",
+	"type": "keyword"
+},
+
+{
+	"name": "ATTRIBUTE",
+	"type": "keyword"
+},
+{
+	"name": "AUTHID",
+	"type": "keyword"
+},
+{
+	"name": "ARRAY",
+	"type": "keyword"
+},
+{
+	"name": "AVG",
+	"type": "keyword"
+},
+{
+	"name": "ALL",
+	"type": "keyword"
+},
+{
+	"name": "AND",
+	"type": "keyword"
+},
+{
+	"name": "ANY",
+	"type": "keyword"
+},
+{
+	"name": "AT",
+	"type": "keyword"
+},
+{
+	"name": "ALTER",
+	"type": "keyword"
+},
+{
+	"name": "ALWAYS",
+	"type": "keyword"
+},
+{
+	"name": "AS",
+	"type": "keyword"
+},
+{
+	"name": "ASC",
+	"type": "keyword"
+},
+{
+	"name": "BODY",
+	"type": "keyword"
+},
+{
+	"name": "BEFORE",
+	"type": "keyword"
+},
+{
+	"name": "BULK",
+	"type": "keyword"
+},
+{
+	"name": "BEGIN",
+	"type": "keyword",
+	
+	"text":"BEGIN\r\n${0}\r\nEND;"
+},
+{
+	"name": "BETWEEN",
+	"type": "keyword"
+},
+{
+	"name": "BY",
+	"type": "keyword"
+},
+{
+	"name": "BINARY_DOUBLE",
+	"type": "keyword"
+},
+{
+	"name": "BINARY_FLOAT",
+	"type": "keyword"
+},
+{
+	"name": "BINARY_INTEGER",
+	"type": "keyword"
+},
+{
+	"name": "BFILE",
+	"type": "keyword"
+},
+{
+	"name": "BINARY",
+	"type": "keyword"
+},
+{
+	"name": "BLOB",
+	"type": "keyword"
+},
+{
+	"name": "BLOCK",
+	"type": "keyword"
+},
+{
+	"name": "BOTH",
+	"type": "keyword"
+},
+{
+	"name": "BOUND",
+	"type": "keyword"
+},
+{
+	"name": "BYTE",
+	"type": "keyword"
+},
+{
+	"name": "BOOLEAN",
+	"type": "keyword"
+},
+{
+	"name": "C",
+	"type": "keyword"
+},
+{
+	"name": "CACHE",
+	"type": "keyword"
+},
+{
+	"name": "CALL",
+	"type": "keyword"
+},
+{
+	"name": "CALLING",
+	"type": "keyword"
+},
+{
+	"name": "CASCADE",
+	"type": "keyword"
+},
+{
+	"name": "CHAR",
+	"type": "keyword"
+},
+{
+	"name": "CHAR_BASE",
+	"type": "keyword"
+},
+{
+	"name": "CHARACTER",
+	"type": "keyword"
+},
+{
+	"name": "CHARSET",
+	"type": "keyword"
+},
+{
+	"name": "CHARSETFORM",
+	"type": "keyword"
+},
+{
+	"name": "CHARSETID",
+	"type": "keyword"
+},
+{
+	"name": "CLOB",
+	"type": "keyword"
+},
+{
+	"name": "CLOSE",
+	"type": "keyword"
+},
+{
+	"name": "COLLECT",
+	"type": "keyword"
+},
+{
+	"name": "COMMENT",
+	"type": "keyword"
+},
+{
+	"name": "COMMIT",
+	"type": "keyword"
+},
+{
+	"name": "COMMITTED",
+	"type": "keyword"
+},
+{
+	"name": "COMPILED",
+	"type": "keyword"
+},
+{
+	"name": "CONSTANT",
+	"type": "keyword"
+},
+{
+	"name": "CONSTRUCTOR",
+	"type": "keyword"
+},
+{
+	"name": "CONTEXT",
+	"type": "keyword"
+},
+{
+	"name": "CONTINUE",
+	"type": "keyword"
+},
+{
+	"name": "CONVERT",
+	"type": "keyword"
+},
+{
+	"name": "CURSOR",
+	"type": "keyword"
+},
+{
+	"name": "CUSTOMDATUM",
+	"type": "keyword"
+},
+{
+	"name": "CASE",
+	"type": "keyword"
+},
+{
+	"name": "CHECK",
+	"type": "keyword"
+},
+{
+	"name": "CLUSTER",
+	"type": "keyword"
+},
+{
+	"name": "COMPRESS",
+	"type": "keyword"
+},
+{
+	"name": "CONNECT",
+	"type": "keyword"
+},
+{
+	"name": "COUNT",
+	"type": "keyword"
+},
+{
+	"name": "CREATE",
+	"type": "keyword"
+},
+{
+	"name": "CURRENT",
+	"type": "keyword"
+},
+{
+	"name": "COALESCE",
+	"type": "keyword"
+},
+{
+	"name": "CURRVAL",
+	"type": "keyword"
+},
+{
+	"name": "CLUSTERS",
+	"type": "keyword"
+},
+{
+	"name": "COLAUTH",
+	"type": "keyword"
+},
+{
+	"name": "COLUMNS",
+	"type": "keyword"
+},
+{
+	"name": "CRASH",
+	"type": "keyword"
+},
+{
+	"name": "CYCLE",
+	"type": "keyword"
+},
+{
+	"name": "DEC",
+	"type": "keyword"
+},
+{
+	"name": "DAY",
+	"type": "keyword"
+},
+{
+	"name": "DATE",
+	"type": "keyword"
+},
+{
+	"name": "DECLARE",
+	"type": "keyword"
+},
+{
+	"name": "DEFAULT",
+	"type": "keyword"
+},
+{
+	"name": "DELETE",
+	"type": "keyword"
+},
+{
+	"name": "DROP",
+	"type": "keyword"
+},
+{
+	"name": "DO",
+	"type": "keyword"
+},
+{
+	"name": "DANGLING",
+	"type": "keyword"
+},
+{
+	"name": "DATA",
+	"type": "keyword"
+},
+{
+	"name": "DATE_BASE",
+	"type": "keyword"
+},
+{
+	"name": "DEFINE",
+	"type": "keyword"
+},
+{
+	"name": "DETERMINISTIC",
+	"type": "keyword"
+},
+{
+	"name": "DOUBLE",
+	"type": "keyword"
+},
+{
+	"name": "DURATION",
+	"type": "keyword"
+},
+{
+	"name": "EXECUTE",
+	"type": "keyword"
+},
+{
+	"name": "EACH",
+	"type": "keyword"
+},
+{
+	"name": "EXIT",
+	"type": "keyword"
+},
+{
+	"name": "ELSIF",
+	"type": "keyword"
+},
+{
+	"name": "ELSE",
+	"type": "keyword"
+},
+{
+	"name": "END",
+	"type": "keyword"
+},
+{
+	"name": "EXCEPTION",
+	"type": "keyword"
+},
+{
+	"name": "EXCLUSIVE",
+	"type": "keyword"
+},
+{
+	"name": "EXISTS",
+	"type": "keyword"
+},
+{
+	"name": "EXTENDS",
+	"type": "keyword"
+},
+{
+	"name": "EXTRACT",
+	"type": "keyword"
+},
+{
+	"name": "EXCEPT",
+	"type": "keyword"
+},
+{
+	"name": "EMPTY",
+	"type": "keyword"
+},
+{
+	"name": "ELEMENT",
+	"type": "keyword"
+},
+{
+	"name": "ESCAPE",
+	"type": "keyword"
+},
+{
+	"name": "EXCEPTIONS",
+	"type": "keyword"
+},
+{
+	"name": "EXTERNAL",
+	"type": "keyword"
+},
+{
+	"name": "EDITIONABLE",
+	"type": "keyword"
+},
+{
+	"name": "FLOAT",
+	"type": "keyword"
+},
+{
+	"name": "FORALL",
+	"type": "keyword"
+},
+{
+	"name": "FUNCTION",
+	"type": "keyword"
+},
+{
+	"name": "FOR",
+	"type": "keyword"
+},
+{
+	"name": "FETCH",
+	"type": "keyword"
+},
+{
+	"name": "FROM",
+	"type": "keyword"
+},
+{
+	"name": "FALSE",
+	"type": "keyword"
+},
+{
+	"name": "FINAL",
+	"type": "keyword"
+},
+{
+	"name": "FIXED",
+	"type": "keyword"
+},
+{
+	"name": "FORCE",
+	"type": "keyword"
+},
+{
+	"name": "GENERATED",
+	"type": "keyword"
+},
+{
+	"name": "GOTO",
+	"type": "keyword"
+},
+{
+	"name": "GROUP",
+	"type": "keyword"
+},
+{
+	"name": "GENERAL",
+	"type": "keyword"
+},
+{
+	"name": "GRANT",
+	"type": "keyword"
+},
+{
+	"name": "HEAP",
+	"type": "keyword"
+},
+{
+	"name": "HOUR",
+	"type": "keyword"
+},
+{
+	"name": "HAVING",
+	"type": "keyword"
+},
+{
+	"name": "HASH",
+	"type": "keyword"
+},
+{
+	"name": "HIDDEN",
+	"type": "keyword"
+},
+{
+	"name": "IDENTITY",
+	"type": "keyword"
+},
+{
+	"name": "IMMEDIATE",
+	"type": "keyword"
+},
+{
+	"name": "INDICATOR",
+	"type": "keyword"
+},
+{
+	"name": "INTERFACE",
+	"type": "keyword"
+},
+{
+	"name": "INTERVAL",
+	"type": "keyword"
+},
+{
+	"name": "ISOLATION",
+	"type": "keyword"
+},
+{
+	"name": "IF",
+	"type": "keyword"
+},
+{
+	"name": "IN",
+	"type": "keyword"
+},
+{
+	"name": "IS",
+	"type": "keyword"
+},
+{
+	"name": "INDEX",
+	"type": "keyword"
+},
+{
+	"name": "INSERT",
+	"type": "keyword"
+},
+{
+	"name": "INTERSECT",
+	"type": "keyword"
+},
+{
+	"name": "INTO",
+	"type": "keyword"
+},
+{
+	"name": "INTEGER",
+	"type": "keyword"
+},
+{
+	"name": "INCLUDING",
+	"type": "keyword"
+},
+{
+	"name": "INDICES",
+	"type": "keyword"
+},
+{
+	"name": "INFINITE",
+	"type": "keyword"
+},
+{
+	"name": "INSTANTIABLE",
+	"type": "keyword"
+},
+{
+	"name": "INT",
+	"type": "keyword"
+},
+{
+	"name": "INVALIDATE",
+	"type": "keyword"
+},
+{
+	"name": "IDENTIFIED",
+	"type": "keyword"
+},
+{
+	"name": "INDEXES",
+	"type": "keyword"
+},
+{
+	"name": "JAVA",
+	"type": "keyword"
+},
+{
+	"name": "LANGUAGE",
+	"type": "keyword"
+},
+{
+	"name": "LARGE",
+	"type": "keyword"
+},
+{
+	"name": "LEADING",
+	"type": "keyword"
+},
+{
+	"name": "LENGTH",
+	"type": "keyword"
+},
+{
+	"name": "LEVEL",
+	"type": "keyword"
+},
+{
+	"name": "LIBRARY",
+	"type": "keyword"
+},
+{
+	"name": "LIKE2",
+	"type": "keyword"
+},
+{
+	"name": "LIKE4",
+	"type": "keyword"
+},
+{
+	"name": "LIKEC",
+	"type": "keyword"
+},
+{
+	"name": "LIMIT",
+	"type": "keyword"
+},
+{
+	"name": "LIMITED",
+	"type": "keyword"
+},
+{
+	"name": "LOCAL",
+	"type": "keyword"
+},
+{
+	"name": "LONG",
+	"type": "keyword"
+},
+{
+	"name": "LOOP",
+	"type": "keyword"
+},
+{
+	"name": "LIKE",
+	"type": "keyword"
+},
+{
+	"name": "LOCK",
+	"type": "keyword"
+},
+{
+	"name": "MAX",
+	"type": "keyword"
+},
+{
+	"name": "MAXVALUE",
+	"type": "keyword"
+},
+{
+	"name": "MIN",
+	"type": "keyword"
+},
+{
+	"name": "MINVALUE",
+	"type": "keyword"
+},
+{
+	"name": "MINUTE",
+	"type": "keyword"
+},
+
+{
+	"name": "MEMBER",
+	"type": "keyword"
+},
+{
+	"name": "MOD",
+	"type": "keyword"
+},
+{
+	"name": "MONTH",
+	"type": "keyword"
+},
+{
+	"name": "MINUS",
+	"type": "keyword"
+},
+{
+	"name": "MODE",
+	"type": "keyword"
+},
+{
+	"name": "MULTISET",
+	"type": "keyword"
+},
+{
+	"name": "MAP",
+	"type": "keyword"
+},
+{
+	"name": "MAXLEN",
+	"type": "keyword"
+},
+{
+	"name": "MERGE",
+	"type": "keyword"
+},
+{
+	"name": "MODIFY",
+	"type": "keyword"
+},
+{
+	"name": "N",
+	"type": "keyword"
+},
+{
+	"name": "NCLOB",
+	"type": "keyword"
+},
+{
+	"name": "NEW",
+	"type": "keyword"
+},
+{
+	"name": "NOCOPY",
+	"type": "keyword"
+},
+{
+	"name": "NUMBER_BASE",
+	"type": "keyword"
+},
+{
+	"name": "NVARCHAR2",
+	"type": "keyword"
+},
+{
+	"name": "NOT",
+	"type": "keyword"
+},
+{
+	"name": "NULL",
+	"type": "keyword"
+},
+{
+	"name": "NOWAIT",
+	"type": "keyword"
+},
+{
+	"name": "NATURAL",
+	"type": "keyword"
+},
+{
+	"name": "NATURALN",
+	"type": "keyword"
+},
+{
+	"name": "NEXTVAL",
+	"type": "keyword"
+},
+{
+	"name": "NULLIF",
+	"type": "keyword"
+},
+{
+	"name": "NUMBER",
+	"type": "keyword"
+},
+{
+	"name": "NAME",
+	"type": "keyword"
+},
+{
+	"name": "NAN",
+	"type": "keyword"
+},
+{
+	"name": "NATIONAL",
+	"type": "keyword"
+},
+{
+	"name": "NATIVE",
+	"type": "keyword"
+},
+{
+	"name": "NCHAR",
+	"type": "keyword"
+},
+{
+	"name": "NOCACHE",
+	"type": "keyword"
+},
+{
+	"name": "NOCOMPRESS",
+	"type": "keyword"
+},
+{
+	"name": "NOCYCLE",
+	"type": "keyword"
+},
+{
+	"name": "NOMAXVALUE",
+	"type": "keyword"
+},
+{
+	"name": "NOMINVALUE",
+	"type": "keyword"
+},
+{
+	"name": "NONEDITIONABLE",
+	"type": "keyword"
+},
+{
+	"name": "NOORDER",
+	"type": "keyword"
+},
+{
+	"name": "NUMERIC",
+	"type": "keyword"
+},
+{
+	"name": "OR",
+	"type": "keyword"
+},
+{
+	"name": "OLD",
+	"type": "keyword"
+},
+{
+	"name": "OPTION",
+	"type": "keyword"
+},
+{
+	"name": "OBJECT",
+	"type": "keyword"
+},
+{
+	"name": "ONLY",
+	"type": "keyword"
+},
+{
+	"name": "OPAQUE",
+	"type": "keyword"
+},
+{
+	"name": "OPEN",
+	"type": "keyword"
+},
+{
+	"name": "OPERATOR",
+	"type": "keyword"
+},
+{
+	"name": "ORACLE",
+	"type": "keyword"
+},
+{
+	"name": "ORADATA",
+	"type": "keyword"
+},
+{
+	"name": "ORGANIZATION",
+	"type": "keyword"
+},
+{
+	"name": "ORLANY",
+	"type": "keyword"
+},
+{
+	"name": "ORLVARY",
+	"type": "keyword"
+},
+{
+	"name": "OVERLAPS",
+	"type": "keyword"
+},
+{
+	"name": "OTHERS",
+	"type": "keyword"
+},
+{
+	"name": "OUT",
+	"type": "keyword"
+},
+{
+	"name": "OVERRIDING",
+	"type": "keyword"
+},
+{
+	"name": "OCICOLL",
+	"type": "keyword"
+},
+{
+	"name": "OCIDATE",
+	"type": "keyword"
+},
+{
+	"name": "OCIDATETIME",
+	"type": "keyword"
+},
+{
+	"name": "OCIDURATION",
+	"type": "keyword"
+},
+{
+	"name": "OCIINTERVAL",
+	"type": "keyword"
+},
+{
+	"name": "OCILOBLOCATOR",
+	"type": "keyword"
+},
+{
+	"name": "OCINUMBER",
+	"type": "keyword"
+},
+{
+	"name": "OCIRAW",
+	"type": "keyword"
+},
+{
+	"name": "OCIREF",
+	"type": "keyword"
+},
+{
+	"name": "OCIREFCURSOR",
+	"type": "keyword"
+},
+{
+	"name": "OCIROWID",
+	"type": "keyword"
+},
+{
+	"name": "OCISTRING",
+	"type": "keyword"
+},
+{
+	"name": "OCITYPE",
+	"type": "keyword"
+},
+{
+	"name": "PARTITION",
+	"type": "keyword"
+},
+{
+	"name": "PRAGMA",
+	"type": "keyword"
+},
+{
+	"name": "PACKAGE",
+	"type": "keyword"
+},
+{
+	"name": "PRIVATE",
+	"type": "keyword"
+},
+{
+	"name": "PROCEDURE",
+	"type": "keyword"
+},
+{
+	"name": "PRIOR",
+	"type": "keyword"
+},
+{
+	"name": "PUBLIC",
+	"type": "keyword"
+},
+{
+	"name": "PCTFREE",
+	"type": "keyword"
+},
+{
+	"name": "PLS_INTEGER",
+	"type": "keyword"
+},
+{
+	"name": "POSITIVE",
+	"type": "keyword"
+},
+{
+	"name": "POSITIVEN",
+	"type": "keyword"
+},
+{
+	"name": "PARALLEL_ENABLE",
+	"type": "keyword"
+},
+{
+	"name": "PARAMETER",
+	"type": "keyword"
+},
+{
+	"name": "PARAMETERS",
+	"type": "keyword"
+},
+{
+	"name": "PASCAL",
+	"type": "keyword"
+},
+{
+	"name": "PIPE",
+	"type": "keyword"
+},
+{
+	"name": "PIPELINED",
+	"type": "keyword"
+},
+{
+	"name": "PRECISION",
+	"type": "keyword"
+},
+{
+	"name": "RAISE",
+	"type": "keyword"
+},
+{
+	"name": "RANGE",
+	"type": "keyword"
+},
+{
+	"name": "RAW",
+	"type": "keyword"
+},
+{
+	"name": "RECORD",
+	"type": "keyword"
+},
+{
+	"name": "REF",
+	"type": "keyword"
+},
+{
+	"name": "REM",
+	"type": "keyword"
+},
+{
+	"name": "RETURN",
+	"type": "keyword"
+},
+{
+	"name": "RETURNING",
+	"type": "keyword"
+},
+{
+	"name": "REVERSE",
+	"type": "keyword"
+},
+{
+	"name": "ROLLBACK",
+	"type": "keyword"
+},
+{
+	"name": "ROW",
+	"type": "keyword"
+},
+{
+	"name": "ROWTYPE",
+	"type": "keyword"
+},
+{
+	"name": "REAL",
+	"type": "keyword"
+},
+{
+	"name": "RELEASE",
+	"type": "keyword"
+},
+{
+	"name": "ROWID",
+	"type": "keyword"
+},
+{
+	"name": "ROWNUM",
+	"type": "keyword"
+},
+{
+	"name": "READ",
+	"type": "keyword"
+},
+{
+	"name": "REFERENCE",
+	"type": "keyword"
+},
+{
+	"name": "REFERENCES",
+	"type": "keyword"
+},
+{
+	"name": "REMAINDER",
+	"type": "keyword"
+},
+{
+	"name": "RENAME",
+	"type": "keyword"
+},
+{
+	"name": "REPLACE",
+	"type": "keyword"
+},
+{
+	"name": "RESULT",
+	"type": "keyword"
+},
+{
+	"name": "RESOURCE",
+	"type": "keyword"
+},
+{
+	"name": "REVOKE",
+	"type": "keyword"
+},
+{
+	"name": "SYS_REFCURSOR",
+	"type": "keyword"
+},
+{
+	"name": "SAVEPOINT",
+	"type": "keyword"
+},
+{
+	"name": "SECOND",
+	"type": "keyword"
+},
+{
+	"name": "SEPARATE",
+	"type": "keyword"
+},
+{
+	"name": "SET",
+	"type": "keyword"
+},
+{
+	"name": "SIGNTYPE",
+	"type": "keyword"
+},
+{
+	"name": "SQLCODE",
+	"type": "keyword"
+},
+{
+	"name": "STDDEV",
+	"type": "keyword"
+},
+{
+	"name": "SYNONYM",
+	"type": "keyword"
+},
+{
+	"name": "SELECT",
+	"type": "keyword"
+},
+{
+	"name": "SQL",
+	"type": "keyword"
+},
+{
+	"name": "START",
+	"type": "keyword"
+},
+{
+	"name": "SMALLINT",
+	"type": "keyword"
+},
+{
+	"name": "SPACE",
+	"type": "keyword"
+},
+{
+	"name": "SQLERRM",
+	"type": "keyword"
+},
+{
+	"name": "SUCCESSFUL",
+	"type": "keyword"
+},
+{
+	"name": "SHARE",
+	"type": "keyword"
+},
+{
+	"name": "SUBTYPE",
+	"type": "keyword"
+},
+{
+	"name": "SUBMULTISET",
+	"type": "keyword"
+},
+{
+	"name": "SUM",
+	"type": "keyword"
+},
+{
+	"name": "SOME",
+	"type": "keyword"
+},
+{
+	"name": "SAMPLE",
+	"type": "keyword"
+},
+{
+	"name": "SAVE",
+	"type": "keyword"
+},
+{
+	"name": "SB1",
+	"type": "keyword"
+},
+{
+	"name": "SB2",
+	"type": "keyword"
+},
+{
+	"name": "SB4",
+	"type": "keyword"
+},
+{
+	"name": "SEGMENT",
+	"type": "keyword"
+},
+{
+	"name": "SELF",
+	"type": "keyword"
+},
+{
+	"name": "SEQUENCE",
+	"type": "keyword"
+},
+{
+	"name": "SERIALIZABLE",
+	"type": "keyword"
+},
+{
+	"name": "SHORT",
+	"type": "keyword"
+},
+{
+	"name": "SIZE_T",
+	"type": "keyword"
+},
+{
+	"name": "SPARSE",
+	"type": "keyword"
+},
+{
+	"name": "SQLDATA",
+	"type": "keyword"
+},
+{
+	"name": "SQLNAME",
+	"type": "keyword"
+},
+{
+	"name": "SQLSTATE",
+	"type": "keyword"
+},
+{
+	"name": "STANDARD",
+	"type": "keyword"
+},
+{
+	"name": "STATIC",
+	"type": "keyword"
+},
+{
+	"name": "STORED",
+	"type": "keyword"
+},
+{
+	"name": "STRING",
+	"type": "keyword"
+},
+{
+	"name": "STRUCT",
+	"type": "keyword"
+},
+{
+	"name": "STYLE",
+	"type": "keyword"
+},
+{
+	"name": "SUBPARTITION",
+	"type": "keyword"
+},
+{
+	"name": "SUBSTITUTABLE",
+	"type": "keyword"
+},
+{
+	"name": "SIZE",
+	"type": "keyword"
+},
+{
+	"name": "TIME",
+	"type": "keyword"
+},
+{
+	"name": "TIMESTAMP",
+	"type": "keyword"
+},
+{
+	"name": "TIMEZONE_ABBR",
+	"type": "keyword"
+},
+{
+	"name": "TIMEZONE_HOUR",
+	"type": "keyword"
+},
+{
+	"name": "TIMEZONE_MINUTE",
+	"type": "keyword"
+},
+{
+	"name": "TIMEZONE_REGION",
+	"type": "keyword"
+},
+{
+	"name": "TYPE",
+	"type": "keyword"
+},
+{
+	"name": "THEN",
+	"type": "keyword"
+},
+{
+	"name": "TABLE",
+	"type": "keyword"
+},
+{
+	"name": "TRIGGER",
+	"type": "keyword"
+},
+{
+	"name": "TRUE",
+	"type": "keyword"
+},
+{
+	"name": "TDO",
+	"type": "keyword"
+},
+{
+	"name": "THE",
+	"type": "keyword"
+},
+{
+	"name": "TRAILING",
+	"type": "keyword"
+},
+{
+	"name": "TRANSACTION",
+	"type": "keyword"
+},
+{
+	"name": "TRANSACTIONAL",
+	"type": "keyword"
+},
+{
+	"name": "TRUSTED",
+	"type": "keyword"
+},
+{
+	"name": "TABAUTH",
+	"type": "keyword"
+},
+{
+	"name": "USE",
+	"type": "keyword"
+},
+{
+	"name": "USING",
+	"type": "keyword"
+},
+{
+	"name": "UNION",
+	"type": "keyword"
+},
+{
+	"name": "UNIQUE",
+	"type": "keyword"
+},
+{
+	"name": "UPDATE",
+	"type": "keyword"
+},
+{
+	"name": "UID",
+	"type": "keyword"
+},
+{
+	"name": "UB1",
+	"type": "keyword"
+},
+{
+	"name": "UB2",
+	"type": "keyword"
+},
+{
+	"name": "UB4",
+	"type": "keyword"
+},
+{
+	"name": "UNDER",
+	"type": "keyword"
+},
+{
+	"name": "UNSIGNED",
+	"type": "keyword"
+},
+{
+	"name": "UNTRUSTED",
+	"type": "keyword"
+},
+{
+	"name": "UROWID",
+	"type": "keyword"
+},
+{
+	"name": "VARIANCE",
+	"type": "keyword"
+},
+{
+	"name": "VALUES",
+	"type": "keyword"
+},
+{
+	"name": "VIEW",
+	"type": "keyword"
+},
+{
+	"name": "VALIDATE",
+	"type": "keyword"
+},
+{
+	"name": "VALIST",
+	"type": "keyword"
+},
+{
+	"name": "VALUE",
+	"type": "keyword"
+},
+{
+	"name": "VARIABLE",
+	"type": "keyword"
+},
+{
+	"name": "VARRAY",
+	"type": "keyword"
+},
+{
+	"name": "VARYING",
+	"type": "keyword"
+},
+{
+	"name": "VOID",
+	"type": "keyword"
+},
+{
+	"name": "VIEWS",
+	"type": "keyword"
+},
+{
+	"name": "WHILE",
+	"type": "keyword"
+},
+{
+	"name": "WORK",
+	"type": "keyword"
+},
+{
+	"name": "WHEN",
+	"type": "keyword"
+},
+{
+	"name": "WITH",
+	"type": "keyword"
+},
+{
+	"name": "WHERE",
+	"type": "keyword"
+},
+{
+	"name": "WHENEVER",
+	"type": "keyword"
+},
+{
+	"name": "WRAPPED",
+	"type": "keyword"
+},
+{
+	"name": "WRITE",
+	"type": "keyword"
+},
+{
+	"name": "XMLTYPE",
+	"type": "keyword"
+},
+{
+	"name": "YEAR",
+	"type": "keyword"
+},
+{
+	"name": "ZONE",
+	"type": "keyword"
+},
+{
+	"name": "SHOW",
+	"type": "command"
+},
+
+{
+	"name": "@",
+	"type": "command"
+},
+{
+	"name": "@@",
+	"type": "command"
+},
+{
+	"name": "/",
+	"type": "command"
+},
+{
+	"name": "ACCEPT",
+	"type": "command"
+},
+{
+	"name": "NOPROMPT",
+	"type": "value"
+},
+{
+	"name": "HIDE",
+	"type": "value"
+},
+
+{
+	"name": "APPEND",
+	"type": "command"
+},
+{
+	"name": "ARCHIVE",
+	"type": "command"
+},
+{
+	"name": "LOG",
+	"type": "value"
+},
+{
+	"name": "STOP",
+	"type": "value"
+},
+{
+	"name": "NEXT",
+	"type": "value"
+},
+
+{
+	"name": "CHANGE",
+	"type": "command"
+},
+{
+	"name": "CLEAR",
+	"type": "command"
+},
+{
+	"name": "BREAKS",
+	"type": "value"
+},
+{
+	"name": "BUFFER",
+	"type": "value"
+},
+{
+	"name": "COMPUTES",
+	"type": "value"
+},
+{
+	"name": "SCREEN",
+	"type": "value"
+},
+{
+	"name": "ALIAS",
+	"type": "value"
+},
+{
+	"name": "CLEAR",
+	"type": "value"
+},
+{
+	"name": "ENTMAP",
+	"type": "value"
+},
+{
+	"name": "FOLD_AFTER",
+	"type": "value"
+},
+{
+	"name": "FOLD_BEFORE",
+	"type": "value"
+},
+{
+	"name": "JUSTIFY",
+	"type": "value"
+},
+{
+	"name": "LEFT",
+	"type": "value"
+},
+{
+	"name": "CENTER",
+	"type": "value"
+},
+
+{
+	"name": "NEWLINE",
+	"type": "value"
+},
+{
+	"name": "NEW_VALUE",
+	"type": "value"
+},
+{
+	"name": "NOPRINT",
+	"type": "value"
+},
+
+{
+	"name": "OLD_VALUE",
+	"type": "value"
+},
+{
+	"name": "WORD_WRAPPED",
+	"type": "value"
+},
+
+{
+	"name": "SYSOPER",
+	"type": "value"
+},
+{
+	"name": "SYSDBA",
+	"type": "value"
+},
+{
+	"name": "DEL",
+	"type": "command"
+},
+{
+	"name": "LAST",
+	"type": "value"
+},
+{
+	"name": "DISCONNECT",
+	"type": "command"
+},
+{
+	"name": "SUCCESS",
+	"type": "value"
+},
+{
+	"name": "FAILURE",
+	"type": "value"
+},
+{
+	"name": "INPUT",
+	"type": "command"
+},
+{
+	"name": "LIST",
+	"type": "command"
+},
+{
+	"name": "PASSWORD",
+	"type": "command"
+},
+{
+	"name": "PRINT",
+	"type": "command"
+},
+{
+	"name": "PROMPT",
+	"type": "command"
+},
+{
+	"name": "REMARK",
+	"type": "command"
+},
+{
+	"name": "RUN",
+	"type": "command"
+},
+{
+	"name": "FILE",
+	"type": "value"
+},
+{
+	"name": "SPOOL",
+	"type": "command"
+},
+{
+	"name": "STORE",
+	"type": "command"
+},
+{
+	"name": "UNDEFINE",
+	"type": "command"
+},
+{
+	"name": "XQUERY",
+	"type": "command"
+},
+{
+	"name": "STOP",
+	"type": "value"
+},
+{
+	"name": "REFCURSOR",
+	"type": "value"
+},
+{
+	"name": "NONE",
+	"type": "value"
+},
+{
+	"name": "SQLERROR",
+	"type": "value"
+},
+{
+	"name": "TIMING",
+	"type": "command"
+},
+
+{
+	"name": "APPINFO",
+	"type": "variable"
+},
+{
+	"name": "OFF",
+	"type": "keyword"
+},
+{
+	"name": "ARRAYSIZE",
+	"type": "variable"
+},
+{
+	"name": "AUTOCOMMIT",
+	"type": "variable"
+},
+
+{
+	"name": "AUTOPRINT",
+	"type": "variable"
+},
+{
+	"name": "AUTOTRACE",
+	"type": "variable"
+},
+{
+	"name": "TRACEONLY",
+	"type": "value"
+},
+{
+	"name": "EXPLAIN",
+	"type": "value"
+},
+
+{
+	"name": "STATISTICS",
+	"type": "value"
+},
+{
+	"name": "BLOCKTERMINATOR",
+	"type": "variable"
+},
+{
+	"name": "CMDSEP",
+	"type": "variable"
+},
+{
+	"name": "COLINVISIBLE",
+	"type": "variable"
+},
+{
+	"name": "COLSEP",
+	"type": "variable"
+},
+{
+	"name": "CONCAT",
+	"type": "variable"
+},
+{
+	"name": "DEPTH",
+	"type": "value"
+},
+
+{
+	"name": "LINENUM",
+	"type": "value"
+},
+{
+	"name": "INDENT",
+	"type": "value"
+},
+{
+	"name": "ECHO",
+	"type": "variable"
+},
+{
+	"name": "ERRORLOGGING",
+	"type": "variable"
+},
+{
+	"name": "IDENTIFIER",
+	"type": "value"
+},
+{
+	"name": "ESCCHAR",
+	"type": "variable"
+},
+{
+	"name": "?",
+	"type": "value"
+},
+{
+	"name": "%",
+	"type": "value"
+},
+{
+	"name": "EXITCOMMIT",
+	"type": "variable"
+},
+{
+	"name": "FEEDBACK",
+	"type": "variable"
+},
+{
+	"name": "SQL_ID",
+	"type": "value"
+},
+{
+	"name": "FLAGGER",
+	"type": "variable"
+},
+{
+	"name": "ENTRY",
+	"type": "value"
+},
+{
+	"name": "INTERMEDIATE",
+	"type": "value"
+},
+{
+	"name": "FULL",
+	"type": "value"
+},
+{
+	"name": "HEADING",
+	"type": "variable"
+},
+{
+	"name": "HEADSEP",
+	"type": "variable"
+},
+{
+	"name": "INSTANCE",
+	"type": "variable"
+},
+{
+	"name": "LINESIZE",
+	"type": "variable"
+},
+{
+	"name": "WINDOW",
+	"type": "value"
+},
+{
+	"name": "LOBOFFSET",
+	"type": "variable"
+},
+{
+	"name": "SERVEROUTPUT",
+	"type": "variable"
+},
+{
+	"name": "UNLIMITED",
+	"type": "value"
+},
+{
+	"name": "FORMAT",
+	"type": "value"
+},
+{
+	"name": "WORD_WRAPPED",
+	"type": "value"
+},
+{
+	"name": "SHOWMODE",
+	"type": "variable"
+},
+{
+	"name": "SQLBLANKLINES",
+	"type": "variable"
+},
+{
+	"name": "SQLCASE",
+	"type": "variable"
+},
+{
+	"name": "MIXED",
+	"type": "value"
+},
+{
+	"name": "LOWER",
+	"type": "value"
+},
+{
+	"name": "UPPER",
+	"type": "value"
+},
+{
+	"name": "SQLNUMBER",
+	"type": "variable"
+},
+{
+	"name": "SUFFIX",
+	"type": "variable"
+},
+{
+	"name": "TRIMOUT",
+	"type": "variable"
+},
+{
+	"name": "TRIMSPOOL",
+	"type": "variable"
+},
+{
+	"name": "VERIFY",
+	"type": "variable"
+},
+{
+	"name": "WRAP",
+	"type": "variable"
+},
+{
+	"name": "XMLOPTIMIZATIONCHECK",
+	"type": "variable"
+},
+{
+	"name": "XQUERY",
+	"type": "command"
+},
+{
+	"name": "BASEURI",
+	"type": "value"
+},
+{
+	"name": "ORDERING",
+	"type": "value"
+},
+{
+	"name": "UNORDERED",
+	"type": "value"
+},
+{
+	"name": "ORDERED",
+	"type": "value"
+},
+
+{
+	"name": "BYVALUE",
+	"type": "value"
+},
+{
+	"name": "BYREFERENCE",
+	"type": "value"
+},
+{
+	"name": "WARNING",
+	"type": "value"
+}
+]

@@ -1,0 +1,161 @@
+<div class="compilerSettingsBody">
+    <oj-form-layout id="compileConfigurationForm" label-edge="start" max-columns="1" direction="column" 
+        label-width="25%" user-assistance-density='compact' class="oj-formlayout-full-width">
+        <label class="compilerDlgHeader">
+            <oj-bind-text value='[[compilerSettingsTitle]]'></oj-bind-text>
+        </label>
+        <label class="compilerDlgSubHeader">
+            <oj-bind-text value='[[compilerSettingsSubTitle]]'></oj-bind-text>
+        </label>
+        <hr class="hrstyle" />
+        <!--Configuration Type-->
+        <oj-label for="configType" slot="label">
+            <label class="leftalign">
+                <p>
+                    <oj-bind-text value="[[configurationLabel]]">
+                    </oj-bind-text>
+                </p>
+            </label>
+        </oj-label>
+        <oj-combobox-one id='configType' options="[[configTypes]]" value="{{configType}}"
+            onkeydown='javascript: if((event.key != "Tab")){ return false;}' on-value-changed="[[onCompileConfigChanged]]"
+            onpaste="return false;" onCut="return false" slot="value">
+        </oj-combobox-one>
+        <!--Enable Config-->
+        <oj-checkboxset label-hint=" " value="{{enableFlags}}" id="enableConfigOptions" slot="value" 
+            on-value-changed="[[onEnableFlagsChanged]]">
+            <oj-option id="enableFlags" value='Yes'>
+                <span>
+                <oj-bind-text value='[[enableConfigLabel]]'>
+                </oj-bind-text>
+                </span>
+            </oj-option>
+        </oj-checkboxset>
+    </oj-form-layout>
+    <!---------------------GENERAL SETTINGS-------------------------------->
+        <h1 id="generalHeader" class="compilerDlgHeader" slot="header">General</h1>
+        <oj-form-layout id="generalDiv" label-edge="start" max-columns="1" direction="column" label-width="25%"
+            user-assistance-density='compact' class="oj-formlayout-full-width">
+            <!--Optimization Level-->
+            <oj-bind-if test="[[isActiveAllConfig() === false]]">
+                <oj-label for="optimizeLevel" slot="label">
+                    <label class="leftalign">
+                        <p>
+                            <oj-bind-text value="[[optLevelLabel]]">
+                            </oj-bind-text>
+                        </p>
+                    </label>
+                </oj-label>
+                <oj-combobox-one id='optimizeLevel' options="[[optLevels]]" value="{{optimizeLevel}}"
+                    on-oj-value-updated="[[onOptLevelChanged]]"
+                    onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;" onCut="return false"
+                     slot="value">
+                </oj-combobox-one>
+            </oj-bind-if>
+            <!--PLSCOPE Settings-->
+            <oj-label for="plscopeId" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[plscopeIdsLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[identifiers]]" value="{{plscopeIdentifier}}" 
+                on-oj-value-updated="[[() => onParameterChanged(event,'plscopeIdentifiers')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;" onCut="return false"
+                id='plscopeId' slot="value">
+            </oj-combobox-one>
+            <oj-label for="plscopeSt" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[plscopeStmtsLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[statements]]" value="{{plscopeStatement}}"
+                on-oj-value-updated="[[() => onParameterChanged(event,'plscopeStatements')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;" onCut="return false"
+                id='plscopeSt' slot="value">
+            </oj-combobox-one>
+        </oj-form-layout>
+    <!---------------------WARNINGS------------------------------>
+        <h1 id="warningsHeader" class="compilerDlgHeader" slot="header">Warnings</h1>
+        <oj-form-layout id="warningsDiv" label-edge="start" max-columns="1" direction="column" label-width="25%"
+            user-assistance-density='compact' class="oj-formlayout-full-width">
+            <!--Warnings ALL-->
+            <oj-label for="allWarnings" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[allLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[warningOptions]]" value="{{allWarnings}}"
+                on-oj-value-updated="[[() => onParameterChanged(event,'allWarnings')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                onCut="return false" id='allWarnings' slot="value">
+            </oj-combobox-one>
+            <!--Warnings Informational-->
+            <oj-label for="informationalWarnings" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[informationalLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[warningOptions]]" value="{{informationalWarnings}}"
+                on-oj-value-updated="[[() => onParameterChanged(event,'informationalWarnings')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                onCut="return false" id='informationalWarnings' slot="value">
+            </oj-combobox-one>
+            <!--Warnings Performance-->
+            <oj-label for="performanceWarnings" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[performanceLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[warningOptions]]" value="{{performanceWarnings}}"
+                on-oj-value-updated="[[() => onParameterChanged(event,'performanceWarnings')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                onCut="return false" id='performanceWarnings' slot="value">
+            </oj-combobox-one>
+            <!--Warnings Severe-->
+            <oj-label for="severeWarnings" slot="label">
+                <label class="leftalign">
+                    <p>
+                        <oj-bind-text value="[[severeLabel]]">
+                        </oj-bind-text>
+                    </p>
+                </label>
+            </oj-label>
+            <oj-combobox-one options="[[warningOptions]]" value="{{severeWarnings}}"
+                on-oj-value-updated="[[() => onParameterChanged(event,'severeWarnings')]]"
+                onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                onCut="return false" id='severeWarnings' slot="value">
+            </oj-combobox-one>
+        </oj-form-layout>
+    <!--SAve Button-->
+        <oj-form-layout id="warningsDiv" label-edge="start" max-columns="1" direction="column" label-width="25%"
+                    user-assistance-density='compact' class="oj-formlayout-full-width">
+        <oj-label></oj-label>
+        <div style="padding-top: 10px;">
+            <oj-button id='saveButton' class='oj-button-lg' on-oj-action='[[onSaveSettings]]'
+                style="margin-right:5px;" disabled='[[saveButtonDisable]]'>
+                <oj-bind-text value="[[saveLabel]]"></oj-bind-text>
+            </oj-button>
+            <oj-button id="resetButton" class='oj-button-lg'  on-oj-action='[[onReset]]'>
+                <oj-bind-text value="[[resetToDefaults]]"></oj-bind-text>
+            </oj-button>
+            <oj-bind-if test="[[isSaving]]">
+                <oj-progress-circle size="md" id="progressCircle" value="-1"></oj-progress-circle>
+            </oj-bind-if>
+        </div>
+        </oj-form-layout>
+</div>

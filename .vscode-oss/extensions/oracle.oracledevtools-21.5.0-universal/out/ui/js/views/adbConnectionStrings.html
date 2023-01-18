@@ -1,0 +1,118 @@
+<div id="getConnectionStringsID" class="1connDlgBody" style1="max-width:450px;">
+
+    <oj-bind-if test="[[showTLSAuthenticationPage()]]">
+        
+            <label class="connDlgHeader">
+                <oj-bind-text value='[[headerText]]'></oj-bind-text>
+        </label>
+        <!--  -->
+
+        <oj-bind-if test="[[showMTLSAuthenticationDescription()]]">
+            <div class="flex" style="margin-top:10px ;">
+                <div class="flex-item">
+                    <oj-label class="ociTextForColor" for="ocimtlsAuthenticationDescription"
+                        style="text-align: left" slot="label">
+                        <oj-bind-text value='[[adbConnectionUILabels.mtlsAuthenticationDescription]]'>
+                        </oj-bind-text>
+                    </oj-label>
+                </div>
+            </div>
+        </oj-bind-if>
+        <hr class="hrstyle"/>
+
+        <div style="margin-top: 10px;"></div>
+        <div></div>
+
+        <oj-bind-if test="[[errorInFetchConnectionString()]]">
+            <oj-bind-if test="[[firstLineErrorInFetchConnectionString()]]">
+                <oj-label for="fisrtLineErrorID" slot="label">
+                    <oj-bind-text value='[[getConnectionStringErrorMesageFirstLine()]]'>
+                    </oj-bind-text>
+                </oj-label>
+            </oj-bind-if>
+            <oj-bind-if test="[[secondLineErrorInFetchConnectionString()]]">
+                <oj-label for="secondLineErrorID" slot="label">
+                    <oj-bind-text value='[[getConnectionStringErrorMesageSecondLine()]]'>
+                    </oj-bind-text>
+                </oj-label>
+            </oj-bind-if>
+
+        </oj-bind-if>
+
+        <oj-bind-if test="[[!errorInFetchConnectionString()]]">
+            <oj-bind-if test="[[tlsAuthenticationType() == 1 || tlsAuthenticationType() == 2]]">
+                <div class="flex" >
+                    <div class="flex-item" style="max-width:25%;">
+                        <oj-label for="authenticationID" slot="label">
+                            <oj-bind-text value='[[adbConnectionUILabels.authentication]]'>
+                            </oj-bind-text>
+                        </oj-label>
+                    </div>
+                    <div class="flex-item">
+                        <oj-combobox-one disabled="[[adbAuthenticationType == 1]]"
+                            class="infoLabel" options="[[tlsAuthenticationTypes]]" value="{{tlsAuthenticationType}}"
+                            onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                            on-value-changed="[[OnAuthenticationChange]]" onCut="return false"
+                            oncontextmenu="return false" id='authenticationID' slot="value">
+                        </oj-combobox-one>
+                    </div>
+                </div>
+            </oj-bind-if>
+            <div class="flex" >
+                <div class="flex-item" style="max-width:25%;">
+                    <oj-label for="tnsNamesID" slot="label">
+                        <oj-bind-text value='[[adbConnectionUILabels.tnsNames]]'>
+                        </oj-bind-text>
+                    </oj-label>
+                </div>
+                <div class="flex-item">
+                    <oj-combobox-one class="infoLabel" options="[[tnsNames]]" value="{{tnsName}}"
+                        onkeydown='javascript: if((event.key != "Tab")){ return false;}' onpaste="return false;"
+                        on-value-changed="[[OnTNSNameChange]]" onCut="return false" oncontextmenu="return false"
+                        id='tnsNamesID' slot="value">
+                    </oj-combobox-one>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex-item" style="max-width:25%;">
+                    <oj-label for="connectionStringsID" slot="label">
+                        <oj-bind-text value='[[adbConnectionUILabels.connectionString]]'>
+                        </oj-bind-text>
+                    </oj-label>
+                </div>
+                <div class="flex-item">
+                    <oj-text-area disabled="true" id="disabled1" value={{connectionString}} rows="10">
+                    </oj-text-area>
+                    <oj-button style="margin-left: 05px;" id="copyToClipBoardID" display="icons"
+                        on-oj-action="[[onCopyConnectionString]]">
+                        <oj-bind-text value='[[adbConnectionUILabels.copyToClipBoard]]'>
+                        </oj-bind-text>
+                    </oj-button>
+                </div>
+            </div>
+            <oj-label></oj-label>
+            <oj-bind-if test=[[launchFromConnectionContextMenu()]]>
+                <div class="flex">
+                    <div class="flex-item" style="max-width:25%;"></div>
+                    <div class="flex-item">
+                        <oj-button style="margin-left: 05px;" id="onOKButtonID" display="icons" class='oj-button-lg'
+                            on-oj-action="[[onOk]]">
+                            <oj-bind-text value='[[adbConnectionUILabels.ociOK]]'>
+                            </oj-bind-text>
+                        </oj-button>
+                    </div>
+                </div>
+            </oj-bind-if>
+        </oj-bind-if>
+
+    </oj-bind-if>
+    <oj-bind-if test="[[showTLSAuthenticationPage() == false]]">
+        <oj-label style="margin-top: 0; text-align: left" for="connectionStringErrorMessageID1" slot="label">
+            <oj-bind-text value='[[adbConnectionUILabels.getConnectonStringErrMsg1]]'></oj-bind-text>
+        </oj-label>
+        <oj-label style="margin-top: 0; text-align: left" for="connectionStringErrorMessageID2" slot="label">
+            <oj-bind-text value='[[adbConnectionUILabels.getConnectonStringErrMsg2]]'></oj-bind-text>
+        </oj-label>
+    </oj-bind-if>
+</div>

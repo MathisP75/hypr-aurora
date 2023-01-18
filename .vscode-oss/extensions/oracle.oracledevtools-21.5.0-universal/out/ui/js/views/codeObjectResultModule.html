@@ -1,0 +1,22 @@
+<div class="codeOutputContainer">
+  <div>
+    <oj-bind-text value="[[queryString]]"></oj-bind-text>
+  </div>
+  <br>
+  <oj-bind-if test="[[inputArgs]]">
+    <label class="codeObjectGridLabel">
+      <oj-bind-text value='[[inputPanelLabel]]'></oj-bind-text>
+    </label>
+    <div data-bind="ojModule: { name: 'runInputDialog' , params : inputArgs }">
+    </div>
+  </oj-bind-if>
+  <br>
+  <oj-bind-if test="[[outputArgs]]">
+    <label class="codeObjectGridLabel">
+      <oj-bind-text value='[[outputPanelLabel]]'></oj-bind-text>
+    </label>
+    <div data-bind="ojModule: { name: 'runInputDialog' , params : outputArgs }">
+    </div>
+  </oj-bind-if>
+</div>
+<br>
